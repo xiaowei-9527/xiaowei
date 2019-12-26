@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<!--全局可以累加-->
+		<script>
+			var b = 100;
+			function box1(){
+				b++;
+			}
+			box1();
+			console.log(b)
+			box1();
+			console.log(b)
+		</script>
+		
+	<!--局部-->
+		<script>
+			function box(){
+				var a = 100;
+				a++;
+				return a
+			}
+	//两次值一样
+			box();
+			console.log(box())
+			box();
+			console.log(box())
+
+	//添加闭包
+	//实现累加
+			function box2(){
+				var a2 = 100;
+				return function(){
+					a2++;
+					return a2
+				}
+			}
+			var res = box2()
+			console.log(res())
+			console.log(res())
+			
+			
+			function box3(){
+				var a3 = 100;
+				return a3;
+			}
+		//报错
+			box3();
+			console.log(a3)
+			
+		//接收之后再返回可以得到
+			var a = box3();
+			console.log(a)
+			
+			
+			
+		</script>
+	</body>
+</html>

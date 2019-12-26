@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table{
+				width:100%;
+			}
+			table tr td{
+				border:1px solid red;
+				width:11.1111%;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			document.write("<table>")
+			for(var i=1;i<=9;i++){
+				document.write("<tr>")
+				for(var j=1;j<=i;j++){
+					document.write("<td>"+i+'*'+j+'='+i*j+"</td>")
+				}
+				
+				document.write("</tr>")
+			}
+			document.write("</table>")
+		</script>
+	</body>
+</html>

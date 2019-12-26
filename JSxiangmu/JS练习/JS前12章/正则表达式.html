@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//I：忽略大小写
+			//M：多行匹配
+			//G：全局匹配
+		//创建正则表达式
+			//创建对象方式
+			var box = new RegExp('box')
+			var box1 = new RegExp('box','ig')
+			
+			//字面量---直接用两个反斜杠
+			var box2 = /box/
+			
+	//两个方法：test()和exec()
+		//test()：匹配后返回true或false
+		
+			//对象
+			var zz = new RegExp('box','i')
+			//字面量
+			var zml = /box/ig;
+			var kong = / /ig
+			var str = 'This is a Box!,That is a Box too'
+			
+			
+			console.log('对象创建：'+zz.test(str))
+			console.log('字面量创建：'+zml.test(str))
+			//合并书写
+			console.log('合并书写：'+/box/i.test('asgashgbox'))
+		//exec()：匹配搜索，返回匹配数组,反之返回null
+			console.log('使用exec()：'+zml.exec(str))
+			
+	//String对象也提供了4个使用正则的表达式的方法
+		//1、match()--返回匹配的串或null
+		//2、replace(a,b)--用b替换a--
+		//3、search()--返回匹配到的字符串开始的位置（查到第一个出现的位置并返回）
+		//4、split()--返回
+			
+			//match：获取匹配数组
+			console.log('使用match()：'+str.match(zml))
+			console.log('使用match()获取数组的长度：'+str.match(zml).length)
+			
+			//search：查找匹配的数据--查到返回位置，查不到返回 -1
+			console.log('使用search()--查到返回下标，查不到返回 -1：'+str.search(zml))
+			
+			//replace：替换匹配到的数据
+			console.log('使用replace()--替换匹配到的数据：'+str.replace(zml,'小威'))
+			
+			//split：拆分成字符串数组
+			console.log('将空格拆开分组成数组:'+str.split(kong))
+			
+			
+	//RegExp对象的静态属性
+			//属性 			//短名
+			//input			//$_	//当前被匹配的字符串
+			//lastMatch		//$&	//最后一个匹配字符串
+			//lastParen		//$+	//最后一对圆括号内的匹配子串
+			//leftContext	//$`	//最后一次匹配前的子串
+			//multiline		//$*	//用于指定是否所有的表达式都用于多行的布尔值
+			//rightContext	//$'	//上次匹配之后的子串
+			
+			var pat = /(g)oogle/
+			var pstr = 'This is google!'
+			pat.test(pstr)//执行一下
+			console.log(RegExp.input)
+			console.log(RegExp.leftContext)
+			console.log(RegExp.rightContext)
+			console.log(RegExp.lastMatch)
+			console.log(RegExp.lastParen)
+			console.log(RegExp.multiline)
+			
+			
+		</script>
+	</body>
+</html>

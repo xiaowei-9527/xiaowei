@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#span{
+			color:red;
+		}
+	</style>
+	<script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	<script src="js/layer/layer.js"></script>
+	<!--<script src="js/util.js"></script>-->
+</head>
+<body>
+	<form>
+		<div>用户名: <input type="text" name="username" id="name"><span id="span"></span></div>
+		<div>密码: <input type="password" name="password" id="pwd"></div>
+		<div>email: <input type="email" name="email" id="email"></div>
+		<div>手机号: <input type="tel" name="tel" id="tel"></div>
+		<div><input type="submit" value="提交" id="sub"></div>
+	</form>
+	<script>
+		function emailyz(val){
+			var pattern = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/
+			var value=val.toString()
+			if(!pattern.test(value)){
+				layer.msg('邮箱格式不正确')
+				return false
+			}
+			layer.msg('邮箱验证通过')
+			return true
+		}
+		$("#sub").click(function(){
+			var emailVal=$('#email').val()
+			if(emailyz(emailVal)){
+				$.ajax({
+					url:'register.php',
+					type:'post',
+					data:{
+						username:$("#name").val(),
+						password:$("#pwd").val()
+					},
+					dataType:'json',
+					success:function(res){
+						console.log(res)
+						if(res.code==201){
+							$('#span').text(res.msg)
+						}
+						if(res.code==200){
+							// location.href='login.html'
+							console.log('注册成功')
+						}
+					}
+				})
+			}
+			return false
+		})
+		$("#name").focus(function(){
+			$("#span").text('')
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//构造函数创建对象
+			function Box(name,age){
+				this.name=name
+				this.age=age
+				this.run=function(){
+					return this.name+' '+this.age+'...'
+				}
+			}
+			//又创建了一种类型的对象
+			function Desk(name,age){
+				this.name=name
+				this.age=age
+				this.run=function(){
+					return this.name+' '+this.age+'...'
+				}
+			}
+			var aa=new Desk('黎明',22)
+			var bb=new Desk('黎明',22)
+//			alert(aa.name === bb.name)
+//			alert(aa.run() === bb.run())  //比较的是函数的返回值
+			alert(aa.run === bb.run)
+			//构造函数创建对象在使用的时候需要new关键字
+//			var b1=new Box('刘德华',62)  // new Object
+//			var b2=new Box('张学友',60)  // new Object
+//			alert(b1.run())
+//			var d1=new Desk('桌子',12)  // new Object
+//			alert(d1.run())
+			
+//			console.log(b1 instanceof Box)
+//			console.log(b1 instanceof Object)
+//			console.log(d1 instanceof Desk)
+//			console.log(d1 instanceof Object)
+		</script>
+	</body>
+</html>

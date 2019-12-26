@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//工厂模式创建对象
+			function createObject(name,age){
+				var obj=new Object()   //创建一个实例化对象
+				obj.name=name          //创建属性，赋值
+				obj.age=age            //创建属性，赋值
+				obj.run=function(){    //创建方法
+					return this.name+' '+this.age+'...'
+				}
+				return obj    //一定要返回对象
+			}
+			var b1=createObject('张三',26)  //调用方法
+//			alert(b1.name)
+			var b2=createObject('李四',28)
+//			alert(b2.name)
+			console.log(typeof b1)
+			console.log(typeof b2)
+		</script>
+	</body>
+</html>

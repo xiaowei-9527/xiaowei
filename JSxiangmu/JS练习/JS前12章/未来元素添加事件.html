@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.1.2/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="a">
+			<ul>
+				
+			</ul>
+		</div>
+		<script>
+			
+			//给未来元素添加事件
+			$(document).delegate('ul li','click', function(){
+				console.log('点我干嘛，'+$(this).index())
+			})
+			
+			//循环输出li
+			for (var i=0 ; i<5 ; i++) {
+				$('ul').append('<li>'+(i+1)+'</li>')
+			}
+		</script>
+	</body>
+</html>

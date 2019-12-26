@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>移动端禁止缩放</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+			<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			.outer{
+				height:100vh;
+				overflow: hidden;
+			}
+			.outer .left,.outer .right{
+				position: relative;
+				top:0;
+			}
+			.outer .left{
+				float: left;
+				width:80px;
+				background: #666666;
+			}
+			.outer .right{
+				margin-left: 90px;
+				background: #ccc;
+				position: relative;
+				transition:all .3s linear;
+			}
+			.module h3{
+				line-height:50px;
+				color:red;
+			}
+			.module p{
+				line-height:40px;
+			}
+			.outer .left ul li{
+				height:60px;
+				line-height: 60px;;
+			}
+			.outer .left ul li.on{
+				background: red;
+				color:#fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="outer">
+			<div class="left">
+				<ul>
+					<li class="on">菜单1</li>
+					<li>菜单2</li>
+					<li>菜单3</li>
+					<li>菜单4</li>
+					<li>菜单5</li>
+					<li>菜单6</li>
+					<li>菜单7</li>
+					<li>菜单8</li>
+					<li>菜单9</li>
+					<li>菜单10</li>
+					<li>菜单11</li>
+					<li>菜单12</li>
+					<li>菜单13</li>
+				</ul>
+			</div>
+			<div class="right">
+				<div class="module">
+					<h3>菜单1</h3>
+					<p>
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+					</p>
+				</div>
+				<div class="module">
+					<h3>菜单2</h3>
+					<p>
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+					</p>
+				</div>
+				<div class="module">
+					<h3>菜单3</h3>
+					<p>
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+					</p>
+				</div>
+				<div class="module">
+					<h3>菜单4</h3>
+					<p>
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+					</p>
+				</div>
+				<div class="module">
+					<h3>菜单5</h3>
+					<p>
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+					</p>
+				</div>
+				<div class="module">
+					<h3>菜单6</h3>
+					<p>
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+					</p>
+				</div>
+				<div class="module">
+					<h3>菜单7</h3>
+					<p>
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+					</p>
+				</div>
+				<div class="module">
+					<h3>菜单8</h3>
+					<p>
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+					</p>
+				</div>
+				<div class="module">
+					<h3>菜单9</h3>
+					<p>
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+					</p>
+				</div>
+				<div class="module">
+					<h3>菜单10</h3>
+					<p>
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+					</p>
+				</div>
+				<div class="module">
+					<h3>菜单11</h3>
+					<p>
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+						我是菜单一 <br />
+					</p>
+				</div>
+				
+			</div>
+		</div>
+		<script>
+			var left=document.getElementsByClassName('left')[0]
+			var right=document.getElementsByClassName('right')[0]
+			var startY=0,moveY=0,distance=0,lastY=0
+			left.addEventListener('touchstart',function(e){
+				startY=e.touches[0].pageY
+			},false)
+			left.addEventListener('touchmove',function(e){
+				moveY=e.touches[0].pageY
+				distance = moveY-startY
+				left.style.top=distance+lastY+'px'
+			},false)
+			left.addEventListener('touchend',function(e){
+//				startY=e.touches[0].pageY
+				if(parseInt(left.style.top)){
+					lastY=parseInt(left.style.top)
+				}else{
+					lastY=0
+				}
+				var xx=-1*(left.clientHeight-document.documentElement.clientHeight)
+				
+				if(lastY<xx){
+					left.style.top=xx+'px'
+					lastY=xx
+				}
+				if(lastY>0){
+					left.style.top=0
+					lastY=0
+				}
+			},false)
+			
+			
+			var startlY=0,movelY=0,distancel=0,lastlY=0
+			right.addEventListener('touchstart',function(e){
+				startlY=e.touches[0].pageY
+			},false)
+			right.addEventListener('touchmove',function(e){
+				movelY=e.touches[0].pageY
+				distancel = movelY-startlY
+				right.style.top=distancel+lastlY+'px'
+			},false)
+			right.addEventListener('touchend',function(e){
+				if(parseInt(right.style.top)){
+					lastlY=parseInt(right.style.top)
+				}else{
+					lastlY=0
+				}
+				var xx=-1*(right.clientHeight-document.documentElement.clientHeight)
+				
+				if(lastlY<xx){
+					right.style.top=xx+'px'
+					lastlY=xx
+				}
+				if(lastlY>0){
+					right.style.top=0
+					lastlY=0
+				}
+			},false)
+			var modules=document.getElementsByClassName('module')
+			var height=0
+			var arr=[]
+			arr.push(height)
+			for(var i=0;i<modules.length;i++){
+				height+=modules[i].clientHeight
+				arr.push(height)
+			}
+			$(".left ul li").click(function(){
+				$(this).addClass('on').siblings().removeClass('on')
+				var index  = $(this).index()
+				right.style.top=-1*arr[index]+'px'
+			})
+			
+			document.addEventListener('touchmove',function(e){
+				var ss = Math.abs(parseInt(right.style.top))
+				for(var i=0;i<arr.length;i++){
+					if(arr[i]<=ss && ss<arr[i+1]){
+						console.log(i)
+						$("ul li").eq(i).addClass('on').siblings().removeClass('on')
+					}
+				}
+			},false)
+		</script>
+	</body>
+</html>

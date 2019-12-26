@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//阶乘
+			function box1(num){
+				if(num<=1){
+					return 1;
+				}else{
+					return num * arguments.callee(num-1)
+					//arguments.callee(num-1) == box1(num-1)
+				}
+			}
+			var str = box1(5)
+			alert('5的阶乘是：'+str)
+		</script>
+	</body>
+</html>

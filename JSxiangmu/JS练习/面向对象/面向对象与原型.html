@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//创建对象：可以直接new对象
+				//用字面量
+			
+		//使用工厂模式不能确定是哪个对象的实例
+			//工程模式
+			function createObj(name,age){
+				var obj = new Object();
+				obj.name = name;
+				obj.age = age
+				obj.run = function(){
+					return this.name+'--'+this.age+'.......'
+				}
+				return obj
+			}
+			var box1 = createObj('小威',20)
+			var box2 = createObj('xiaowei',22)
+			
+			console.log(box1.run())
+			console.log(box2.run())
+			
+			console.log('判断box1的typeof：'+typeof box1)
+			console.log(box1 instanceof Object)
+			
+		//构造函数
+			function Box(name,age){
+				this.name = name
+				this.age = age
+				this.run = function(){
+					return this.name+'--'+this.age+'.....'
+				}
+			}
+			
+			var box3 = new Box('xiaowei',22)
+			var box4 = new Box('小威',20)
+			console.log(box3.run())
+			console.log(box4.run())
+			
+			console.log(box3 instanceof Box)
+			
+			
+			
+		</script>
+	</body>
+</html>

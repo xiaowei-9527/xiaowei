@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//声明一个构造函数
+			function Box(){}
+			
+			Box.prototype.name = 'xiaowei';
+			Box.prototype.age = 20;
+			Box.prototype.run = function(){
+				return this.name+'--'+this.age+'...'
+			}
+			
+			//比较原型内的方法地址是否一致
+			var box1 = new Box();
+			var box2 = new Box();
+			//比较地址
+			console.log(box1.run === box2.run)
+			
+			//isPrototypeOf：判断对象是否指向了该构造函数的原型对象
+			console.log('下面这句话是：构造函数的原型是不是实例的原型--Box.prototype.isPrototypeOf(box1)')
+			console.log(Box.prototype.isPrototypeOf(box1))
+			
+			
+			var box3 = new Box()
+			//原型里的值
+			console.log(box3.name); 
+			
+			//就近原则
+			//先查构造函数实例里的属性和方法，若有，立刻返回
+			//若构造函数实例里没有，则去原型对象里找，若有，立刻返回
+			box3.name = '小威'
+			
+			//可以把构造函数的属性删除，删除之后还能访问原型里面的值
+			delete box3.name
+			console.log(box3.name)
+			
+			//使用hasOwnProperty()函数判断属性是在构造函数里，还是在原型里
+			//实例中返回true，反之返回false
+			console.log(box3.hasOwnProperty('name'))
+			
+			//in操作符-->判断实例或原型中是否存在属性
+			console.log('name' in box3)
+			
+			//原型字面量创建
+			function Box2(){}
+			Box2.prototype = {
+				name:'小威',
+				age:20,
+				run:function(){
+					return this.name+'--'+this.age+'....'
+				}
+			}
+			
+			var box4 = new Box2();
+			console.log(box4 instanceof Box2);
+			console.log(box4 instanceof Object);
+			
+		//字面量创建的方式使用constructor属性不会指向实例，而会指向object，
+		//构造函数创建的方式则相反
+			console.log(box4.constructor == Box2);
+			console.log(box4.constructor == Object);
+			
+			//若想让字面量方式的constructor指向实例对象，可强制指向
+			Box2.prototype = {
+				constructor:Box2 //直接强制指向
+			}
+			
+			//原型的声明是有先后顺序的，所以，重写的原型会切断之前的原型
+			
+			function Box3(){}
+			
+			Box3.prototype = {
+				constructor:Box3,
+				name:'小威',
+				age:20,
+				run:function(){
+					return this.name+'--'+this.age+'...';
+				}
+			}
+			
+			//直接把上面的所有覆盖
+			Box3.prototype = {
+				age:23,
+				run:function(){
+					return this.age+'...';
+				}
+			}
+			var box5 = new Box3();
+			console.log(box5.run())
+			
+		//原型可以在自定义对象的情况下使用	
+		//引用类型可以使用，内置的引用烈性本身也使用了原型
+		</script>
+	
+	<!--原型缺点：共享数据之后所有调用都用一样-->
+		<script>
+			
+		</script>
+	</body>
+</html>

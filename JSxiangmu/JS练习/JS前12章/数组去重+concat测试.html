@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr = [1,1,2,2,3,3,4,4,5,5]
+			alert('原数组：'+arr)
+			for (var i = 0 ; i<arr.length ; i++) {
+				for (var j=i+1 ; j<arr.length ; j++) {
+					if(arr[i]==arr[j]){
+						arr.splice(j,1);
+						j--
+					}
+				}
+			}
+			alert('数组去重之后：'+arr);
+		</script>
+		
+		
+		<!--数组中的concat方法-->
+		<script>
+			var a = [1,2,3,4]
+			var b = ['A','B','C','D','E','F']
+			var c = a.concat(b)
+			console.log(c)
+		</script>
+	</body>
+</html>

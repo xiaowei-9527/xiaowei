@@ -1,0 +1,208 @@
+﻿
+/* 公共 ----------------------------------------------------- */
+
+body {color: #666;font-size: 12px;line-height: 1.5;font-family:"微软雅黑","Microsoft Yahei";}
+a{color: #666;}
+a:hover{color: #fa0001;}
+img{
+	max-width: 100%;
+	transition: .3s;
+	-ms-transition: .3s;
+	-moz-transition: .3s;
+	-webkit-transition: .3s;
+	-o-transition: .3s;
+}
+input,textarea,select{outline: 0;color: #666;font-family:"微软雅黑","Microsoft Yahei";}
+input[type="submit"],input[type="reset"],input[type="button"],select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+input[type="submit"],input[type="reset"],input[type="button"]{cursor: pointer;}
+
+/* 布局 */
+.wp{ width:1020px; margin:0 auto;}
+
+.h30{height: 30px;clear: both;overflow: hidden;}
+.h50{height: 50px;clear: both;overflow: hidden;}
+
+/* 通用模块 -------------------------------------------------- */
+.ani{
+	transition: .3s;
+	-ms-transition: .3s;
+	-moz-transition: .3s;
+	-webkit-transition: .3s;
+	-o-transition: .3s;
+}
+.vam{vertical-align: middle;}
+
+.red{color: #fa0001;}
+.bcg{background: #f3f3f3;}
+.bcf{background: #fff;}
+
+.i-row{padding: 10px 0;overflow: hidden;}
+.p30-0{padding: 30px 0;}
+.p10-20{padding: 10px 20px;}
+
+/*-----------------[标题]--------------*/
+.title-educlass{
+	height:40px;
+	line-height:40px;
+	border-bottom: 1px solid #ccc;
+	font-size:16px;
+}
+.title-educlass img{
+	float:right;
+}
+.title-educlass ul{
+	float: right;
+	height:40px;
+}
+.title-educlass ul li{
+	float: left;
+	height: 40px;
+	margin:0 10px;
+	font-size:13px;
+}
+.imgLeft{
+	border:1px solid red;
+	height:200px;
+}
+.listImg{
+	border:1px solid #000;
+	height:200px;
+}
+.listImg{
+	float: right;
+}
+.title-educlass ul li.hover{
+	background: red;
+	color:#fff;
+}
+/*-----------------[按钮]--------------*/
+
+
+
+/*******************************
+	-------[=头部]-------
+********************************/
+.header{
+	padding:20px 0;
+}
+.header .headerleft .logoTxtImg{
+	margin-left:20px;
+}
+.header .headerright .top{
+		line-height:30px;
+}
+.header .headerright .top span{
+	color:red;
+	font-size: 15px;;
+}
+.header .headerright .top a{
+	font-size:13px;
+	margin:0 15px;
+}
+.searchBox{
+	position: relative;
+	border:2px solid red;
+	height:35px;
+}
+.searchBox input{
+	width:80%;
+	border:none;
+	padding-left:12px;
+	display: block;
+	height:35px;
+	line-height:35px;
+	
+}
+.searchBox button{
+	height:35px;
+	line-height: 35px;
+	width:40px;
+	text-align: center;
+	color:#fff;
+	background: red;
+	border:none;
+	position: absolute;
+	right:0;
+	top:0;
+	outline: none;
+}
+/*移动端头部*/
+.mNav{
+	height:50px;
+	line-height:50px;
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+}
+.mNav img{
+	vertical-align: middle;
+}
+/*******************************
+	-------[=导航]-------
+********************************/
+
+
+
+/*******************************
+	-------[=手机头部-导航]-------
+********************************/
+
+
+
+/*******************************
+	-------[=banner]-------
+********************************/
+
+
+
+
+/*******************************
+	-------[=底部]-------
+********************************/
+
+
+/*******************************
+	-------[=工具栏]-------
+********************************/
+
+/*******************************
+	-------[=轮播]-------
+********************************/
+.slider responsive{
+	position: relative;
+}
+.slider .slick-prev,.slider .slick-next{
+	outline: none;
+	display: block;
+	width:20px;
+	height:40px;
+	position: absolute;
+	top:50%;
+	left:-30px;
+	transform:translateY(-20px);
+	border: none;
+	background: red;
+	line-height: 999px;
+	overflow: hidden;
+}
+.slider .slick-next{
+	right:-30px;
+	left:auto;
+}
+
+
+.ulOuter ul{
+	margin:0 -1%;
+}
+.ulOuter ul li{
+	float: left;
+	width:25%;
+	padding:1%;
+	box-sizing:border-box;
+}
+.ulOuter ul li img{
+	width: 100%;
+}

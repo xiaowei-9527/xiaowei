@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			function Box(){}
+			Box.prototype={   //字面量创建对象
+				name:'刘德华',
+				age:25,
+				run:function(){
+					return this.name+this.age+'...'
+				}
+			}
+			var b1=new Box()
+			var b2=new Box()
+			console.log(b1.name)
+			console.log(b2.name)
+			console.log(b1.age)
+			console.log(b2.age)
+			*/
+//			构造函数+原型模式
+/*
+			function Box(name,age){
+				this.name=name
+				this.age=age
+			}
+			Box.prototype={   //字面量创建对象
+//				constructor:Box,
+				run:function(){
+					return this.name+this.age+'...'
+				}
+			}
+			var b1=new Box('kebi',43)
+			b1.__proto__.sex='男'
+			console.log(b1.__proto__.sex)
+			var b2=new Box('john',35) 
+			console.log(b1.name)
+			console.log(b2.name)
+			console.log(b1.age)
+			console.log(b2.age)
+			alert(Box.prototype.constructor===Box)
+			*/
+			function Box(name,age){
+				this.name=name
+				this.age=age
+			}
+			Box.prototype={   //字面量创建对象
+				constructor:Box,
+				run:function(){
+					return this.name+this.age+'...'
+				}
+			}
+			alert(Box.prototype.constructor===Box)
+		</script>
+	</body>
+</html>

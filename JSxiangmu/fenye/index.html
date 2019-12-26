@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>分页</title>
+    <link rel="stylesheet" type="text/css" href="../css/page.css"/>
+    <!--<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
+    <script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+    <script type="text/javascript" src="xlPaging.js"></script>
+</head>
+
+<body>
+	<!--<div class="wp">
+		<ul class="f20">
+			<li>111</li>
+			<li>222</li>
+			<li>333</li>
+			<li>444</li>
+		</ul>
+	</div>-->
+    <div id="page"></div>
+<script>
+	$.ajax({
+		url:'chashuju.php',
+		type:'get',
+		dataType:'json',
+		success:function(res){
+			console.log(1111)
+		}
+	})
+		
+//	    $("#page").paging({
+//	        nowPage: 1, // 当前页码
+//	        pageNum: 30, // 总页码
+//	        buttonNum: 6, //要展示的页码数量
+//			canJump: 1,// 是否能跳转。0=不显示（默认），1=显示
+//			showOne: 0,//只有一页时，是否显示。0=不显示,1=显示（默认）
+//	        callback: function (num) { //回调函数
+//	            console.log(num);
+//	        }
+//	    });
+</script>
+</body>
+
+</html>

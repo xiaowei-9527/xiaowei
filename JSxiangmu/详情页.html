@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.js"></script>
+		<script src="js/util.js"></script>
+	</head>
+	<body>
+		欢迎<span id="a">xxx</span>
+		您的密码是：<span id="b">xxx</span>
+		cookice：<span id="c">xxx</span>
+		<script>
+			var user=decodeURIComponent(getCookie('username'))
+			$("#a").text(user)
+			var pwd=decodeURIComponent(getCookie('password'))
+			$("#b").text(pwd)
+			var val=decodeURIComponent(getCookie('radioval'))
+			$("#c").text(val)
+		</script>
+	</body>
+</html>

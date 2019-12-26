@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	</head>
+	<body>
+		<script>
+			$.ajax({
+				url:'http://localhost:3333/list',  //localhost==127.0.0.1
+				type:'get',
+				dataType:'json',
+				success:function(res){
+					var $ul = $("<ul></ul>")
+					for(var i=0;i<res.length;i++){
+						$ul.append("<li>"+res[i].title+":"+dataFormat(res[i].time)+"</li>")
+					}
+					$('body').append($ul)
+				}
+			})
+			function dataFormat(times){
+				if(times.toString().length==10){
+					times*=1000
+				}
+				console.log(times)
+				var d=new Date(times)
+				var year=d.getFullYear()
+				var month=d.getMonth()+1
+				var day=d.getDate()
+				var hour=d.getHours()
+				var minutes=d.getMinutes()
+				var seconds=d.getSeconds()
+				return year+'-'+month+'-'+day+' '+hour+':'+minutes+':'+seconds
+			}
+		</script>
+	</body>
+</html>

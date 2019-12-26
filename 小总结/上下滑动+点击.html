@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/cui.css" />
+		<link rel="stylesheet" href="css/lib.css" />
+		<script src="js/jquery.js"></script>
+		<script src="js/cui.js"></script>
+		<style>
+			.outer{
+				padding:50px 0;
+				width:500px;
+				height:400px;
+				margin:0 auto;
+				border:1px solid #000;
+			}
+			.inner{
+				width:500px;
+				height:400px;
+				border:1px solid #000;
+				position:relative;
+				overflow: hidden;
+			}
+			.inner ul{
+				position: absolute;
+				right:0;
+				top:0;
+				width:80px;
+				border:1px solid #000;
+				border-bottom:none;
+			}
+			.inner ul li{
+				text-align: center;
+				cursor: pointer;
+				height:30px;
+				line-height: 30px;
+				border-bottom:1px solid #000;
+				
+			}
+			.outer .one{
+				width:400px;
+				height: 400px;
+			}
+			.outer ul li.on{
+				background: red;
+				color:#fff;
+			}
+			.scroll{
+				position: relative;
+				top:0;
+				transition:all .3s linear;
+			}
+			.testTab ul{
+				overflow: hidden;
+			}
+			.testTab ul li{
+				float: left;
+				width:100px;
+				text-align: center;
+			}
+			.testTab ul li.hover{
+				background: red;
+			}
+			.dn{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="outer">
+			<div class="inner">
+				<div class="scroll">
+					<div class="one">111</div>
+					<div class="one">222</div>
+					<div class="one">333</div>
+				</div>
+				<ul>
+					<li class="on">menu1</li>
+					<li>menu2</li>
+					<li>menu3</li>
+				</ul>
+			</div>
+		</div>
+		<div class="testTab">
+			<ul class="TAB" id=".show">
+				<li class="hover">项目一</li>
+				<li>项目二</li>
+				<li>项目三</li>
+			</ul>
+			<div class="show">111</div>
+			<div class="show dn">222</div>
+			<div class="show dn">333</div>
+		</div>
+		<script>
+			var menu=document.getElementsByTagName('ul')[0]
+			var scroll=document.getElementsByClassName('scroll')[0]
+			var menulis=menu.getElementsByTagName('li')
+			for(let i=0;i<menulis.length;i++){
+				menulis[i].onclick=function(){
+					scroll.style.top=-400*i+'px'
+				}
+			}
+		</script>
+	</body>
+</html>

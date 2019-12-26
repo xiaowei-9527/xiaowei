@@ -1,0 +1,108 @@
+﻿
+/*Common For Max 960*/
+@media only screen and (max-width: 1199px) {
+	.wp {width: 960px;}
+	
+	.ulOuter ul li{
+		width:33.333%;
+	}
+	/*首页*/
+	
+	
+
+}
+
+
+
+/*Common For Max 768*/
+@media only screen and (max-width: 959px) {
+	.wp {width: 768px;}
+	.ulOuter ul li{
+		width:50%;
+	}
+	.slider .slick-prev,.slider .slick-next{
+		display: none;
+	}
+	
+
+	
+
+}
+
+
+
+/*Common For Max 480*/
+@media only screen and (max-width: 767px) {
+	.wp {width: 98%;}
+	/*.title-educlass{
+		height:30px;
+		line-height:30px;
+		border-bottom: 1px solid #ccc;
+		font-size:12px;
+	}
+	.title-educlass img{
+		width:22px;
+		height:22px;
+	}*/
+	
+	.ulOuter ul li{
+		width:100%;
+		padding:0;
+		float: none;
+	}
+	.slider .slick-prev,.slider .slick-next{
+		display: none;
+	}
+
+}
+
+
+/*Common For Max 320*/
+@media only screen and (max-width: 479px) {
+
+
+}
+
+/* --------------------------- 固定屏幕样式 ---------------------------------------- */
+
+/*960*/
+@media only screen and (min-width: 960px) and (max-width: 1199px) {
+
+	 
+
+}
+
+
+
+/*768*/
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+
+ 
+
+}
+
+
+
+/*480*/
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+ 
+}
+
+
+
+/*320*/
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+
+ 
+
+}
+
+
+
+/*240*/
+@media only screen and (max-width: 319px) {
+
+ 
+
+}

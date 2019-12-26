@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//作用域
+			var a=100    //a 是全局变量，window.a   this.a   a调用都是可以的
+//			alert(window.a)
+//			alert(this.a)
+//			alert(a)
+			//注意函数所在的作用域
+//			function setA(){
+//				var a=101
+//				var b=123
+//			}
+//			setA() 
+//			alert(b)   
+//			setA()
+				
+//				function b(){
+//					var c=12
+//				}
+//				//执行
+//				b()
+//				alert(c)
+				//c在外面的时候里面可以直接而用
+//				var a=100
+//				function box(){
+//					alert(a)   //var 变量提顶
+//					 a=101
+//				}
+//				box()
+//				alert(a)
+
+				//b就是函数里面的局部变量
+				function box(){
+					var b=10
+					function c(){
+						b++
+						return b
+					}
+					return c
+				}
+				var res=box()	
+				alert(res())
+				alert(res())
+		</script>
+	</body>
+</html>

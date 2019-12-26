@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			header{
+				height:100px;
+				background:cadetblue;
+			}
+			.wp{
+				margin:0 auto;
+				width:1200px;
+			}
+			ul li{
+				list-style: none;;
+			}
+			.changeF{
+				width:100px;
+				height:40px;
+				line-height:40px;
+				text-align: center;
+				float: right;
+			}
+			.changeF ul{
+				display: none;;
+			}
+			.changeF:hover ul{
+				display: block;
+				border:1px solid #000
+			}
+			.changeF:hover ul li{
+				line-height:30px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="header">
+			<div class="wp">
+				<div class="changeF">
+					<span>换肤</span>
+					<ul id="ul">
+						<li>默认</li>
+						<li>红色</li>
+						<li>绿色</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<script>
+			var header=document.getElementById('header')
+			var ul=document.getElementById('ul')
+			var lis=document.getElementsByTagName('li')
+			for(let i=0;i<lis.length;i++){
+				lis[i].onclick=function(){
+					console.log(i)
+					header.style.backgroundColor=bgColor[i]
+				}
+			}
+			var bgColor=['cadetblue','red','green']
+		</script>
+	</body>
+</html>

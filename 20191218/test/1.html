@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function box(obj) {							//按值传递，传递的参数是引用类型	
+				obj.name = 'Lee';
+			}
+			
+			var p = new Object();
+			box(p);
+			alert(p.name);
+
+		</script>
+	</body>
+</html>

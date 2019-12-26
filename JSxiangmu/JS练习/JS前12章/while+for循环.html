@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//查a出现的个数，分别打印出位置
+			var str = 'asgagwhjeraagdshdsaa'
+			var i=0;
+			var arr = [];
+//			while (i<str.length){
+//				if(str[i]=='a'){
+//					arr.push(i)
+//				}
+//				i++;
+//			}
+//			console.log(arr)
+
+
+			for (var j=0;j<str.length;j++) {
+				if(str[j]=='a'){
+					//添加进数组，可以获取下标
+					arr.push(j)
+				}
+			}
+			//弹出所有a的个数
+			alert(arr.length)
+			console.log(arr)
+		</script>
+	</body>
+</html>

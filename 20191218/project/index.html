@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/cui.css" />
+		<link rel="stylesheet" href="css/lib.css" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<style>
+			.foot{
+				width:100%;
+				height:40px;
+				left:0;
+				bottom: 0;
+				position: fixed;
+			}
+			.foot ul li{
+				float: left;
+				font-size: 16px;
+				width:25%;
+				text-align: center;
+				line-height: 40px;
+				height: 40px;
+			}
+			.foot ul li:hover,.foot ul li.on{
+				background: red;
+				color:#fff;
+			}
+			.photo{
+				position: relative;
+				display: flex;
+				padding:20px 10px;
+				justify-content: flex-start;
+			}
+			.photo img{
+				display: block;
+				width:80px;
+				height: 80px;
+				border-radius: 50%;
+				margin-right: 20px;
+			}
+			.photo .txt h3{
+				font-size: 16px;
+				font-weight: normal;
+				line-height: 25px;
+			}
+			.photo .txt p{
+				font-size: 12px;
+			}
+			.photo .txt{
+				position: relative;
+			}
+			.span{
+				display: block;
+				width:20px;
+				height:32px;
+				position: absolute;
+				right:10px;
+				top:44px;
+				background: url('images/control-arrows.png') no-repeat right center;
+			}
+			body{
+				/*background: #ccc;*/
+			}
+			.commonDiv{
+				padding-left:10px;
+				font-size: 14px;
+				position: relative;
+				height:40px;
+				line-height: 40px;
+				border-top:1px solid #ccc;
+				border-bottom:1px solid #ccc;
+				margin-bottom: 10px;
+			}
+			.commonDiv .span{
+				top:4px;
+			}
+			.outer{
+				width:100vw;
+				height:100vh;
+				left:0;
+				top:0;
+				position: fixed;
+				background: rgba(0,0,0,0.5);
+				z-index: 11;
+				transition: all .3s linear;
+				transform: translateX(100%);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="outer">
+			<div>姓名: <input type="text" value="刘德华"/></div>
+		</div>
+		<div class="user">
+			<div class="photo">
+				<span class="span"></span>
+				<img src="images/p4.jpg" alt="" />
+				<div class="txt">
+					<h3>马惠娟</h3>
+					<p>vip4</p>
+				</div>
+			</div>
+			<div class="commonDiv">
+				<em>姓名</em>
+				<span class="span"></span>
+			</div>
+			<div class="commonDiv">
+				<em>性别</em>
+				<span class="span"></span>
+			</div>
+			<div class="commonDiv">
+				<em>手机号</em>
+				<span class="span"></span>
+			</div>
+		</div>
+		<footer class="foot">
+			<ul>
+				<li>首页</li>
+				<li>查询</li>
+				<li>产品</li>
+				<li class="on">我的</li>
+			</ul>
+		</footer>
+		<script>
+			var spanObj=document.getElementsByTagName('span')[1]
+			var outerObj=document.getElementsByClassName('outer')[0]
+			spanObj.onclick=function(e){
+				e.stopPropagation()
+				outerObj.style.transform='translateX(50%)'
+			}
+			document.onclick=function(){
+				outerObj.style.transform='translateX(100%)'
+			}
+			outerObj.onclick=function(e){
+				e.stopPropagation()
+			}
+		</script>
+	</body>
+</html>

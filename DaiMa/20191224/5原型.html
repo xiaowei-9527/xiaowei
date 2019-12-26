@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			function Box(){}
+			Box.prototype={  //原型是一个对象,原型实际上是用来共享属性和方法的
+				name:'张三',
+				age:28
+			}
+			var b1=new Box()   //实例化对象
+			b1.name='刘德华'   //如果实例里面和原型上面都有相同的属性或者方法的时候，那么就用实例里面的属性或者方法
+			var b2=new Box()
+			delete b1.name
+//			console.log(b1.name)
+//			console.log(b2.name)
+			
+//			判断属性是在原型上面还是在实例上面
+			console.log(b1.hasOwnProperty('name'))
+			*/
+			//判断属性是在原型里面还是在实例里面
+			/*
+			function Box(name,age){
+				this.name=name
+				this.age=age
+			}
+			var b1=new Box('刘德华',30)
+			console.log(b1.hasOwnProperty('name'))
+			console.log(b1.hasOwnProperty('age'))
+			*/
+			
+			//判断属性在原型上面
+			function Box(){}
+			Box.prototype.name='刘德华'
+			var b1=new Box()
+//			实例里面没有此属性,但是实例化对象上面有此属性
+			function isProperty(property,obj){
+				return !obj.hasOwnProperty(property) && (property in obj) 
+			}
+			console.log(isProperty('name',b1))
+			
+		</script>
+	</body>
+</html>

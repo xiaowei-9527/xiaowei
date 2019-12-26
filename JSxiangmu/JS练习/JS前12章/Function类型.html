@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		//创建函数的三种方法
+//			function a(){}
+//			var a  = function(){}
+//			new function(a,b){
+//				return a+b;
+//			}
+//			
+//			//作为值得函数
+//			function box(sunFunction,num){
+//				return sunFunction(num);
+//			}
+//			
+//			function sum(num){
+//				return num+10
+//			}
+//			
+//			var result = box(sum,10);
+//			console.log(result)
+			
+		//函数内部属性
+		//arguments
+			//1.callee:是一个指针
+		//this
+		
+		
+			//阶乘
+			function box1(num){
+				if(num<=1){
+					return 1;
+				}else{
+					//这两个相等
+					return num * arguments.callee(num-1)
+					//return num * box1(num-1)
+					//arguments.callee(num-1) == box1(num-1)
+				}
+			}
+			var str = box1(5)
+			console.log('5的阶乘是：'+str)
+			
+			window.color = '红色的'
+//			alert(this.color)
+
+			var box2 = {
+				color:'蓝色的',
+				sayColor:function(){
+//					alert('box2里面的：'+this.color)
+				}
+			}
+			box2.sayColor();
+//			alert(this.color)
+			
+		//函数属性和方法
+			//1.length:表示函数接收的参数的个数
+			//2.prototype
+				//特定作用域中调用函数
+				//a、apply
+				//b、call
+			
+			//length:表示函数接收的参数的个数
+			function box3(name,age,sex){
+				alert(name+age+sex);
+			}
+			alert('length表示函数接收的参数的个数:'+box3.length)
+			
+			//prototype:---apple()
+			function box4(num1,num2){
+				return num1+num2;
+			}
+			
+			function saybox1(num1,num2){
+				//[]表示box所需要的参数
+				//this表示作用域，这里是window
+				return box4.apply(this,[num1,num2]);
+				
+				//arguments:表示box所需要的参数
+//				return box4.apply(this,arguments);
+			}
+			alert('使用prototype中的apple()的两种方法：'+saybox1(10,10))
+			
+			//prototype:---call()
+			//call()和apply()方法相同，第一个参数都是作用域，call变化 的是参数都是直接传递给函数的
+			
+			function box5(num1,num2){
+				return num1+num2;
+			}
+			function callbox(num1,num2){
+				//this表示作用域，这里是window
+				return box5.call(this,num1,num2);
+			}
+			alert('使用prototype中的call()：'+callbox(10,10))
+			
+			
+			var color = '红色的'
+			var box6 = {
+				color:'蓝色的'
+			}
+			function sayColor(){
+				alert(this.color)
+			}
+			//作用域在window
+			sayColor();
+			
+			sayColor.call(this);//作用域在window
+			sayColor.call(window);//作用域在window
+			sayColor.call(box6);//作用域在box ,对象冒充
+			
+		</script>
+	</body>
+</html>

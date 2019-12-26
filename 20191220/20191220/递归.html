@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			function box(num){
+//				if(num<=1){
+//					return 1
+//				}
+//				return num*box(num-1)
+//			}
+//			var total = box(5)
+//			alert(total)
+//			var box={}
+//			box.name='张三'
+			window.color='红色的'
+//			alert(this.color)
+//			var box={
+//				color:'蓝色的'
+//			}
+//			function sayColor(){
+//				alert(this.color)
+//			}
+//			sayColor()
+//			box.run=sayColor
+//			box.run()
+				//哪些是函数
+//				console.log(Function.prototype)
+//				console.log(Function.prototype)
+//				call和aplay 实际上就是对象冒充
+				function box(a,b){
+					return a+b
+				}
+				function sayBox(num1, num2) {
+					return box.apply(this, [num1, num2]);		//this表示作用域，这里是window
+				}	
+ 				alert(sayBox(1,2))
+				
+				
+		</script>
+	</body>
+</html>

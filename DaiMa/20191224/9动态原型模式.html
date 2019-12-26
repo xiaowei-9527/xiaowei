@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Box(name,age){
+				this.name=name
+				this.age=age
+				if (typeof this.run != 'function') {
+					alert('初始化之前')  //测试代码
+					Box.prototype={
+						run:function(){
+							return this.name+this.age+'...'
+						}
+					}
+					alert('初始化之后')
+				}
+			}
+			var b1=new Box('张三',12)
+			var b2=new Box('李四',22)
+			
+			
+			
+		</script>
+	</body>
+</html>

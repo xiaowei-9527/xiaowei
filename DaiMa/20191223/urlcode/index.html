@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.js"></script>
+	</head>
+	<body>
+		<!--前端往后台发送请求-->
+		<script>
+//			var oldStr = decodeURIComponent('%2F%2F%E6%9D%8Elee')
+				alert(encodeURI('张三'))
+//			alert(oldStr)
+			$.ajax({
+				url:'encode.php',
+				type:'get',
+				data:{
+					name:'//李lee'
+				},
+				dataType:'json',
+				success:function(res){
+//					console.log(JSON.parse(res))
+					console.log(typeof res)
+				}
+			})
+//				var box = '//Lee李';
+//				var str=encodeURIComponent(box)
+//				alert(decodeURIComponent(str))
+				
+				
+//				encodeURIComponent和decodeURIComponent是一组的
+//				encodeURI和decodeURI是一组的
+		</script>
+	</body>
+</html>

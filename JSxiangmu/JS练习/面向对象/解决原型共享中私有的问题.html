@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Box(name,age){
+				this.name = name
+				this.age = age
+			}
+			Box.prototype = {//字面量创建，里面使用键值对
+				constructor:Box,
+				run:function(){
+					return this.name+'---'+this.age+'.....'
+				}
+			}
+			alert(Box.prototype.constructor ==Box)
+			
+			var a = new Box('小威',20)
+			var b = new Box('xiaowei',22)
+			console.log(a.name)
+			console.log(b.name)
+		</script>
+	</body>
+</html>

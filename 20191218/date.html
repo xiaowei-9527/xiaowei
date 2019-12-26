@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			倒计时  服务端返回时间，你需要写倒计时去实现倒计时
+		-->
+		<script>
+//			alert(Date.parse(new Date('6/12/2019')))
+			var date=new Date()
+			console.log(date)    //getTime得到的是13位的时间戳
+			var d = date.setTime('3000')
+			console.log(date)
+//			alert(date.getUTCHours())
+//			alert(date.getTime())
+//			alert(new Date(1576652621497))
+//			console.log(Date.parse(date))
+//			console.log(new Date(1576652024000))
+			function getFormat(){
+				var date=new Date('2019/1/3')  // 2019 01  03
+				var day=date.getDate()
+				var month=date.getMonth()+1
+				var year=date.getFullYear()
+				day = day>10 ? day:'0'+day
+				month = month>10 ? month:'0'+month
+				console.log(day)
+				console.log(month)
+			}
+			
+		</script>
+	</body>
+</html>

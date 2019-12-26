@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.1.2/jquery.min.js"></script>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			ul{
+				position: relative;
+				width:300px;
+				height:300px;
+			}
+			ul li{
+				list-style: none;
+				width:100px;
+				border:1px solid yellow;
+				height:100px;
+				text-align: center;
+				line-height:100px ;
+				position: absolute;
+				left:0;
+				top:0;
+			}
+			ul li:nth-child(2){
+				left:100px;
+			}
+			ul li:nth-child(3){
+				left:200px;
+			}
+			ul li:nth-child(4){
+				left:200px;
+				top:100px;
+			}
+			ul li:nth-child(5){
+				left:200px;
+				top:200px;
+			}
+			ul li:nth-child(6){
+				left:100px;
+				top:200px;
+			}
+			ul li:nth-child(7){
+				left:0px;
+				top:200px;
+			}
+			ul li:nth-child(8){
+				left:0px;
+				top:100px;
+			}
+			ul li:nth-child(2){
+				left:100px;
+			}
+			.outer{
+				position: relative;
+			}
+			.btn{
+				z-index: 1;
+				position: absolute;
+				left: 100px;
+				top:100px;
+				line-height: 100px;
+				width:100px;
+				height: 100px;;
+				text-align: center;
+				cursor: pointer;
+			}
+			ul li.on{
+				border-color:#000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="outer">
+			<div class="btn">开始</div>
+			<ul>
+				<li class="on">1等奖</li>
+				<li>2等奖</li>
+				<li>3等奖</li>
+				<li>4等奖</li>
+				<li>5等奖</li>
+				<li>6等奖</li>
+				<li>7等奖</li>
+				<li>8等奖</li>
+			</ul>
+		</div>
+		<script>
+			var jiange=1000
+			var i=0;
+			var timer=null
+			function go(){
+				timer = setInterval(function(){
+					i++
+					if(i>8){
+						i=0
+					}
+//					i=Math.floor(Math.random()*8)
+					$("ul li").eq(i).addClass('on').siblings().removeClass('on')
+				},Math.ceil(Math.random()*1000))
+			}
+//			go()
+			$(".btn").click(function(){
+				if($(this).text()=='开始'){
+					$(this).text('暂停')
+					go()
+				}else{
+					$(this).text('开始')
+					clearInterval(timer)
+				}
+			})
+		</script>
+	</body>
+</html>

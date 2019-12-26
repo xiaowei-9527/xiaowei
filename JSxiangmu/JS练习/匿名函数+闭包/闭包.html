@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<!--闭包-->
+		<script>			
+			//通过闭包可以返回局部变量
+			function box1(){
+				var str = '小威';
+				//通过匿名函数返回box1()局部变量
+				return function(){
+					return str;
+				}
+			}
+			
+			console.log(box1()())
+			
+			var a = box1()
+			console.log('还可以这样调用匿名函数：'+a())
+			
+			
+	//通过闭包变量实现累加
+	//闭包可以把变量放在内存中
+			function box2(){
+				var age = 100;
+				return function(){
+					age++;
+					return age;
+				}
+			}
+			var num = box2()//获得函数
+			console.log(num())//调用匿名函数
+			console.log(num())
+			
+			
+	//循环里面包含匿名函数
+	//匿名函数没有自我执行，等到调用的时候，box3已执行完毕，i变成5，所以最终的结果就是5个5
+			//var没有块级作用域
+			function box3(){
+				var arr = [];
+				for (var i = 0 ; i<5 ; i++) {
+					arr[i] = function(){
+						return i;
+					}
+				}
+				return arr;
+			}
+			var b=box3();
+			console.log('数组长度：'+b.length)
+			console.log('第一个数组值：'+b[0]())
+		//修改后的
+			function box4(){
+				var arr = [];
+				for (var i = 0 ; i<5 ; i++) {
+					arr[i] = (function(num){//自执行
+						return num;
+					})(i)//并且传参
+				}
+				return arr;
+			}
+			var b1=box4();
+			console.log('使用匿名函数后，第一个数组的值为：'+b1[0])
+		//再次修改
+			function box5(){
+				var arr = [];
+				for (let i = 0 ; i<5 ; i++) {
+					arr[i] = function(){
+						return i;
+					}
+				}
+				return arr;
+			}
+			var b2=box5();
+			console.log('使用let，第2个数组的值为：'+b2[2]())
+		</script>
+		
+	<!--关于this对象-->
+		<script>
+			var str = '小威';
+			var obj = {
+				str:'xioawei',
+				strFunction : function(){
+					//闭包不属于obj，里面的this指向window
+					return function(){
+						return this.str;
+					}
+				}
+			}
+			//this指向window
+			console.log(obj.strFunction()())
+			//使用对象对象冒充，让this指向指向obj
+			console.log(obj.strFunction().call(obj))
+		</script>
+	</body>
+</html>

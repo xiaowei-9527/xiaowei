@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			为了更好的体现出封装，我使用原型字面量写法创建原型对象
+			function Box(){}
+			Box.prototype={   //字面量创建对象
+				name:'刘德华',
+				age:25,
+				run:function(){
+					return this.name+this.age+'...'
+				}
+			}
+			var b1=new Box()
+			console.log(b1.name)
+			console.log(b1.age)
+			console.log(b1.run())
+		</script>
+	</body>
+</html>

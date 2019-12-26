@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		//string 类型
+			var  str = new String('abcdefg')
+			console.log(str.substring(5,2))
+			
+		//number类型
+		
+		var a = 100000.789;
+		
+			//查看number中的所有属性
+			console.log('下面这个是用prototype查看其中的所有属性')
+			console.log(Number.prototype)
+			//最大值和最小值
+			console.log('最大数：'+Number.MAX_VALUE)
+			console.log('最小数：'+Number.MIN_VALUE)
+			
+			//number对象的方法
+			console.log('toString()方法--将数值转化为字符串，并且可以转换进制:'+a.toString())
+			//string类型
+			console.log(typeof a.toString())
+			
+			//将数字保留小数点后指定位数并转化为字符串
+			//还有四舍五入功能
+			console.log('使用toFixed（）方法--还有四舍五入功能--将数字保留小数点后指定位数并转化为字符串：'+a.toFixed(2))
+			
+			//根据本地数字格式转换为字符串
+			console.log('使用toLocaleString（）方法--将本地数字格式转换为字符串：'+a.toLocaleString())
+			
+			//将数字以指数形式表示，保留小数点后指定位数并转化为字符串
+			console.log('使用toExponential（）方法--将数字以 指数形式表示，保留小数点后指定位数并转化为字符串：'+a.toExponential(2))
+			
+			//指数形式或点形式表述数，保留小数点后面指定位数并转化为 字符串
+			//若传值，连小数点一起计算
+			console.log('使用toPrecision（）方法--将指数形式或点形式表述数，保留小数点后面指定位数并转化为 字符串：'+a.toPrecision(2))
+			
+		//String类型
+			//length
+			//constructor
+			//prototype
+			
+			var str1 = 'ab cad rfgh'
+			var str2 = '11111'
+			console.log('串长度为：'+str1.length)
+			console.log('使用constructor显示创建str对象的函数如下')
+			console.log(str1.constructor)
+			console.log('使用charAt（2）--返回下标为2的字母：'+str1.charAt(2))
+			console.log('使用charCodeAt（2）--返回下标为2的字母的unicode值：'+str1.charCodeAt(2))
+			
+			//字符串操作方法
+			//concat(str1....str2):将字符串参数串联到调用该方法的字符串
+			//slice(n,m)：返回字符串n到m之间位置的字符串
+			//substring(n,m)：同上
+			//substr(n,m)：返回字符串n开始的m个字符串
+			
+			console.log('将字符串参数串联到调用该方法的字符串:'+str1.concat(str2))
+			console.log('返回字符串2到4之间位置的字符串:'+str1.slice(2,4))
+			
+			//不包含前面的数字，包含后面的数字
+			console.log('返回字符串3到5之间位置的字符串:'+str1.substring(3,5))
+			//后2开始往后数4个
+			console.log('返回字符串2开始的4个字符串:'+str1.substr(2,4))
+			
+			
+			//字符串位置方法
+			//indexOf(str,n):从n开始搜索的第一个str，并将搜索的索引值返回
+			//lastIndexOf(str,n)：从n开始搜索的最后一个str，并将搜索的索引值返回
+			
+			console.log('从n开始搜索的第一个str，并将搜索的索引值返回:'+str1.indexOf('a'))
+			console.log('从n开始搜索的最后一个str，并将搜索的索引值返回:'+str1.lastIndexOf('a'))
+			
+			
+			//字符串的模式匹配方法
+			//match(str):返回str中的子串或null
+			//replace(a,b)：用b替换a
+			//search(str)：返回字符串中str开始位置
+			//split(str)：返回字符串按指定str拆分的数组
+			
+			//fromCharCode(adcii)：静态方法，输出ascii码对应值
+			//localeCompare(str1,str2)：比较两个字符串，并返回相应的值
+			
+			
+			console.log('返回str中的子串或null:'+str1.match('b'))
+			console.log('用**替换a:'+str1.replace('a','**'))
+			console.log('返回字符串中c开始位置:'+str1.search('c'))
+			console.log('返回字符串按指定str拆分的数组:'+str1.split(' '))
+			
+		</script>
+	</body>
+</html>

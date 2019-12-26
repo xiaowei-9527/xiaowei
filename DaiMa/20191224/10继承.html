@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Box(){
+				this.name='Lee'
+			}
+			Box.prototype={
+				sex:'男'
+			}
+			function Desk(){
+				this.age=100
+			}
+			function Table(){
+				this.border='1px'
+			}
+	
+			Desk.prototype=new Box()
+//			var d1=new Desk()
+			Table.prototype=new Desk()
+			var t1=new Table()
+			console.log(t1.name)
+			console.log(t1.age)
+			console.log(t1.border)
+			console.log(t1 instanceof Object)
+			console.log(t1 instanceof Table)
+			console.log(t1 instanceof Desk)
+			console.log(t1 instanceof Box)
+		</script>
+	</body>
+</html>

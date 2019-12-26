@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//创建函数对象的三种方法
+//			function aa(){}
+//			var a=function(){}
+//			var b=new Function(){}
+		</script>
+		<script>
+			function Desk(age){this.age=age}
+			// prototype原型,目的是共享属性或方法的
+//			Desk.prototype.run=function(){
+//				return this.name+' '+this.age+'...'
+//			}
+//			Desk.prototype.name='asas'
+//			Desk.prototype.age=30
+				Desk.prototype={
+					constructor:Desk,
+					name:'站萨格',
+					age:10,
+					run:function(){
+						return this.name+' '+this.age+'...'
+					}
+				}
+			var aa=new Desk(20)
+			alert(aa.age)
+			aa.name='改变一下'
+//			alert(Desk.prototype.isPrototypeOf(aa));
+			var bb=new Desk()
+//			alert(bb.name)
+			console.log(Desk.prototype.constructor===Desk)
+//			alert(aa.__proto__=== Desk.prototype)
+//			alert(Desk.prototype.constructor===Desk)
+			
+			//为了让最后的地址统一
+//			function run(){
+//				return this.name+' '+this.age+'...'
+//			}
+			
+//			var aa=new Desk('黎明',222)
+//			var bb=new Desk('黎明',22)
+//			console.log(111,aa.run() === bb.run())
+
+			
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+		<style>
+			p{
+				text-indent: 2em;
+			}
+			p.on{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div class="module">
+			<h3>html</h3>
+			<p>标签,李彦宏</p>
+			<p>article,马化腾</p>
+			<p>params,马云</p>
+		</div>
+		<div class="module">
+			<h3>javascript</h3>
+			<p>位置与尺寸,张一鸣</p>
+			<p>选择器,周鸿祎</p>
+			<p>占位符,许家印</p>
+		</div>-->
+		<script>
+			var data=[
+				{
+					title:'html',
+					list:[
+						{id:1,book:'标签',author:'李彦宏'},
+						{id:2,book:'article',author:'马化腾'},
+						{id:3,book:'params',author:'马云'}
+					]
+				},
+				{
+					title:'javascript',
+					list:[
+						{id:1,book:'位置与尺寸',author:'张一鸣'},
+						{id:2,book:'选择器',author:'周鸿祎'},
+						{id:3,book:'占位符',author:'许家印'}
+					]
+				}
+			]
+			// use  function
+			render()
+			function render(){
+				for(var i=0;i<data.length;i++){
+					var $module=$("<div class='module'></div>")
+					$module.append("<h3>"+data[i].title+"</h3>")
+					for(var j=0;j<data[i].list.length;j++){
+						$module.append("<p class='"+(j==0 ? 'on':'')+"'>"+data[i].list[j].book+"----"+data[i].list[j].author+"</p>")
+					}
+					$('body').append($module)
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

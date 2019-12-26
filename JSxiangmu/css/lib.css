@@ -1,0 +1,123 @@
+﻿
+
+/*-----------------[初始化]--------------*/
+body{
+	overflow-x:hidden; 
+	color: #333;font-size: 12px;font-family:"微软雅黑","Microsoft Yahei";min-width: 1000px;}
+a{color: #333;}
+a:hover{color: #ff6700;}
+img,.ani{
+	transition: .3s;
+	-ms-transition: .3s;
+	-moz-transition: .3s;
+	-webkit-transition: .3s;
+	-o-transition: .3s;
+}
+input,textarea,select{font-size: 12px;color: #444;font-family:"微软雅黑","Microsoft Yahei";}
+input[type='submit'],input[type='reset'],input[type='button'],select{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+
+/*布局*/
+.wp{width: 1200px;margin: 0 auto; border: 1px solid red;}
+.h50{height: 50px;clear: both;overflow: hidden;}
+.h100{height: 100px;clear: both;overflow: hidden;}
+
+.wrap{width: 100%;height: 100%;overflow: hidden; position:relative; margin:0 auto;}
+.wp1{margin-left: 50%;}
+.wp2{width: 1920px; margin-left: -960px;}
+
+
+/*标题*/
+
+/*按钮*/
+
+
+/*颜色*/
+
+
+/*******************************
+	-------[=头部]-------
+********************************/
+.one{
+	width: 230px;
+	height: 450px;
+	border: 1px solid red;
+}
+.wenzi{
+	padding-bottom: 5px;
+	border-bottom: 1px solid black;
+}
+.one .jieshao .kuan{
+	width: 130px;
+	height: 100px;
+	line-height: 23px;
+}
+.one .jieshao img{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	top: -98px;
+	right: -130px;
+}
+.one .jieshao .kuan .yi{
+	color: #fff;
+	font-weight: bold;
+	background-color: red;
+}
+.one .jieshao .kuan .hong{
+	color: red;
+}
+.one .jieshao .kuan p:last-child a{
+	color: #ccc;
+}
+.one .jieshao .kuan .hui a:hover,.one .jieshao .hui{
+	color: #999;
+} 
+.one .jieshao .kuan p:last-child a:hover{
+	color: #000;
+} 
+.one .jieshao li:nth-child(1){
+	margin: 0;
+}
+.one .jieshao li{
+	border: 1px solid red;
+	line-height: 30px;
+	margin-left: 30px;
+}
+.one .jieshao li .zi{
+	margin-left: -20px;
+}
+.one .jieshao li .right0{
+	display: inline-block;
+	border: 1px solid red;
+	margin-left: 132px;
+}
+.one .jieshao .xia10{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	position: relative;
+	top: 0;
+	left: -30px;
+	border: 1px dashed red;
+	background-color: #ccc;
+}
+
+.one .jieshao .er{
+	color: #fff;
+	background-color: #E67225;
+}
+.one .jieshao .san{
+	color: #FFFFFF;
+	background-color: #E6BF25;
+}
+/*导航*/
+
+
+/*底部*/
