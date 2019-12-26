@@ -9,6 +9,7 @@
 </head>
 
 <body>
+	<a href=""></a>
 	<div id="page"></div>
 <script>
 	getPageData(1,10);
@@ -26,7 +27,7 @@
 				$("ul").empty()
 					var $ul=$('<ul></ul>')
 					for(var i=0;i<res.list.length;i++){
-						$ul.prepend("<li>"+res.list[i].newstitle+"</li>")
+						$ul.prepend("<li>"+res.list[i].newstitle+"<a href='xiangqing.html?id="+res.list[i].newsid+"'>查看详情</a></li>")
 					}
 					$('body').append($ul)
 					$("#page").paging({

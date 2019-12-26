@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var a = ['a','a','a','b','b','c','c','d','d','e','e']
+			alert(a.length)
+			for (var i=0; i<a.length;i++) {
+				for (var j=i+1;j<a.length;j++) {
+					if(a[i]==a[j]){
+						a.splice(j,1)
+						j--;
+					}
+				}
+			}
+			alert('数组去重之后：'+a);
+		</script>
+	<!--统计字符串中指定元素出现的索引及个数-->
+		<script>
+			var a = []
+			var b = ['a','x','r','a','b','a','c','u','d','k','e']
+			
+			for (var i = 0;i<b.length;i++) {
+				if(b[i]=='a'){
+					a.push(i)
+				}
+			}
+			
+//			var i=0;
+//			while (i<b.length){
+//				if(b[i]=='a'){
+//					a.push(i)
+//				}
+//				i++;
+//			}
+			console.log('一共有'+a.length+'个')
+			console.log('下标分别是:'+a)
+
+		</script>
+	</body>
+</html>
