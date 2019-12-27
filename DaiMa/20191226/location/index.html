@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+			<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+	</head>
+	<body>
+		我是首页
+		<ul>
+			
+		</ul>
+		<script>
+			$.ajax({
+				url:'index.php',
+				type:'get',
+				dataType:'json',
+				success:function(res){
+					if(res.code==200){
+						for(var i=0;i<res.list.length;i++){
+							$("ul").append("<li>"+res.list[i].newstitle+"<a href='detail.html?id="+res.list[i].newsid+"'>查看详情</a></li>")
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

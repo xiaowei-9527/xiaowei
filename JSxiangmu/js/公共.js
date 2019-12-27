@@ -1,3 +1,6 @@
+/************************************
+ *				正则验证				*
+ * *********************************/
 //手机号验证
 function shouJiHao(val){
 	var sjh = sjh = /^[1][3,5][0-9]{9}$/;
@@ -37,4 +40,28 @@ function wangZhi(val){
 		return false;
 	}
 	return true;
+}
+
+
+/************************************
+ *			获取URL后面？的值			*
+ * *********************************/
+//获取URL中？后面的值
+function getArgs() {
+//创建一个存放键值对的数组
+	var args = [];				
+//去除?号			
+	var qs = location.search.length > 0 ? location.search.substring(1) : '';
+//按&字符串拆分数组
+	var items = qs.split('&');
+	var item = null, name = null, value = null;
+//遍历
+	for (var i = 0; i < items.length; i++) {
+		item = items[i].split('=');
+		name = item[0];
+		value = item[1];
+//把键值对存放到数组中去
+		args[name] = value;
+	}
+	return args;
 }

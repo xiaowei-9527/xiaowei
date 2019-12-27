@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			console.log(window)
+//			alert(screenLeft);							//IE支持
+//			alert(typeof screenLeft);
+//			alert(typeof screenTop);
+//			alert(screenTop);
+
+//			alert(innerWidth);							//页面长度
+//			alert(innerHeight);							//页面高度
+//			alert(outerWidth);
+//			alert(outerHeight);
+//				alert(document.documentElement.clientWidth)
+//				alert(document.documentElement.clientHeight)
+//				var i=0
+//				function moni(methodName,time){
+//					var date=new Date()
+//					while(i<time){
+//						if(i==20){
+//							methodName()
+//						}
+//						i++
+//					}
+//				}
+//				function a(){
+//					alert('12121212')
+//				}
+//				
+//				moni(a,1000000000)
+
+//					setTimeout(()=>{
+//						console.log(this===window)
+//						clearTimeout(this)
+//					},1000)
+					var num = 0;
+					var max = 5;
+					function box() {
+						num++;
+						if (num == max) {
+							alert('5秒后结束！');
+						} else {
+							setTimeout(box, 1000);
+						}
+					}
+					setTimeout(box, 1000);	
+
+
+		</script>
+	</body>
+</html>

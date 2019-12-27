@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<title></title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.outer{
+			overflow:hidden;
+		}
+		ul li{
+			list-style: none;
+			width:80px;
+			height:40px;
+			line-height: 40px;
+			float: left;
+			text-align: center;
+		}
+		ul{
+			position: relative;
+			left:0;
+			width:880px;
+			height:40px;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<ul>
+			<li>菜单1</li>
+			<li>菜单1</li>
+			<li>菜单2</li>
+			<li>菜单3</li>
+			<li>菜单4</li>
+			<li>菜单5</li>
+			<li>菜单6</li>
+			<li>菜单7</li>
+			<li>菜单8</li>
+			<li>菜单9</li>
+			<li>菜单10</li>
+			
+		</ul>
+	</div>
+	<script>
+		var outer=document.getElementsByClassName('outer')[0]
+		var ul=document.getElementsByTagName('ul')[0]
+		var li=document.getElementsByTagName('li')[0]
+		var startX,moveX,distance,lastX=0
+		outer.addEventListener('touchstart',function(e){
+			startX=e.touches[0].pageX
+		},false)
+		outer.addEventListener('touchmove',function(e){
+			moveX=e.touches[0].pageX
+			distance=moveX-startX
+			ul.style.left=lastX+distance+'px'
+		},false)
+		outer.addEventListener('touchend',function(e){
+			if(ul.style.left){
+				lastX=parseInt(ul.style.left)
+			}else{
+				lastX=0
+			}
+			if(lastX>=0){
+					ul.style.left=0
+					lastX=0
+				}
+			var tL = document.documentElement.clientWidth-ul.clientWidth
+			console.log(tL)
+			
+			if(lastX<tL){
+				lastX=tL
+				ul.style.left=tL+'px'
+			}
+		},false)
+	</script>
+</body>
+</html>

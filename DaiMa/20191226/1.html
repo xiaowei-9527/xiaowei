@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		我是要被打开的页面
+		<script>
+			document.onclick = function () {
+				opener.document.write('子窗口让我输出的！');
+			}
+
+		</script>
+	</body>
+</html>

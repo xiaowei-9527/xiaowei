@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			(function(){
+				var age=100 //声明一个变量
+				function run(){
+					return '运行中...'
+				}
+				Box = function () {};					//构造方法
+				Box.prototype.go = function () {			//原型方法
+					age++
+					return age + run();
+				};
+
+			})()
+			var b1=new Box()
+			alert(b1.go())
+			var b2=new Box()
+			alert(b2.go())
+		</script>
+	</body>
+</html>

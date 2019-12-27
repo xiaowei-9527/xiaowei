@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			1 构造函数设计
+			function Calculate(options){
+				this.options={
+					flag:options.flag || '+',
+					first:options.first || 0,
+					second:options.second || 1,
+					res:options.res || 0
+				}
+			
+			}
+			Calculate.prototype.jisuan=function(){
+//				parseInt(this.options.first)+this.options.flag+parseInt(this.options.second)
+				switch(this.options.flag){
+					case '+':
+						this.options.res = this.options.first+this.options.second
+						break;
+					case '-':
+						this.options.res =this.options.first-this.options.second
+						break;
+					case '*':
+						this.options.res=this.options.first*this.options.second
+						break;
+					case '/':
+						this.options.res=this.options.first/this.options.second
+						break;
+					default:
+						break;
+					
+				}
+				return this.options.res
+			}
+			var res=new Calculate({
+				flag:'*',
+				first:10,
+				second:5
+			})
+//			console.log(res.jisuan())
+			var res=new Calculate({
+				flag:'/',
+				first:10,
+				second:5
+			})
+			console.log(res.jisuan())
+			
+		</script>
+	</body>
+</html>

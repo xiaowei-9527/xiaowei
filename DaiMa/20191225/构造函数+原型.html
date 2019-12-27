@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id='box'></div>
+	<script type="text/javascript">
+		// var obj={
+		// 	add:function(a,b){
+		// 		return a+b
+		// 	}
+		// }
+		// // function add(a,b){
+		// // 	return a+b
+		// // }
+		// function box(){}
+		// // var res = add.call(box,1,2)
+		// // var res = obj.add.call(this,1,2)
+		// var res = obj.add.apply(this,[1,2])
+		// console.log(res)
+
+
+		// // 寄生构造函数
+		// function Box(name,age){
+		// 	var obj=new Object()
+		// 	obj.name=name
+		// 	obj.age=age
+		// 	obj.run=function(){
+		// 		return this.name+this.age
+		// 	}
+		// 	return obj
+		// }
+
+		// var str='lee liu' //基本数据类型 new String('lee liu')
+		// str.substring(2)
+		function Mask(element,options){
+			this.element=element
+			if(options){
+				this.options={
+					width: options.width ? options.width : '300px',
+					height: options.height ? options.height : '300px',
+					backgroundColor: options.bgcolor ? options.bgcolor : '300px',
+				}
+			}else{
+				this.options={
+					width: '300px',
+					height: '300px',
+					backgroundColor: 'red',
+				}
+			}
+			// 执行初始化方法
+			this.init()
+		}
+		Mask.prototype={
+			constructor:Mask,
+			// 初始化
+			init:function(){
+				this.create()
+				this.bindClick()
+			},
+			// 绘制元素
+			create:function(){
+				var doc=document.body  //body对象节点
+				// var ele=document.createElement('div')
+				this.element.style.width=this.options.width
+				this.element.style.height=this.options.height
+				this.element.style.background=this.options.backgroundColor
+				doc.appendChild(this.element)
+			},
+			bindClick:function(){
+				var doc=document.body
+				doc.onclick=function(){
+					this.children[0].remove()
+				}
+			}
+		}
+		var box=document.getElementById('box')
+		new Mask(box)
+	</script>
+</body>
+</html>

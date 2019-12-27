@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		闭包是干啥的阿
+		闭包可以访问局部变量，并把他驻留在内存里面
+		<script>
+			function box(){
+				var a=100
+				a++
+				return a
+			}
+			alert(box())  //  101
+			alert(box())  //  101
+		</script>
+	</body>
+</html>

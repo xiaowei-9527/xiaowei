@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">点击</div>
+		<script>
+			function box(){
+				var oDiv=document.getElementById('box')
+				var txt=oDiv.innerHTML
+				oDiv.onclick=function(){
+					alert(txt)
+				}
+				oDiv=null
+			}
+			//执行函数
+			box()
+		</script>
+	</body>
+</html>

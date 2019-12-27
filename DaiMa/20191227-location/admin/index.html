@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>
+			文章类型:
+			<select name="" id="type">
+				<option value="0">情感</option>
+				<option value="1">女性</option>
+				<option value="2">军事</option>
+				<option value="3">家庭</option>
+			</select>
+		</p>
+		<p>
+			标题:
+			<input type="text" placeholder="输入文章标题" id="title"/>
+		</p>
+		<p>
+			文章内容:
+			<textarea rows="3" cols="20" id="textarea"></textarea>
+		</p>
+		<p>
+			<input type="file" id="file"/>
+			<div id="box"></div>
+		</p>
+		<p>来源:
+			<input type="text" id="newsform"/>
+		</p>
+		<p>
+			<button>提交</button>
+		</p>
+		<script>
+			$("#file").change(function(){
+                upload()
+            })
+//			name(图片名字)  type(图片类型) size(图片大小) tmp(临时存放路径)
+            function upload(){ 
+            	//formdata是来处理文件流的
+                var forms = new FormData();  
+                forms.append("myfile", document.getElementById("file").files[0]);
+            			// var forms =  document.getElementById("id1").files[0];
+                $.ajax({ 
+                    url:"fileupload.php", 
+                    type:"POST", 
+                    data:forms,
+                    cache: false,
+                    contentType: false,//不可缺参数
+                    processData: false,//不可缺参数 
+//                  dataType:'json',
+                    success:function (result){ 
+                        console.log(result); 
+                        $("#box").html("<img src="+result+">")
+                        // localStorage.setItem('userpic',result)
+                    }, 
+                    error:function (result){ 
+                        alert("sfd"); 
+                    } 
+                });                     
+            }
+			
+			
+//			$("button").click(function(){
+//				$.ajax({
+//					url:'interface.php',
+//					type:'post',
+//					data:{
+//						type:$("#type").val(),
+//						title:$("#title").val(),
+//						content:$("#textarea").val(),
+//						newsform:$("#newsform").val()
+//					},
+//					dataType:'json',
+//					success:function(res){
+//						
+//					}
+//				})
+//			})
+		</script>
+	</body>
+</html>

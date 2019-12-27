@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		1 全局变量和局部变量的区别
+		2 局部变量是无法累加的
+		<script>
+			/*
+			var age = 100;								//全局变量
+			function box() {
+				age ++;								//模块级可以调用全局变量，进行累加
+			}
+			box();									//执行函数，累加了
+			alert(age);
+			box();									//执行函数，累加了
+			alert(age);
+			*/
+			/*
+			function box() {
+				var age = 100;
+				age ++;								//累加
+				return age;
+			}
+			alert(box())
+			alert(box())
+			
+			*/
+			function box(){
+				var age=100
+				return function(){
+					age++
+					return age
+				}
+			}
+			var res=box()
+//			alert(res())
+//			alert(res())
+//			alert(box()())
+//			alert(box()())
+			
+			function vv(a,b,callback){
+				var s=a+b
+				callback(s)
+			}
+			vv(1,2,function(res){
+				alert(res)
+			})
+		
+		</script>
+	</body>
+</html>

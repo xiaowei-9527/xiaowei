@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>用户名  <input type="text" id="user"/></p>
+		<p>密码  <input type="password" id="pwd"/></p>
+		<button>点击</button>
+		<script>
+			$("button").click(function(){
+				$.ajax({
+					url:'login.php',
+					type:'get',
+					data:{
+						username:$("#user").val(),
+						password:$("#pwd").val()
+					},
+					dataType:'json',
+					success:function(res){
+						if(res.code==200){
+							location.href='index.html'
+						}
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

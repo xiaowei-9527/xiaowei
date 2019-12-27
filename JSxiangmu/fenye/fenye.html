@@ -15,7 +15,7 @@
 	getPageData(1,10);
 	function getPageData(page,pagesize){
 		$.ajax({
-			url:'chashuju.php',
+			url:'fenye.php',
 			type:'get',
 			data:{
 				page:page,
@@ -27,7 +27,9 @@
 				$("ul").empty()
 					var $ul=$('<ul></ul>')
 					for(var i=0;i<res.list.length;i++){
-						$ul.prepend("<li>"+res.list[i].newstitle+"<a href='xiangqing.html?id="+res.list[i].newsid+"'>查看详情</a></li>")
+						//prepend
+						$ul.append("<li>"+res.list[i].newstitle+"<a href='xiangqing.html?id="+res.list[i].newsid
+						+"'>查看详情</a>&nbsp;&nbsp;&nbsp;<a href='shanchu.html?id="+res.list[i].newsid+"'>删除</a></li>")
 					}
 					$('body').append($ul)
 					$("#page").paging({

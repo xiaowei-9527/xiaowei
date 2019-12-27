@@ -42,7 +42,7 @@ input[type='submit'],input[type='reset'],input[type='button'],select{
 /*******************************
 	-------[=头部]-------
 ********************************/
-.one{
+/*.one{
 	width: 230px;
 	height: 450px;
 	border: 1px solid red;
@@ -116,7 +116,7 @@ input[type='submit'],input[type='reset'],input[type='button'],select{
 .one .jieshao .san{
 	color: #FFFFFF;
 	background-color: #E6BF25;
-}
+}*/
 /*导航*/
 
 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#span,#notice{
+			color:red;
+		}
+	</style>
+	<script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+	<form>
+		<div>用户名: <input type="text" name="username" id="name"><span id="span"></span></div>
+		<div>密码: <input type="password" name="password" id="pwd"></div>
+		<p id="notice"></p>
+		<div><input type="submit" value="提交" id="sub"></div>
+	</form>
+	<script>
+		$("#sub").click(function(){
+			$.ajax({
+				url:'login.php',
+				type:'post',
+				data:{
+					username:$("#name").val(),
+					password:$("#pwd").val()
+				},
+				dataType:'json',
+				success:function(res){
+					console.log(res)
+					if(res.code==10001){
+						$('#notice').text(res.msg)
+						$("#name").val('').focus()
+						$("#pwd").val('')
+					}
+					if(res.code==200){
+						location.href='index.html'
+					}
+				}
+			})
+			return false
+		})
+		// $("#name").focus(function(){
+		// 	$("#span").text('')
+		// })
+	</script>
+</body>
+</html>

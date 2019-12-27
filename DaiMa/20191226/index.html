@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Box(name,age){
+				this.name=name
+				this.age=age
+				if(!run instanceof Function){
+					Box.prototype.run=function(){
+						return this.name+this.age
+					}
+				}
+			}
+			alert(typeof Box)
+			alert(typeof Box=='function')
+			alert(Box instanceof Function)
+			alert(Box instanceof Array)
+		</script>
+	</body>
+</html>

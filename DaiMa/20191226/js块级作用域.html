@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			(function(){
+				var a=100
+			})()
+		
+//			for(var i=0;i<5;i++){}
+//			alert(i)
+
+//构造函数里面的私有变量如何访问
+/*
+			function Box() {
+				var age = 100;							//私有变量
+				function run() {						//私有函数
+					return '运行中...';
+				}
+				this.get = function () {					//对外公共的特权方法
+					return age + run();
+				};
+			}
+			var b=Box()
+			alert(b.get())
+	*/
+	function Person() {
+		var user = '';						//这句其实可以省略
+		this.getUser = function () {
+			return user;
+		};
+		this.setUser = function (value) {
+			user = value;
+		};
+	}
+	var p=new Person()
+	p.setUser('张三')
+	alert(p.getUser())
+	
+	
+		</script>
+	</body>
+</html>

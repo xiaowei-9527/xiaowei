@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	
+	<body>
+		<div id="box"></div>
+		1 工厂模式
+		<script>
+			function createObject(name,age){
+				var obj=new Object()
+				obj.name=name
+				obj.age=age
+				obj.run=function(){
+					return this.name+this.age+'...'
+				}
+				return obj
+			}
+			var c1=new createObject('张三',25)
+			var c2=new createObject('李四',26)
+			console.log(c1.name)
+			console.log(c2.name)
+		</script>
+		
+		2 构造函数模式
+		<script>
+			function Box(name,age){
+				this.name=name
+				this.age=age
+			}
+			Box.prototype.run=function(){
+				return this.name+this.age+'...'
+			}
+			var b1=new Box('王五',30)
+			console.log(b1.name)
+			console.log(b1.run())
+		</script>
+		
+		3 寄生构造函数
+		4 稳妥构造函数
+		5 动态原型链
+		<script>
+			function Desk(name,age){
+				this.name=name
+				this.age=age
+				if(!run instanceof 'function'){
+					Desk.prototype.run=function(){
+						return this.name+this.age+'...'
+					}
+				}
+			}
+			
+			
+		
+		
+			
+		</script>
+		6 继承 原型继承 
+		7 对象冒充继承
+		8 构造函数继承
+		  构造函数+原型
+		  借用构造函数+原型链
+		9 原型式继承
+			<script>
+				function Seck(obj,name,age){
+					if(obj instanceof Object){
+						function F(name,age){
+							this.name=name
+							this.age=age
+						}
+						F.prototype={
+							constructor:F,
+						}
+						F.prototype=obj
+						return new F(name,age)
+					}else{
+						return false
+					}
+				}
+				var obj=Seck({
+					sex:'男'
+				},'刘德华',20)
+				
+				console.log('--------')
+				console.log(obj.name)
+				console.log(obj.age)
+			</script>
+		
+		
+			<script>
+				var obj=document.getElementById('box')
+				var content=['<ul>','<li>1</li>','<li class="active">2</li>','<li>3</li>','</ul>']
+				obj.innerHTML=content.join('')
+			</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

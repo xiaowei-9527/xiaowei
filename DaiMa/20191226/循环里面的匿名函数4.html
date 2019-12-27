@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			var b=100
+//			function a(){
+//				alert(b)
+//				 b=10
+//			}
+//			a()
+//			alert(b)
+/*
+			function box(){
+				var arr = [];
+				for (var i = 0; i < 5; i++) {
+					arr[i] = function () {
+						return i;
+					};
+				}
+				return arr;
+			}
+			*/
+//			alert(box()[0]())
+//			alert(box()[1]())
+//			alert(box()[2]())
+
+/*   匿名函数自执行解决循环
+			function box(){
+				var arr = [];
+				for (var i = 0; i < 5; i++) {
+					arr[i] = (function(m){
+						return m;
+					})(i)
+				}
+				return arr;
+			}
+			alert(box())
+*/
+			function box(){
+				var arr = [];
+//				for (var i = 0; i < 5; i++) {
+//					arr[i] = (function(m){
+//						return function(){
+//							return m;
+//						}
+//					})(i)
+//				}
+					for(let i=0;i<5;i++){
+						arr[i]=function(){
+							return i
+						}
+					}
+//				for (var i = 0; i < 5; i++) {
+//						arr[i] = (function (num) {
+//							return function () {				//直接返回值，改2变成返回函数
+//								return num;				//原理和改1一样
+//							}
+//						})(i);
+//					}
+
+				return arr;
+			}
+		
+			alert(box()[0]())
+			alert(box()[1]())
+
+		</script>
+	</body>
+</html>

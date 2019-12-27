@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+    	<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+		<script src="../js/layer/layer.js"></script>
+		<script src="../js/search.js"></script>
+	</head>
+	<body>
+		<script>
+			$(function(){
+				var id = getArgs().id
+				layer.confirm('您确定要删除该条数据吗？', {
+				  btn: ['确认','取消'] //按钮
+				}, function(){
+					$.ajax({
+						url:'shanchu.php',
+						type:'get',
+						data:{
+							id:id
+						}
+					})
+					layer.msg(
+						'删除成功',
+						{icon: 1}
+					)
+					setTimeout(function(){
+						location.href = 'fenye.html'
+					},500)
+				},function(){
+					location.href = 'fenye.html'
+				});
+				
+				$('.layui-layer-setwin').click(function(){
+					location.href = 'fenye.html'
+				})
+				
+			})
+		</script>
+	</body>
+</html>

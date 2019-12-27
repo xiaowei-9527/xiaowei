@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var box=function(){
+				var age=3            //私有变量
+				function run(){      //函数内部定义一个方法
+					return age+'...'          
+				} 
+				return {             //函数的返回值
+					go:function(){
+						return run()
+					}
+				}
+			}
+			console.log(box().go())
+			
+//			var box={
+//				age:30,
+//				run:function(){
+//					return age
+//				},
+//				init:function(){
+//					return {						
+//						box.run()
+//					}
+//				}
+//			}
+//			结合应用场景
+				function Box(width,height){
+					this.width=width
+					this.height=height
+				}
+				var mask=function(){
+					var width='100%'
+					var height='100%'
+					var b=new Box('200px','200px')
+					b.exec=function(){
+						
+					}
+					return b
+				}
+				(function(){
+					
+				})()
+			
+		</script>
+	</body>
+</html>

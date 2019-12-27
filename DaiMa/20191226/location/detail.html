@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src='js/search.js'></script>
+		<script src='js/config.js'></script>
+			<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+		
+	</head>
+	<body>
+		<artile>
+			<header></header>
+			<div class="content">
+				<img src="" alt="" />
+				<p></p>
+			</div>
+		</artile>
+		<script>
+			var ERR_OK=200
+			var id = getArgs().id
+			$.ajax({
+				url:'detail.php',
+				type:'get',
+				data:{
+					id:id
+				},
+				dataType:'json',
+				success:function(res){
+					if(res.code==ERR_OK){
+//						console.log(res.data)
+							$("artile").find("header").text(res.data.newstitle)
+							$("artile").find("img").attr('src',res.data.imgurl)
+							$("artile").find("p").text(res.data.newscontent)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

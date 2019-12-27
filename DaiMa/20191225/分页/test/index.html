@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/page.css">
+	<script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	<script src="js/xlPaging.js"></script>
+</head>
+<body>
+	<h3>用户列表</h3>
+	<table>
+		<!-- <tr>
+			<th>用户名</th>
+			<th>密码</th>
+		</tr>
+		<tr><td>占山</td><td>123456</td></tr> -->
+	</table>
+	<select id="test">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="5">5</option>
+    </select>
+	<div id="page"></div>
+	<script type="text/javascript">
+		// var value=$('#test').val();
+		getData(1,2)
+		$("#test").on('change',function(){
+			getData(1,$("#test").val())
+		})
+		
+		function getData(page,pagesize){
+			$.ajax({
+				url:'index.php',
+				type:'get',
+				data:{
+					page:page,
+					pagesize:pagesize
+				},
+				dataType:'json',
+				success:function(res){
+					$("table").empty()
+					$("table").append(`<tr>
+						<th>用户名</th>
+						<th>密码</th>
+					</tr>`)
+					for(var i=0;i<res.list.length;i++){
+						$("table").append("<tr><td>"+res.list[i].username+"</td><td>"+res.list[i].password+"</td></tr>")
+					}
+					$("#page").paging({
+			        nowPage: page, // 当前页码
+			        pageNum: Math.ceil(res.total/pagesize), // 总页码
+			        buttonNum: 5, //要展示的页码数量
+							canJump: 1,// 是否能跳转。0=不显示（默认），1=显示
+							showOne: 1,//只有一页时，是否显示。0=不显示,1=显示（默认）
+			        callback: function (num) { //回调函数
+			            getData(num,pagesize)
+			        }
+			    });
+				}
+			})
+			
+	    }
+	</script>
+</body>
+</html>

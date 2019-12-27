@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	<script src="js/layer/layer.js"></script>
+	<script src="js/check.js"></script>
+		<style>
+			.spanname{
+				color:red;
+			}
+			.hasName{
+				color:orange;
+			}
+			.dn{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<p>用户名: <input type="text" id="username"/>
+			<span class="spanname dn">用户名不能小于2位，不得超过6位</span>
+			<span class="hasName dn"></span>
+		</p>
+		<p>密&nbsp;&nbsp;码: <input type="text" id="pwd1" required/></p>
+		<p>确认密码: <input type="text" id="pwd2"/></p>
+		<script>
+			alert(emailyz('sasas@qq.com'))
+			$("#username").on('input',function(){
+				var val = $(this).val()
+				if(val.length<2 || val.length > 6){
+					$(".spanname").removeClass('dn')
+					$(".hasName").hide()
+				}else{
+					$(".spanname").addClass('dn')
+					$.ajax({
+						url:'check.php',
+						type:'post',
+						data:{
+							username:$('#username').val(),
+							type:1
+						},
+						dataType:'json',
+						success:function(res){
+							if(res.code==200){
+								$(".hasName").show().text(res.msg)
+							}else{
+								$(".hasName").show().text(res.msg)
+							}
+						}
+					})
+				}
+			})
+			$("#username").on('blur',function(){
+				$(".spanname").addClass('dn')
+					$(".hasName").hide()
+			})
+			$("#pwd1").on('input',function(){
+				if($(this).val().length<6 || $(this).val().length>20){
+					layer.msg('密码在6-20位')
+				}
+			})
+			$("#pwd2").on('input',function(){
+				if($(this).val()!=$("#pwd1").val()){
+					layer.msg('两次密码不一致')
+				}
+			})
+		</script>
+	</body>
+</html>
+
+
