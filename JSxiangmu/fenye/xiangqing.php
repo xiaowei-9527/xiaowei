@@ -16,10 +16,9 @@
 	mysqli_query($conn, "set names utf8");
 	
 	$result1=$conn->query($sql1);
-
 	
 	while($row=$result1->fetch_object()){
 		echo json_encode(array('code'=>200,'data'=>$row));
-  }
+  	}
   	$conn->close();
 ?>

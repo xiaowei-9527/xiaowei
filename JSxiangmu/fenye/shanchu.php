@@ -13,12 +13,9 @@
 	} 
 	
 	$sql = "delete from newslist where newsid=$id";
-	
-	$result = $conn->query($sql)
-	//判断是否查询成功，
-	if($result){
-		//成功就跳转
-//	    header("location:fenye.php");
+	if($conn->query($sql))//成功就跳转
+	{
+		echo json_encode(array('code'=>200,'msg'=>'删除成功'));
 	}
   	$conn->close();
 ?>

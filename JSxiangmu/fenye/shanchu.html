@@ -19,15 +19,20 @@
 						type:'get',
 						data:{
 							id:id
+						},
+						dataType:'json',
+						success:function(res){
+							if(res.code==200){
+								layer.msg(
+									res.msg,
+									{icon: 1}
+								)
+								setTimeout(function(){
+									location.href = 'fenye.html'
+								},500)
+							}
 						}
 					})
-					layer.msg(
-						'删除成功',
-						{icon: 1}
-					)
-					setTimeout(function(){
-						location.href = 'fenye.html'
-					},500)
 				},function(){
 					location.href = 'fenye.html'
 				});

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+   		<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+		<script src="../js/layer/layer.js"></script>
+   		<style type="text/css">
+   			/*#xianshi{
+   				width: 100px;
+   				height: 100px;
+   				border: 1px solid red;
+   			}*/
+   		</style>
+	</head>
+	<body>
+		<p>
+			文章类型
+			<select name="" id="wzlx">
+				<option value="艺术">艺术</option>
+				<option value="军事">军事</option>
+				<option value="科学">科学</option>
+				<option value="文化">文化</option>
+				<option value="经济">经济</option>
+				<option value="体育">体育</option>
+				<option value="历史">历史</option>
+				<option value="地理">地理</option>
+			</select>
+		</p>
+		<p>
+			标题
+			<input type="text" placeholder="请输入文章标题" id="bt"/>
+		</p>
+		<p>
+			文章内容
+			<textarea name="" rows="10" cols="50" id="wznr"></textarea>
+		</p>
+		<p>
+			配图
+			<input type="file" name="" id="file" value="" />
+			<div id="xianshi"></div>
+		</p>
+		<p>
+			来源
+			<input type="text" name="ly" id="ly" value="" placeholder="请输入文章来源"/>
+		</p>
+		<button id="tijiao">提交</button>
+	</body>
+	<script>
+		$('#tijiao').click(function(){
+			if(!$('#bt').val() == false && !$('#wznr').val()==false && !$('#ly').val()==false){
+				$.ajax({
+					url:'zeng.php',
+					type:'post',
+					data:{
+						type:$('#wzlx').val(),
+						title:$('#bt').val(),
+						content:$('#wznr').val(),
+						newsfrom:$('#ly').val()
+					},
+					dataType:'json',
+					success:function(res){
+						if(res.code == 200){
+							layer.msg(res.msg,{time:1000,icon: 1})
+							setTimeout(function(){
+								location.href = 'fenye.html'
+							},500)
+						}
+					}
+				})
+			}
+		})
+	</script>
+	
+	
+<!--上传图片-->
+	<script>
+//			$("#file").change(function(){
+//	            upload()
+//	        })
+//	//name(图片名字)  type(图片类型) size(图片大小) tmp(临时存放路径)
+//	        function upload(){ 
+//	        	//formdata是来处理文件流的
+//	            var forms = new FormData();  
+//	            forms.append("myfile", document.getElementById("file").files[0]);
+//	        			// var forms =  document.getElementById("id1").files[0];
+//	            $.ajax({ 
+//	                url:"zeng.php", 
+//	                type:"POST", 
+//	                data:forms,
+//	                cache: false,
+//	                contentType: false,//不可缺参数
+//	                processData: false,//不可缺参数 
+//	                dataType:'json',
+//	                success:function (result){ 
+//	                	
+//	                    console.log(result); 
+//	                    
+//	                    $("#box").html("<img src="+result+">")
+//	                    // localStorage.setItem('userpic',result)
+//	                }, 
+//	                error:function (result){ 
+//	                    alert("sfd"); 
+//	                } 
+//	            });                     
+//	        }
+	</script>
+</html>

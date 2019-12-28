@@ -11,14 +11,14 @@
 </head>
 
 <body>
-	<!--<div class="wp">
+	<div class="wp">
 		<ul class="f20">
 			<li>111</li>
 			<li>222</li>
 			<li>333</li>
 			<li>444</li>
 		</ul>
-	</div>-->
+	</div>
     <div id="page"></div>
 <script>
 	$.ajax({
@@ -30,16 +30,16 @@
 		}
 	})
 		
-//	    $("#page").paging({
-//	        nowPage: 1, // 当前页码
-//	        pageNum: 30, // 总页码
-//	        buttonNum: 6, //要展示的页码数量
-//			canJump: 1,// 是否能跳转。0=不显示（默认），1=显示
-//			showOne: 0,//只有一页时，是否显示。0=不显示,1=显示（默认）
-//	        callback: function (num) { //回调函数
-//	            console.log(num);
-//	        }
-//	    });
+	    $("#page").paging({
+	        nowPage: 1, // 当前页码
+	        pageNum: 30, // 总页码
+	        buttonNum: 7, //要展示的页码数量
+			canJump: 1,// 是否能跳转。0=不显示（默认），1=显示
+			showOne: 0,//只有一页时，是否显示。0=不显示,1=显示（默认）
+	        callback: function (num) { //回调函数
+	            console.log(num);
+	        }
+	    });
 </script>
 </body>
 

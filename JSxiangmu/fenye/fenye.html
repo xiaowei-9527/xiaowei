@@ -9,7 +9,13 @@
 </head>
 
 <body>
-	<a href=""></a>
+	<!--<a href=""></a>-->
+	<div id="fen">
+		
+	</div>
+	<button id="xinzeng">
+		新增新闻
+	</button>
 	<div id="page"></div>
 <script>
 	getPageData(1,10);
@@ -23,20 +29,21 @@
 			},
 			dataType:'json',
 			success:function(res){
-				console.log(res.list.pagesize)
 				$("ul").empty()
 					var $ul=$('<ul></ul>')
+					$('#fen').append($ul)
 					for(var i=0;i<res.list.length;i++){
 						//prepend
 						$ul.append("<li>"+res.list[i].newstitle+"<a href='xiangqing.html?id="+res.list[i].newsid
-						+"'>查看详情</a>&nbsp;&nbsp;&nbsp;<a href='shanchu.html?id="+res.list[i].newsid+"'>删除</a></li>")
+						+"'>查看详情</a>&nbsp;&nbsp;&nbsp;<a href='shanchu.html?id="+res.list[i].newsid
+						+"'>删除</a>&nbsp;&nbsp;&nbsp;<a href='bianji.html?id="+res.list[i].newsid+"'>编辑</a></li>")
 					}
-					$('body').append($ul)
+//					$('body').append($ul)
 					$("#page").paging({
 			        nowPage: page, // 当前页码
 			        pageNum: Math.ceil(res.total/pagesize), // 总页码
-			        buttonNum: 5, //要展示的页码数量
-					canJump: 1,// 是否能跳转。0=不显示（默认），1=显示
+			        buttonNum: 7, //要展示的页码数量
+					canJump: 0,// 是否能跳转。0=不显示（默认），1=显示
 					showOne: 1,//只有一页时，是否显示。0=不显示,1=显示（默认）
 			        callback: function (num) { //回调函数
 			            getPageData(num,pagesize)
@@ -46,6 +53,10 @@
 			
 		})
 	}
+	//点击新增，跳到新增页面
+	$('#xinzeng').click(function(){
+		location.href = 'zeng.html'
+	})
 </script>
 </body>
 

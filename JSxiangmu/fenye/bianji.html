@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+   		<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+		<script src="../js/layer/layer.js"></script>
+   		
+		<script src="../js/search.js"></script>
+	</head>
+	<body>
+		<p>
+			文章类型
+			<select name="" id="wzlx">
+				<option value="艺术">艺术</option>
+				<option value="军事">军事</option>
+				<option value="科学">科学</option>
+				<option value="文化">文化</option>
+				<option value="经济">经济</option>
+				<option value="体育">体育</option>
+				<option value="历史">历史</option>
+				<option value="地理">地理</option>
+			</select>
+		</p>
+		<p>
+			标题
+			<input type="text" id="bt"/>
+		</p>
+		<p>
+			文章内容
+			<textarea name="" rows="10" cols="50" id="wznr"></textarea>
+		</p>
+		<p>
+			配图
+		</p>
+		<p>
+			来源
+			<input type="text" id="ly"/>
+		</p>
+		<button id="upda">更新</button>
+	</body>
+	<script>
+		//根据id先查出来填上
+		var id = getArgs().id;
+		$.ajax({
+			url: 'bianji.php',
+			type: 'POST',
+			data: {
+				id: id,
+				lei:1
+			},
+			dataType: 'json',
+			success: function(res) {
+				if(res.code == 200) {
+					$('#wzlx').val(res.data.newstype),
+					$('#bt').val(res.data.newstitle),
+					$('#wznr').val(res.data.newscontent),
+					//配图
+//					$('#bt').val(res.data.newstitle),
+					$('#ly').val(res.data.newsfrom)
+				}
+			}
+		})
+		
+		$('#upda').click(function(){
+			$.ajax({
+				url: 'bianji.php',
+				type: 'POST',
+				data: {
+					id:id,
+					type:$('#wzlx').val(),
+					title:$('#bt').val(),
+					content:$('#wznr').val(),
+					newsfrom:$('#ly').val(),
+					lei:2
+				},
+				dataType:'json',
+				success:function(res){
+					if(res.code == 200){
+						layer.msg(res.msg,{time:1000,icon: 1})
+						setTimeout(function(){
+							location.href = 'fenye.html'
+						},500)
+					}else{
+						layer.msg(res.msg,{time:1000,icon: 1})
+						setTimeout(function(){
+							location.href = 'fenye.html'
+						},500)
+					}
+				}
+			})
+		})
+		
+	</script>
+</html>
