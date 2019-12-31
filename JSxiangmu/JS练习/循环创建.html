@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+		<script>
+			var ul = document.createElement('ul')
+			var body = document.getElementsByTagName('body')[0]
+			body.appendChild(ul)
+			
+			for (var i = 1;i<=3;i++) {
+				var li = document.createElement('li');
+				ul.appendChild(li)
+				li.innerHTML= i
+			}
+		</script>
+</html>

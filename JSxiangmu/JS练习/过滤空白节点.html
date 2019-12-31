@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="aa">
+			<p>我是p标签</p>
+			<span>我是span</span>
+			<h3>我是h3</h3>
+		</div>
+	</body>
+	
+<!--过滤空白节点-->
+	<script>
+		var div = document.getElementById('aa').childNodes;
+		console.log(div)
+		
+		function kong(zong){
+			for (var i= 0 ; i<zong.length ;i++) {
+				//获得空白节点，然后删除
+				if(zong[i].nodeType==3 && /^\s+$/.test(zong[i].nodeValue)){
+					zong[i].parentNode.removeChild(zong[i])
+				}
+			}
+			return zong;
+		}
+		console.log(kong(div))
+	</script>
+</html>

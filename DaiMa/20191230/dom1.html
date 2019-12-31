@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.on{
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box" title='扎三个' class="bb"><span>我是div</span></div>
+		<script>
+			var box=document.getElementById('box')  //获取id为box的元素
+//			console.log(box.id)   //属性节点
+//			console.log(box.getAttribute('id'))  //获取属性节点
+			console.log(box.innerHTML)  //获取属性节点
+//			box.innerHTML='<h3>我是段落</h3>'
+			box.innerText='<h3>我是段落</h3>'
+			//注意innerHTML和innerText的区别
+			//innerHTML按照html格式，innerText会把元素添加之后按照文本格式把标签也显示出来
+//			alert(box.title)
+			box.style.color='red'
+			box.className='bb on'
+			
+//			querySelector
+			//获取元素的另一种方法
+//			console.log(querySelectorAll('div'))
+			console.log(document.querySelector("#box"))
+		</script>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box" class="on">
+			<p>我是p</p>
+			<span>我是span</span>
+			<div>我是div</div>
+		</div>
+		<script>
+			//attributes指的是属性节点
+			var box=document.getElementById('box')
+			var attributes=box.attributes
+			console.log(attributes.length)
+			console.log(box.getAttribute('id'))
+			console.log(box.getAttribute('class'))
+		</script>
+	</body>
+</html>

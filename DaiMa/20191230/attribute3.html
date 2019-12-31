@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box" title='我是标题'>测试div<span>11111</span></div>
+		<script>
+			var box=document.getElementById('box')
+//			box.removeAttribute('id')
+//			alert(box.nodeName)   //如果是元素节点的话 nodeName==tagName
+//			alert(box.nodeValue)  //null
+//			alert(box.nodeType)  //null
+			//元素节点 1    属性节点2   文本节点3 
+//			alert(box.nodeType)
+			alert(box.innerHTML)   //文本节点没有html内容
+			alert(box.childNodes[0].nodeName) //#TEXT
+		</script>
+	</body>
+</html>

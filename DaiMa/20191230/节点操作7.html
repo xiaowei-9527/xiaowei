@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">测试div</div>
+		<script>
+			var box=document.getElementById('box')
+			var divObj=document.createElement('div') 
+			//创建一个文本节点
+			var textNode=document.createTextNode('我是文本节点')
+		  divObj.appendChild(textNode)
+			box.appendChild(divObj)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+    .box {
+        height: 200px;
+        width: 200px;
+        border: 2px solid skyblue;
+        position: absolute;
+        left: 100px;
+        top: 100px;
+    }
+</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<script>
+    //1.获取页面元素
+    var box = document.querySelector('.box');
+    //设置开关判断鼠标是在box否按下
+    var flag = false;
+    //2.box绑定鼠标按下事件
+    var delX = 0;
+    var delY = 0;
+    box.onmousedown = function () {
+        flag = true;
+        //获取需要删除的距离
+         delX = event.clientX - box.offsetLeft;
+         delY = event.clientY - box.offsetTop;
+    };
+    //3.整个文档绑定鼠标移动事件
+    document.onmousemove = function () {
+        if (flag) {
+            //删除多余的距离 保持住按下的位置
+            var x = event.clientX - delX;
+            var y = event.clientY - delY;
+            box.style.left = x + 'px';
+            box.style.top = y + 'px';
+        }
+    };
+    //4.给整个文档绑定了 鼠标抬起事件
+    document.onmouseup = function () {
+        flag = false;
+    };
+</script>
+	</body>
+</html>

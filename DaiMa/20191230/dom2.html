@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<input type="radio" value="1" name='radio'/>男
+			<input type="radio" value="2" name='radio' checked/>女
+		</div>
+		<div id="box">测试div</div>
+		<input type="text" name='add' value='我是输入框的值'/>
+		<script>
+//			var all = document.getElementsByTagName('*')
+//			console.log(all.length)   //tagName获取标签名
+//			for(var i=0;i<all.length;i++){
+//				console.log(all[i].tagName)
+//			}
+//			var obj=document.getElementsByName('add')[0]
+//			console.log(obj.value)
+//			alert(document.getElementsByName('radio')[0].checked.value)
+//			alert(document.getElementsByName('radio')[1].value)
+			
+			
+			function GetRadioValue(radioName)
+        {
+            var radios = document.getElementsByName(radioName);
+            for(var i = 0 ; i< radios.length; i++)
+            {
+                var radio = radios.item(i);
+                if(radio.checked)
+                {
+//                  if(JS.IsNullOrEmpty(radio.value)) return undefined;
+                    return radio.value;
+                }
+            }
+            return undefined;
+        }
+        alert(GetRadioValue('radio'))
+		</script>
+	</body>
+</html>

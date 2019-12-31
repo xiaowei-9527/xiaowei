@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<span>111</span>
+			<p>222</p>
+			<em>333</em>
+			<i>555</i>
+		</div>
+		<script>
+			/**
+			 * 去掉空白节点
+			 * params
+			 *    nodes 传递进来的节点集合
+			 * */
+			function removeWhiteNode(nodes) {
+				for (var i = 0; i < nodes.childNodes.length; i ++) {
+					if (nodes.childNodes[i].nodeType === 3 && /^\s+$/.test(nodes.childNodes[i].nodeValue)) {
+						nodes.childNodes[i].parentNode.removeChild(nodes.childNodes[i]);
+					}
+				}
+				return nodes;
+			}
+			var box=document.getElementById('box')
+			var arr=removeWhiteNode(box)  //接受函数的返回值
+			alert(arr.innerHTML)
+//			console.log(removeWhiteNode(box.childNodes))
+			document.write("<span>我是span</span>")
+		</script>
+	</body>
+</html>

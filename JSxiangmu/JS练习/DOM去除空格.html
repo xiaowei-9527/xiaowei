@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="a">
+			<span>哈哈</span>
+			<p>哎</p>
+			<h3>这是弄啥类</h3>
+		</div>
+	</body>
+		<script>
+			var div = document.getElementById('a').childNodes;
+			function kong1(zong1){
+				var arr = [];
+				for (var i = 0 ; i<zong1.length ; i++) {
+					//若识别到空格跳过，不添加数组
+					if(zong1[i].nodeType == 3 && /^\s+$/.test(zong1[i].nodeValue))continue;
+					arr.push(zong1[i]);
+				}
+				return arr;
+			}
+			console.log(kong1(div))
+		</script>
+	
+	<!--第二种：直接删除-->
+		<script>
+			var div = document.getElementById('a').childNodes;
+			function kong2(zong2){
+				for (var i = 0 ; i<zong2.length ; i++) {
+					if(zong2[i].nodeType == 3 && /^\s+$/.test(zong2[i].nodeValue)){
+						//若识别到空格移到父节点，删除子节点
+						zong2[i].parentNode.removeChild(zong2[i])
+					}				}
+				return zong2;
+			}
+			console.log(kong2(div))
+		</script>
+		
+	<!--获取节点过程中遇到空白节点-->
+		<script>
+			var div = document.getElementById('a').childNodes;
+			function romoveKongNode(nodes){
+				for (var i = 0 ; i<nodes.childNodes ; i++) {
+					if(nodes.childNodes[i].nodeType ==3 && /^\s+$/.test(nodes.childNodes[i].nodeValue)){
+						nodes.childNodes[i].parentNode.removeChild(nodes.childNodes[i]);
+					}
+				}
+				return nodes;
+			}
+			console.log(romoveKongNode(div))
+		</script>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var bodyObj = document.getElementsByTagName('body')[0]
+			
+			//添加元素
+			//姓名
+			var nameK = document.createElement('p')
+			var ming = document.createElement('input')
+			ming.setAttribute('type','text')
+			nameK.innerHTML = '姓名：'
+			nameK.appendChild(ming)
+			bodyObj.appendChild(nameK)
+			
+			//密码
+			var mm = document.createElement('p')
+			var pwd = document.createElement('input')
+			pwd.setAttribute('type','password')
+			mm.innerHTML = '密码：'
+			mm.appendChild(pwd)
+			bodyObj.appendChild(mm)
+			
+			//性别
+			var xb = document.createElement('p')
+			//男
+			var nan = document.createElement('label')
+			nan.setAttribute('for','nan')
+						
+			var sex1 = document.createElement('input')
+			sex1.setAttribute('type','radio')
+			sex1.setAttribute('name','radio')
+			sex1.setAttribute('id','nan')
+			sex1.setAttribute('checked','checked')
+			xb.innerHTML = '性别：'
+			nan.innerHTML = '男'
+			xb.appendChild(nan)
+			xb.appendChild(sex1)
+			bodyObj.appendChild(xb)
+
+			//女
+			var nv = document.createElement('label')
+			nv.setAttribute('for','nv')
+			
+			var sex2 = document.createElement('input')
+			sex2.setAttribute('type','radio')
+			sex2.setAttribute('name','radio')
+			sex2.setAttribute('id','nv')
+			nv.innerHTML = '女'
+			xb.appendChild(nv)
+			xb.appendChild(sex2)
+			bodyObj.appendChild(xb)
+			
+			//兴趣爱好
+			var ah = document.createElement('p')
+			ah.innerHTML = '爱好：'
+			//游泳
+			var yy = document.createElement('label')
+			yy.setAttribute('for','you')
+			yy.innerHTML = '游泳'
+			ah.appendChild(yy)
+						
+			var cb1 = document.createElement('input')
+			cb1.setAttribute('type','checkbox')
+			cb1.setAttribute('id','you')
+			ah.appendChild(cb1)
+			bodyObj.appendChild(ah)
+			
+			//跳舞
+			var tw = document.createElement('label')
+			tw.setAttribute('for','tiao')
+			tw.innerHTML = '跳舞'
+			ah.appendChild(tw)
+						
+			var cb2 = document.createElement('input')
+			cb2.setAttribute('type','checkbox')
+			cb2.setAttribute('id','tiao')
+			ah.appendChild(cb2)
+			bodyObj.appendChild(ah)
+			
+			//唱歌
+			var cg = document.createElement('label')
+			cg.setAttribute('for','chang')
+			cg.innerHTML = '唱歌'
+			ah.appendChild(cg)
+						
+			var cb3 = document.createElement('input')
+			cb3.setAttribute('type','checkbox')
+			cb3.setAttribute('id','chang')
+			ah.appendChild(cb3)
+			bodyObj.appendChild(ah)
+			
+			//跑步
+			var pb = document.createElement('label')
+			pb.setAttribute('for','pao')
+			pb.innerHTML = '跑步'
+			ah.appendChild(pb)
+						
+			var cb4 = document.createElement('input')
+			cb4.setAttribute('type','checkbox')
+			cb4.setAttribute('id','pao')
+			ah.appendChild(cb4)
+			bodyObj.appendChild(ah)
+			
+			//注册
+			var zhu = document.createElement('button')
+			zhu.innerHTML = '注册'
+			bodyObj.appendChild(zhu)
+			
+			//注册
+			var chong = document.createElement('input')
+			chong.setAttribute('type','reset')
+			chong.innerHTML = '重置'
+			bodyObj.appendChild(chong)
+			
+		</script>
+	</body>
+</html>

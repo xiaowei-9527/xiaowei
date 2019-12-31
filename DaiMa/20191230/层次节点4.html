@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span>121212</span>
+		<div id="box">
+			<h3>我是标题</h3>
+			<p>我是段落</p>
+			<span>我是span</span>
+		</div><p>我是div后面的段落</p>
+		<script>
+			var box=document.getElementById('box')
+//			console.log(box.childNodes.length)  //获取所有孩子的长度
+//			console.log(box.firstChild)
+//			console.log(box.lastChild)
+//			console.log(box.parentNode)
+			
+//			console.log(document.documentElement)
+//			console.log(box.previousSibling)
+//			console.log(box.nextSibling)
+//			如何判断是文本节点还是元素节点
+//			for(var i=0;i<box.childNodes.length;i++){
+//				if(box.childNodes[i].nodeType==1){  //元素节点
+//					alert("元素的标签名"+box.childNodes[i].nodeName)  //tagName
+//				}else if(box.childNodes[i].nodeType==3){ //文本节点
+//					alert("文本节点内容"+box.childNodes[i].nodeValue)
+//				}else{}
+//			}
+			//nextSibling
+			console.log(box.nextSibling)
+		</script>
+	</body>
+</html>

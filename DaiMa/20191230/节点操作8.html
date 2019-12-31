@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box"><span>1111</span>我是测试div</div>
+		<script>
+			// insertBefore
+			var box=document.getElementById('box')
+			var spanObj=document.getElementsByTagName('span')[0]
+			var p=document.createElement('p')   //创建元素节点
+			var txt=document.createTextNode('我是p')  //创建文本节点
+			p.appendChild(txt)
+			spanObj.parentNode.insertBefore(p, spanObj);
+			spanObj.parentNode.removeChild(spanObj);
+		</script>
+	</body>
+</html>
