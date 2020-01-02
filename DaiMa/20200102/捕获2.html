@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">测试div</div>
+		false表示冒泡
+		true表示捕获
+		<script>
+			var box=document.getElementById('box')
+				document.addEventListener('click',function(e){
+					alert('document')
+				},false)
+				document.documentElement.addEventListener('click',function(e){
+					alert('html')
+				},false)
+				document.body.addEventListener('click',function(e){
+					e.stopPropagation()
+					alert('body')
+				},false)
+				box.addEventListener('click',function(e){
+					alert('box')
+				},false)
+		</script>
+	</body>
+</html>

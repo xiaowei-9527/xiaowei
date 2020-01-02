@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<h3>点击跳转到详情</h3>
+			<span id="span">立即还款</span>
+		</div>
+		<script>
+			var box=document.getElementById('box')
+			var span=document.getElementById('span')
+			box.onclick=function(e){
+				location.href="http://www.baidu.com"
+			}
+			span.onclick=function(e){
+				e.stopPropagation()  //阻止冒泡
+				location.href="http://www.sohu.com"
+			}
+		</script>
+	</body>
+</html>

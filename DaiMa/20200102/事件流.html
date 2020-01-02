@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">测试div</div>
+		<script>
+//			document.onclick=function(){
+//				alert('我是第一次绑定')
+//			}
+//			document.onclick=function(){
+//				alert('我是第二次绑定')
+//			}
+//				document.addEventListener('click',function(){
+//					alert('1111')
+//				},false)
+//				document.addEventListener('click',function(){
+//					alert('2222')
+//				},false)
+				var box=document.getElementById('box')
+				document.onclick=function(){
+					alert('document')
+				}
+				document.documentElement.onclick=function(){
+					alert('html')
+				}
+				document.body.onclick=function(){
+					alert('body')
+				}
+				box.onclick=function(){
+					alert('box')
+				}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				overflow: scroll;
+				height:300px;
+				width:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+			<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+			<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+			<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+			<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+			<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		</div>
+		<script>
+			var box=document.getElementById('box')
+			box.onscroll=function(){
+				console.log(box.scrollTop)
+			}
+		</script>
+	</body>
+</html>

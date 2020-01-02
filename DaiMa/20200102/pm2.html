@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			document.onmouseup=function(evt){
+//				 getButton(evt)
+//			}
+			function getButton(evt){
+				var ebtn=evt.button
+				switch(ebtn){
+					case 0:
+						alert('press left')
+						break;
+					case 1:
+						alert('press middle')
+						break;
+					case 2:
+						alert('press right')
+						break;
+					default:
+						break;
+				}
+			}
+			
+			document.onclick = function (evt) {			
+				var e = evt || window.event;
+				alert(e.clientX + ',' + e.clientY);
+				alert(e.screenX + ',' + e.screenY);
+			};
+
+		</script>
+	</body>
+</html>

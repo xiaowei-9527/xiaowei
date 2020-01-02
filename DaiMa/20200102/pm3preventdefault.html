@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="javascript:void(0);">点击阻止跳转</a>
+		<form action="">
+			用户名: <input type="text" /> <br />
+			密码: <input type="password" /> <br />
+			<input type="submit" value="提交" id="tijiao"/>
+		</form>
+		<script>
+			var subBtn = document.getElementById('tijiao')
+			subBtn.onclick=function(e){
+				e.preventDefault()   //阻止表单的默认行为
+			}
+		</script>
+	</body>
+</html>

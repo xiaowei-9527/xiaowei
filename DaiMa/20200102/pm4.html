@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			我是div
+			<p id="p">asdasds<span>我是p标签</span></p>
+		</div>
+		<script>
+			var p=document.getElementById('p')
+			p.onclick=function(e){
+//				console.log(e.currentTarget)
+//				console.log(e.target)
+//				console.log(e.type)
+//				console.log(e.bubbles)
+				console.log(e.cancelable)
+			}
+		</script>
+	</body>
+</html>

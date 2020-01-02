@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>第一项</li>
+			<li>第二项</li>
+			<li>第三项</li>
+			<li>第四项</li>
+		</ul>
+		<script>
+			var ul=document.getElementsByTagName('ul')[0]
+			var lis=document.getElementsByTagName('li')
+			
+			ul.addEventListener("click",function(e) { 
+			    if(e.target && e.target.nodeName.toLowerCase() == "li") {  // 检查事件源e.target是否为Li 		
+			        alert(e.target.innerHTML)  // 打印当前点击是第几个item 	
+			  } 
+			});
+//			for(var i=0;i<lis.length;i++){
+//				lis[i].onclick=function(){
+//					alert(lis[i].innerHTML)
+//				}
+//			}
+//			for(let i=0;i<lis.length;i++){
+//				lis[i].onclick=function(){
+//					alert(lis[i].innerHTML)
+//				}
+//			}
+//			alert(i)
+//			for(var i=0;i<lis.length;i++){
+//				lis[i].onclick=function(){
+//					alert(lis[i].innerHTML)
+//				}
+//			}
+//				function box(){
+//					var a=100
+//					return function(){
+//						return a
+//					}
+//				}
+//				alert(box()())
+		</script>
+	</body>
+</html>

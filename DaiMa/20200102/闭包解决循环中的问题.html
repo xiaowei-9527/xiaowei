@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>第一项</li>
+			<li>第二项</li>
+			<li>第三项</li>
+			<li>第四项</li>
+		</ul>
+		<script>
+			var ul=document.getElementsByTagName('ul')[0]
+			var lis=document.getElementsByTagName('li')
+//			for(var i=0;i<lis.length;i++){
+//				lis[i].onclick=(function(num){
+//					return lis[num].innerHTML
+//				})(i)
+//			}
+			for(var i=0;i<lis.length;i++){
+				lis[i].onclick=(function(num){
+					return function(){
+						alert(num)
+					}
+				})(i)
+			}
+		</script>
+	</body>
+</html>

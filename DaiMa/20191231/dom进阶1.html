@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		js兼容问题的话
+		早期的浏览器比如获取事件对象的时候 ie  window.event   w3c e(e指的是事件函数里面的事件对象)
+		<script>
+//			alert(Node.ELEMENT_NODE);				//1，元素节点类型值
+//			alert(Node.TEXT_NODE);
+//			alert(Node)
+//				alert(document.nodeType)
+//				console.log(document.childNodes[0])
+//				alert(document.childNodes[0].nodeType)
+//				alert(document.childNodes[1])
+//				alert(document.documentElement)
+//				div.onclick=function(e){
+//					var evt=window.event || e
+//				}
+
+				alert(document.childNodes[0].nodeName)   //html
+
+		</script>
+	</body>
+</html>

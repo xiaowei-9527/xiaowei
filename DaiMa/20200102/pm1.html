@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		this
+		1   window   2  匿名函数里面    3 对象调用,谁调用指向谁    4 构造函数   5 事件对象
+		<div id="box">测试div</div>
+		<script>
+				var box=document.getElementById('box')
+//				box.onclick=function(){
+////					console.log(this)
+////					console.log(arguments[0])
+////					console.log(e)
+////					console.log(e.pageX)
+////					console.log(e.pageY)
+//						alert(arguments.length)
+//				}
+				box.onclick=function(event){
+//					var evt=window.event || event
+					console.log(event)
+				}
+</script>
+	</body>
+</html>

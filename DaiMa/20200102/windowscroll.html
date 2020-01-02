@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;padding:0;
+			}
+			#box{
+				background: #ccc;				
+				height:50px;
+			}
+			.fixed{
+				width: 100%;
+				position: fixed;
+				left: 0;
+				top:0;
+			}
+			#flagp{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<p id="flagp">世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p>
+		<p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p>
+		<p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p>
+		<p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p>
+		<p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p>
+		<p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p>
+		<p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p><p>世界你好</p>
+		<script>
+			var diObj=document.getElementById('box')
+			var flagp=document.getElementById('flagp')
+			var ptop = flagp.offsetTop
+			window.onscroll=function(){
+				var top = document.documentElement.scrollTop
+				if(top>=ptop){
+					diObj.className='fixed'
+				}else{
+					diObj.className=''
+				}
+			}
+		</script>
+	</body>
+</html>

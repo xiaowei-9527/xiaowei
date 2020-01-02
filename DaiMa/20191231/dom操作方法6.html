@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<span>1212</span>
+			<p>12122112</p>
+			<em>333</em>
+		</div>
+		<div id="pox">
+			<span>123</span>
+			<p>我是段落</p>
+		</div>
+		<script>
+//			var box = document.getElementById('box');
+//			alert(box.children.length);
+//			var box = document.getElementById('box');
+//			alert(box.contains(box.firstChild));  //true
+//			alert(box.compareDocumentPosition(box.firstChild));
+//			var pox=document.getElementById('pox')
+//			pox.innerHTML='<span>123</span>'
+//			pox.innerText='<span>123</span>'
+
+//				alert(document.getElementById('box').textContent)
+				var pox=document.getElementById('pox')
+				function getInnerText(element) {
+					console.log(typeof element.textContent)
+						return (typeof element.textContent == 'string') ? 
+					element.textContent : element.innerText;
+					}
+
+			console.log(getInnerText(pox))
+		</script>
+	</body>
+</html>

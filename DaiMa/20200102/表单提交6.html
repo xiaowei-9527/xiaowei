@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" id="first"/> <br />
+			<input type="password" /> <br />
+			<input type="submit" />
+			<input type="reset" value="reset"/>
+		</form>
+		<script>
+			var form=document.getElementsByTagName('form')[0]
+			form.onsubmit =function(e){
+				e.preventDefault()
+				alert('表单提交')
+			}
+			var first=document.getElementById('first')
+			form.onreset =function(e){
+//				e.preventDefault()
+//				alert('reset')
+				first.focus()
+			}
+			
+			window.onresize=function(){
+				console.log('窗口发生变化了')
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				width:200px;
+				height:200px;
+			}
+			#inner{
+				width:100px;
+				height:100px;
+				position:absolute;
+				left:20px;
+				top:20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="inner"></div>
+		</div>
+		<script>
+			var box=document.getElementById('box')
+			var inner=document.getElementById('inner')
+			console.log(inner.offsetLeft)
+			console.log(inner.offsetTop)
+			
+			
+			
+//			var str='sadsdaassfdasdaaa'
+//			var pos=str.indexOf('a')
+//			
+//			while(pos>-1){
+//				pos=str.lastIndexOf('a',pos+1)
+//			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<script>
+			window.onload=function(){
+				var box=document.getElementById('box')
+				alert(box.innerHTML)
+			}
+		</script>
+		<div id="box">测试div</div>-->
+		
+		<select name="" id="select">
+			<option value="1">第一项</option>
+			<option value="2">第二项</option>
+			<option value="3">第三项</option>
+		</select>
+		<input type="text" id="inpTxt"/>
+		<script>
+			var selectInp=document.getElementById('select')
+			selectInp.onchange = function(){
+				alert(this.value)
+			}
+			var inpTxt=document.getElementById('inpTxt')
+//			inpTxt.onfocus=function(){
+//				alert('get focus')
+//			}
+//				inpTxt.onblur=function(){
+//					alert('miss focus')
+//				}
+				inpTxt.oninput=function(){
+//					alert(this.value)
+				}
+		</script>
+	</body>
+</html>

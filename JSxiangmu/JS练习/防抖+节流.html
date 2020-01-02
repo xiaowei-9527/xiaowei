@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+		<p>11</p>
+	</body>
+
+<!--防抖-->
+	<script>
+		/*当持续触发scroll事件时，事件处理函数handle只在停止滚动1000毫秒之后才会调用一次，
+				也就是说在持续触发scroll事件的过程中，事件处理函数handle一直没有执行*/
+
+		function debounce(fn, wait) {
+			var timeout = null;
+			return function() {
+				if(timeout !== null) clearTimeout(timeout);
+				timeout = setTimeout(fn, wait);
+			}
+		}
+		// 处理函数
+		function handle() {
+			console.log(Math.random());
+		}
+		// 滚动事件
+//		window.addEventListener('scroll', debounce(handle, 1000));
+	</script>
+	
+<!--
+	节流
+		两种实现方式--时间戳和定时器
+-->
+	<script>
+		//节流：时间戳实现方式
+		var throttle = function(func, delay) {　　
+			var prev = Date.now();　　
+			return function() {　　　　
+				var context = this;　　　　
+				var args = arguments;　　　　
+				var now = Date.now();　　　　
+				if(now - prev >= delay) {　　　　　　
+					func.apply(context, args);　　　　　　
+					prev = Date.now();　　　　
+				}　　
+			}
+		}
+
+		function handle() {　　
+			console.log(Math.random());
+		}
+//		window.addEventListener('scroll', throttle(handle, 1000));
+		
+		
+	</script>
+	<script>
+		//节流：定时器实现方式
+		// 节流throttle代码（定时器）：
+			var throttle = function(func, delay) {            
+			    var timer = null;            
+			    return function() {                
+			        var context = this;               
+			        var args = arguments;                
+			        if (!timer) {                    
+			            timer = setTimeout(function() {                        
+			                func.apply(context, args);                        
+			                timer = null;                    
+			            }, delay);                
+			        }            
+			    }        
+			}        
+			function handle() {            
+			    console.log(Math.random());        
+			}        
+			window.addEventListener('scroll', throttle(handle, 1000));
+		
+	</script>
+
+</html>

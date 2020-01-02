@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			function Box(name,age){
+//				this.name=name
+//				this.age=age
+//			}
+//			Box.prototype={
+//				contructor:Box,
+//				say:function(){
+//					console.log(this.name+' '+this.age)
+//				}
+//			}
+//			var b1=new Box('张三',26)
+//			b1.say()
+			
+			
+			class Box{
+				constructor(name, age){
+					this.name=name
+					this.age=age
+				}
+				say(){
+					alert(this.name+this.age)
+				}
+			}
+			var b=new Box('刘德华',26)
+			console.log(b.say())
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+        //获得浏览器宽高
+            var scWid = document.documentElement.offsetWidth||document.body.offsetWidth;
+            var scHei = document.documentElement.offsetHeight||document.body.offsetHeight;
+            var oBody = document.getElementsByTagName("body")[0];
+            //创建雪花构造函数
+            function SnowFlake(par,scWid,scHei){
+                this.par = par;
+                this.scWid = scWid;
+                this.scHei = scHei;
+                this.createFlake();
+            }
+            //创建雪花成员变量
+            SnowFlake.prototype.createFlake = function(){
+                this.allTime = Math.getRan(5,10);
+                this.wid = oMath.getRan(20,30);
+                this.maxL = this.scWid - this.wid;
+                this.ele = document.createElement("img");
+                this.ele.src = "img/snowflake.png";
+                this.ele.style.cssText = "position:absolute;left:"+oMath.getRan(0,this.maxL)+"px;top:"+(-this.wid)+"px;width:"+this.wid+"px;-webkit-transition: all "+this.allTime+"s;-moz-transition: all "+this.allTime+"s;-ms-transition: all "+this.allTime+"s;-o-transition: all "+this.allTime+"s;transition: all "+this.allTime+"s;";
+                oBody.appendChild(this.ele);
+                this.fall();
+            }
+            //控制雪花成员下落方法
+            SnowFlake.prototype.fall = function(){
+                var that = this;
+                (function(that){
+                    setTimeout(function(){
+                        that.ele.style.top = that.scHei + "px";
+                    },10);
+                    that.time = setInterval(function(){
+                        var nowTop = parseInt(oGet.getStyle(that.ele,"top"));
+                        if(nowTop>=that.scHei){
+                            clearInterval(that.time);
+                            //移除雪花
+                            that.par.removeChild(that.ele);
+                        }
+                    },100)
+                })(that);
+            }
+            //定时器创建对象
+            setInterval(function(){
+                for(var i=0;i<.getRan(5,10);i++){
+                    var newFlake = new SnowFlake(oBody,scWid,scHei);
+                }
+            },1000)
+        </script>
+	</body>
+</html>
