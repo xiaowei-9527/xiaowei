@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		document.cookie='user='+encodeURIComponent('王静辉')
+		// alert(decodeURIComponent(document.cookie));
+		var date = new Date();						//创建一个
+		date.setDate(date.getDate() + 7);
+		// document.cookie = "user= " + encodeURIComponent('王静辉') +";expires=" + date;
+		// var domain = 'localhost';
+		var domain = 'v.qq.com';
+		document.cookie = "user= " + encodeURIComponent('王静辉') + ";expires=" + date+";domain=" + domain;
+		alert(document.cookie)
+
+
+		// var path = 'http://localhost/newClass/2020cookie/demo';
+		// document.cookie = "user= " + encodeURIComponent('王静辉') + ";path=" + path;
+		// alert(document.cookie)
+	</script>
+</body>
+</html>

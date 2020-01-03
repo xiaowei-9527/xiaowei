@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/cui.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/lib.css"/>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.welcome{
+				text-align: right;
+			}
+			#sp,#xiang{
+				color: red;
+				font-weight: bold;
+			}
+			.tu{
+				width: 200px;
+				height: 200px;
+				border: 1px solid red;
+			}
+			#xiang{
+				cursor: pointer;
+				margin-left: 50px;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wp">
+			<div class="welcome f16">欢迎：<span id="sp"></span></div>
+			<div>
+				<img class="tu" src="../img/哪吒.jpg"/>
+				<p><span>￥6.66元</span><span id="xiang">查看详情</span></p>
+			</div>
+			
+		</div>
+		<script>
+			var span = document.getElementById('sp')
+			var sessionName = sessionStorage.getItem('name')
+			span.innerHTML = sessionName
+			
+			var xiang = document.getElementById('xiang');
+			
+			xiang.onclick = function(){
+				location.href = 'xiangqing.html';
+			}
+			
+		</script>
+	</body>
+</html>

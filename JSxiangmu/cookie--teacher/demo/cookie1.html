@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//获取cookie
+			/*
+			function getCookie(name) {
+				var cookieName = encodeURIComponent(name) + '=';
+				var cookieStart = document.cookie.indexOf(cookieName);
+				var cookieValue = null;
+				
+				if (cookieStart > -1) {
+					var cookieEnd = document.cookie.indexOf(';', cookieStart);
+					if (cookieEnd == -1) {
+						cookieEnd = document.cookie.length;
+					}
+					cookieValue = decodeURIComponent(
+			document.cookie.substring(cookieStart + cookieName.length, cookieEnd));
+				}
+				return cookieValue;
+			}
+			if(getCookie('user')){
+				location.href='1.html'
+			}
+			*/
+//			document.cookie='user='+encodeURIComponent('王静辉')
+//			alert(document.cookie)
+//			alert(decodeURIComponent('%E7%8E%8B%E9%9D%99%E8%BE%89'))
+			//设置过期时间
+			var date=new Date()
+			date.setDate(date.getDate()+7)
+			var path = 'http://JSxiangmu/cookie1/demo'
+			document.cookie = "user= " + encodeURIComponent('王静辉') +";expires=" + date+";path=" + path;
+			alert(document.cookie)
+		</script>
+	</body>
+</html>

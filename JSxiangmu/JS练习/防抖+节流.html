@@ -7,37 +7,10 @@
 	</head>
 
 	<body>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
-		<p>11</p>
+		<p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p>
+		<p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p>
+		<p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p>
+		<p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p><p>11</p>
 	</body>
 
 <!--防抖-->
@@ -54,10 +27,12 @@
 		}
 		// 处理函数
 		function handle() {
-			console.log(Math.random());
+			//console.log(Math.random());
+			alert('防抖测试')
+			
 		}
 		// 滚动事件
-//		window.addEventListener('scroll', debounce(handle, 1000));
+		window.addEventListener('scroll', debounce(handle, 1000));
 	</script>
 	
 <!--
@@ -69,7 +44,9 @@
 		var throttle = function(func, delay) {　　
 			var prev = Date.now();　　
 			return function() {　　　　
-				var context = this;　　　　
+				//上下文
+				var context = this;
+				//参数
 				var args = arguments;　　　　
 				var now = Date.now();　　　　
 				if(now - prev >= delay) {　　　　　　
@@ -78,9 +55,9 @@
 				}　　
 			}
 		}
-
 		function handle() {　　
-			console.log(Math.random());
+			//console.log(Math.random());
+			alert('节流：时间戳实现方式')
 		}
 //		window.addEventListener('scroll', throttle(handle, 1000));
 		
@@ -105,7 +82,7 @@
 			function handle() {            
 			    console.log(Math.random());        
 			}        
-			window.addEventListener('scroll', throttle(handle, 1000));
+//			window.addEventListener('scroll', throttle(handle, 1000));
 		
 	</script>
 
