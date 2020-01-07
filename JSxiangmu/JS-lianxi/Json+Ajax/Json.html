@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<!--解析：eval()-->
+		<script>
+			var box1 = '[{"name":"xiaowei","age":22},{"name":"小威","age":23}]';
+			console.log(box1)
+			//使用eval解析之后得到js的原生值
+			var jx = eval(box1);
+			console.log('下面是使用eval解析之后得到js的原生值')
+			console.log(jx);
+			console.log('--------------------');
+		</script>
+		
+	<!--使用序列化:stringify()
+		反序列化:parse()
+		-->
+		<script>
+			var box2 = '[{"name":"xiaowei","age":22},{"name":"小威","age":23}]';
+			console.log(box2)
+			//使用反序列化：parse()
+			var xl = JSON.parse(box2);
+			console.log(xl);
+			
+		</script>
+	</body>
+</html>

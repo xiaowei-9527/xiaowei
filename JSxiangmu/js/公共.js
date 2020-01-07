@@ -44,7 +44,7 @@ function wangZhi(val){
 
 
 /************************************
- *			获取URL后面？的值			*
+ *	    用search获取URL后面？的值		*
  * *********************************/
 //获取URL中？后面的值
 function getArgs() {
@@ -64,4 +64,46 @@ function getArgs() {
 		args[name] = value;
 	}
 	return args;
+}
+
+
+/************************************
+ *	    cookie--添加+获取+删除		*
+ * *********************************/
+var cookieUtil = {
+	//添加cookie
+	setCookie: function(name, value, expires) {
+		var cookieText = encodeURIComponent(name) + "=" +encodeURIComponent(value);
+		if(expires && expires instanceof Date) {
+			cookieText += "; expires=" + expires;
+		}
+		document.cookie = cookieText;
+	},
+	//获取cookie
+	getCookie: function(name) {
+		var cookieText = decodeURIComponent(document.cookie);
+		var cookieArr = cookieText.split("; ");
+		for(var i = 0; i < cookieArr.length; i++) {
+			var arr = cookieArr[i].split("=");
+			if(arr[0] == name) {
+				return arr[1];
+			}
+		}
+		return null;
+	},
+	//删除cookie
+	delCookie: function(name) {
+		document.cookie = encodeURIComponent(name) + "=; expires=" +new Date(0);
+	}
+};
+
+
+/********************************************
+ *	   设置URL后面的参数，若有参数用&连接		*
+ * ******************************************/
+function addURLParam(url, name, value) {
+	url += (url.indexOf('?') == -1 ? '?' : '&');	    //判断的url是否有已有参数
+	url += encodeURIComponent(name) + '=' + encodeURIComponent(value);
+	alert(url);
+	return url;
 }

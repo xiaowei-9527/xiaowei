@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="dian">测试是否内存泄漏，点击之后直接删除</div>
+		<!--闭包会导致内存泄漏-->
+		<script>
+			
+//			function box(){
+//				var dian = document.getElementById('dian');
+//				dian.onclick = function(){
+//					alert(dian.innerHTML);
+//				};
+//			}
+//			box();
+			
+			//点击之后应该解除引用
+			//修改
+			function box(){
+				var dian = document.getElementById('dian');
+				var text = dian.innerHTML;
+				dian.onclick = function(){
+					alert(text);
+				};
+				dian = null
+			}
+			box();
+		</script>
+	</body>
+</html>

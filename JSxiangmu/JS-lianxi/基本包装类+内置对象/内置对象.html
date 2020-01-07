@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		//global对象
+		
+			//URI编码方法
+				//encodeURI():加密编码
+				//decodeURI()：解码
+				
+				//encodeURIComponent:编码更加彻底
+				//decodeURIComponent：解码更加彻底
+			var box = '//xiao威'
+			//只把文字编码
+			console.log('使用encodeURI只把文字编码:'+encodeURI(box))
+			
+			//把编码之后的文字解码
+			console.log('使用decodeURI把编码之后的文字解码:'+decodeURI(encodeURI(box)))
+			
+			
+			//特殊字符和中文--编码
+			console.log('使用encodeURIComponent特殊字符和中文都编码：'+encodeURIComponent(box))
+			
+			//特殊字符和中文--解码
+			console.log('使用decodeURIComponent特殊字符和中文都编码：'+decodeURIComponent(box))
+			
+			
+			//eval()方法
+			var box = 'var a = 100'
+			//获取字符串中的a=100
+			eval(box)
+			alert(a+10)
+			
+			
+		</script>
+	</body>
+</html>

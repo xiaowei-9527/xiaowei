@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<!--get提交-->
+		<script>
+			//创建对象
+			var xhr = new XMLHttpRequest();
+			//打开目标地址
+			xhr.open('get','get.php?rand='+Math.random(),true)
+			//发送请求
+			xhr.send(null)
+			
+			function addURLParam(url,name,value){
+				//判断url是否已有参数
+				url+=(url.indexOf('?')==-1 ? '?' : '&');
+				url+=encodeURIComponent(name)+'='+encodeURIComponent(value);
+				console.log(url);
+				return url;
+			}
+			var url = 'get.php?age='+23
+//			var url = 'get.php'
+			console.log(decodeURIComponent(addURLParam(url,'name','小威')))
+		</script>
+	</body>
+</html>

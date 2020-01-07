@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+		<style type="text/css">
+			.wen,.wen1,.mm1,.mm2{
+				color: red;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<p>
+			用户名：<input type="text" id="name" />
+			<span class="wen"></span>
+			<span class="wen1"></span>
+		</p>
+		<p>
+			密码：<input type="password" id="pwd" />
+			<span class="mm1"></span>
+			<span class="mm2"></span>
+		</p>
+		<input type="submit" value="提交" class="sub" />
+	</body>
+	
+	<script>
+		$('.sub').click(function(){
+			//用户名
+			var name = $('#name').val();
+			var use = username(name);
+			//密码
+//			var pwd = $('#pwd').val();
+//			var pass = password(pwd);
+			
+			if(use.msgn){
+				$('.wen').text(use.msgn)
+				$('.wen').show()
+				$('.wen1').hide()
+			}
+			if(use.msg){
+				$('.wen1').text(use.msg)
+				$('.wen1').show()
+				$('.wen').hide()
+			}
+			$('#name').focus()
+			
+			//密码
+//			if (pass.mm1) {
+//				$('.mm1').text(pass.mm1);
+//				$('.mm1').show();
+//				$('.mm2').hide();
+//			}
+//			if(pass.mm2){
+//				$('.mm2').text(pass.mm2);
+//				$('.mm2').show();
+//				$('.mm1').hide();
+//			}
+		})
+		
+		//用户名
+		function username(val){
+			if(!val){
+				//返回一个对象
+				return {
+					msgn:'用户名不能为空',
+					succ:false
+				}
+			}
+			if(val<2 || val>6){
+				return {
+					msg:'用户名不能低于2位或大于6位',
+					succ:false
+				}
+			}
+			return {
+				succ:true
+			}
+		}
+		
+		//密码
+//		function password(val){
+//			if(!val){
+//				return{
+//					mm1:'密码不能为空',
+//					succ:false
+//				}
+//			}
+//			if(val<6 || val>16){
+//				return{
+//					mm2:'密码长多为6到16位',
+//					succ:false
+//				}
+//			}
+//			return {
+//				succ:true
+//			}
+//		}
+	</script>
+</html>

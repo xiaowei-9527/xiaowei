@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+	//工厂模式：
+			//解决重复实例化的问题
+			//问题：
+				//1.代码冗余
+				//2.不明确指向
+			
+		//create:创建
+			function createObj(name,age){
+				var obj = new Object()
+				obj.name = name
+				obj.age = age
+				obj.run = function(){
+					return this.name+'--'+this.age+'....'
+				}
+				return obj;
+			}
+			
+			var box1 = createObj('小威',20)
+			var box2 = createObj('xiaowei',23)
+			console.log('box1内容：'+box1.run())
+			console.log('box2内容：'+box2.run())
+			console.log(typeof box1)
+		</script>
+		
+<!--构造函数-->
+		<script>
+		//解决对象识别的问题
+			function Box(name,age){//构造函数模式
+				this.name = name;
+				this.age = age;
+				this.run = function(){
+					return this.name+'--'+this.age+'....'
+				}
+			}
+			
+			var box1 = new Box('小威',20)
+			var box2 = new Box('xiaowei',20)
+			console.log(box1.run())
+			console.log(box2.run())
+			//清晰认知box1从属于Box
+			console.log(box1 instanceof Box)
+			
+			
+			//构造模式调用:必须使用new运算符来调用
+				var box = new Box('小威',20)
+				console.log(box.run())
+				
+				Box('小威',20)//普通模式调用无效
+				
+			//对象冒充调用
+				var mao = new Object()
+				Box.call(mao,'xiaowei',23)
+				console.log('使用call调用--对象冒充调用：'+mao.run())
+				
+				//可以吧构造函数里的方法用new function()来代替
+				
+				function Box1(name,age){
+					this.name = name;
+					this.age = age;
+					this.run = new Function('return this.name+"---"+this.age+"..."')
+				}
+				var a  = new Box1('xiaowei',20)
+				var b  = new Box1('小威',22)
+				console.log('111:'+a.run())
+				console.log('111:'+b.run())
+				
+				
+				function Box2(name,age){
+					this.name = name;
+					this.age = age;
+					this.run = run;
+				}
+				function run(){//通过外面
+					return this.name +'---'+this.age+'...'
+				}
+				
+				var a1  = new Box2('小威',20)
+				var b1 = new Box2('小威',20)
+				console.log('Box2:'+a1.run())
+				console.log('Box2:'+b1.run())
+				
+				console.log(a1.name ==b1.name)
+				console.log(a1.run() == b1.run())
+				console.log(a1.run === b1.run) //调用引用函数，比较地址
+				console.log(a1 instanceof Box2)
+				console.log(a1 instanceof Object)
+				
+		</script>
+	</body>
+</html>

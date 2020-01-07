@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			function ajax(obj) {
+				var xhr = new XMLHttpRequest();
+				obj.url = obj.url + '?rand=' + Math.random();
+				obj.data = params(obj.data);
+				if(obj.method == 'get') obj.url = obj.indexOf('?') == -1 ? obj.url + '?' + obj.data : obj.url + '&' + obj.data; 
+				if(obj.async == true){
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4)callback();
+					};
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+<!--object类型-->
+		<script>
+//		//参数是一个对象
+//			function box(obj){
+//				if(obj.name!=undefined){
+//					alert(obj.name)		
+//				}
+//				if(obj.age!=undefined){
+//					alert(obj.age)
+//				}
+//			}
+//		//调用函数传递一个对象
+//			box({
+//				name:'小威',
+//				age:20
+//			})
+		</script>
+		
+		
+<!--array类型-->
+		<script>
+//		//使用new关键字创建数组（可省略）
+//			//创建一个数组
+//			var box1 = new Array();
+//			//创建一个包含10个元素的数组
+//			var box2 = Array(10);
+//			//创建一个数组并分配好元素
+//			var box3 = Array('小威',20,'学生','郑州')
+//			
+//		//使用字面量创建
+//			//创建一个空数组
+//			var box4 = [];
+//			//创建包含元素的数组
+//			var box5 = ['小威','学生',20]
+//			
+//		//使用索引下标来读取数组的值
+//			//获取第三个元素
+//			alert(box[2])
+//			//修改第三个元素
+//			box[2] = '学生'
+//			//增加第五个元素
+//			box[4] = '计算机编程'
+//			
+//		//使用length属性获取数组元素量
+//			//强制元素个数
+//			box.length = 10;
+//			//通过length给数组增加一个元素
+//			box[box.length] = 'JS技术'
+//			
+//		//创建一个稍微复杂的数组
+//			var box = [
+//				//第一个元素是一个对象
+//				{
+//					name:'小威',
+//					age:20,
+//					run:function(){
+//						return '哈哈哈';
+//					}
+//				},
+//				//第二个元素是数组
+//				['小威',20,new Object()]
+//			];
+//			alert(box)
+		</script>
+		
+<!--对象的转换方法-->
+		<script>
+//			//字面量数组
+//			var box = ['小威',20,'计算机编程']
+//			//隐式调用toString（）
+//			alert(box);
+//			//和valueOf()返回一致
+//			alert(box.toString());
+//			//返回值和上面两种一致
+//			//toLocaleString:首先调用每个数组元素的 toLocaleString() 方法，然后使用地区特定的分隔符把生成的字符串连接起来，形成一个字符串
+//			alert(box.toLocaleString());
+//			
+//			alert(box.join('--'));
+
+			
+		//栈方法
+//			var box = ['小威',20,'计算机编程'];
+//			//数组末尾添加一个元素，并且返回长度
+//			alert(box.push('郑州'))
+//			
+//			alert(box);
+//			//移出数组末尾元素，并返回移出的元素
+//			box.pop()
+//			alert(box);
+			
+	//队列方法
+		//push()：向数组末端添加一个元素，
+		//shift()：从数组前端移除一个元素
+		//unshift():为数组的前端添加一个元素
+			var box = ['小威',20,'计算机编程']
+			//数组末尾添加一个元素，并且返回长度
+//			alert(box.push('商丘'))
+			
+			//数组开头添加两个元素
+//			alert(box.unshift('商丘','河南'));
+//			
+//			alert(box)
+//			//移除数组开头元素，并返回移出的元素
+////			alert(box.shift())
+//			alert(box)
+//			
+//			//移除数组末尾元素，并返回移出的元素
+//			alert(box.pop())
+			
+	//重排序方法
+		//reverse()：逆向排序
+		//sort()：从小到大排序
+		
+		var b = [100,201,3,24,65];
+		console.log('源数据'+b)
+		//逆向排序的方法，返回排序后的数组
+//		console.log('逆序'+b.reverse())
+//		//原数组也被逆序，说明是引用
+//		console.log(b)
+		
+		//从小到大排
+		console.log('从小到大'+b.sort(f))
+		//sort 排列数字容易出错
+		function f(a,b){
+			return (a-b)
+		}
+		
+		
+		
+		
+		</script>
+	</body>
+</html>

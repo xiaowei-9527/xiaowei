@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//创建对象
+			var xhr = new XMLHttpRequest();
+			//打开目标地址	
+			xhr.open('get','ajax1.php',false)
+			
+		//设置单个请求头信息
+			
+			//设置请求头放在open方法之后，send方法之前
+			xhr.setRequestHeader('MyHeader','xiaoWei');
+			//发送请求
+			xhr.send(null);
+			
+			
+			
+		//获取单个响应信息
+			console.log('使用getResponseHeader()获取单个响应头信息：'+xhr.getResponseHeader('Content-Type'));
+			//获取整个响应头信息
+			console.log('使用getAllResponseHeaders()获取整个响应头信息：'+xhr.getAllResponseHeaders())
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body,html{
+				width: 100%;
+				height: 100%;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				background-color: red;
+				position: absolute;
+				top: 100px;
+				left: 100px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+		//获取页面宽高
+		var kuan = document.body.clientWidth
+		var gao = document.body.clientHeight
+		//1.获取页面元素
+		var box = document.getElementById('box');
+		//设置开关判断鼠标是在box否按下
+		var flag = false;
+		//2.box绑定鼠标按下事件
+		var delX = 0;
+		var delY = 0;
+		box.onmousedown = function() {
+			flag = true;
+			//获取需要删除的距离
+			delX = event.clientX - box.offsetLeft;
+			delY = event.clientY - box.offsetTop;
+			
+		};
+		//3.整个文档绑定鼠标移动事件
+		document.onmousemove = function() {
+			if(flag) {
+				//删除多余的距离 保持住按下的位置
+				var x = event.clientX - delX;
+				var y = event.clientY - delY;
+				
+				//获得图像的宽高
+				var w = window.getComputedStyle ? window.getComputedStyle(box, null) : null || box.currentStyle;
+				//去掉后缀
+				var w1 = w.width.slice(0,-2)
+				var h1 = w.height.slice(0,-2)
+				
+			//设置边距
+				if(x<0){
+					box.style.left=0
+				}else if(x>=0){
+					if(x > kuan-w1){
+						box.style.left=kuan-w1+'px'
+					}else{
+						box.style.left=x+'px'
+					}
+				}
+				
+				if(y<0){
+					box.style.top=0
+				}else if(y>=0){
+					if(y > gao-h1){
+						box.style.top=gao-h1+'px'
+					}else{
+						box.style.top=y+'px'
+					}
+				}
+				
+			}
+		};
+		//4.给整个文档绑定了 鼠标抬起事件
+		document.onmouseup = function() {
+			flag = false;
+		};
+	</script>
+
+</html>

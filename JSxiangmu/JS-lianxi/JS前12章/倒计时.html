@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			p {
+				font-size: 80px;
+				text-align: center;
+			}
+			
+			p span {
+				color: red;
+			}
+			
+			p span.time {
+				color: black
+			}
+			
+			body {
+				padding-top: 200px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<p>距离2020年还有：</p>
+		<p><span></span></p>
+		<script>
+			var oSpan = document.getElementsByTagName('span')[0];
+			function time() {
+				//事先定义好的时间
+				var ding = new Date('2020-1-1 00:00:00')
+//				alert(ding)
+				//当前时间
+				var d = new Date()
+				//两个时间的差,然后换成秒
+				var cha = (ding - d) / 1000
+
+				//求剩余的天数
+				var day = Math.floor(cha / (60 * 60 * 24))
+
+				//用时间差 - 天数剩下的时间
+				var D = cha - (day * 60 * 60 * 24)
+
+				//求剩余的小时---(用时间差 - (用原有天的毫秒数  X 天数的毫秒数))
+				var shi = parseInt(D / (60 * 60))
+
+				//除去天数 + 小时的毫秒数
+				var H = D - (shi * 60 * 60)
+
+				//求剩余分钟数--
+				var fen = Math.floor(H / 60)
+
+				//减去剩余的分还剩
+				var miao = parseInt(H - fen * 60)
+
+
+				function dian(id){
+					var a = id>9 ? id : '0'+id
+					return a
+				}
+				var str = dian(day) + '<span class="time">天</span>' +
+					dian(shi) + '<span class="time">小时</span>' +
+					dian(fen) + '<span class="time">分钟</span>' +
+					dian(miao) + '<span class="time">秒</span>';
+				oSpan.innerHTML = str;
+			}
+			time();
+			setInterval(time, 1000)
+		</script>
+	</body>
+
+</html>

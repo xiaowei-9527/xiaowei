@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+		<script src="../sevrer/app.js"></script>
+		<style type="text/css">
+			.wp{
+				width: 1000px;
+				height: 1000px;
+				border: 1px solid red;
+			}
+			.div{
+				width: 500px;
+				height: 500px;
+				border: 1px solid red;
+			}
+			p.on{
+				color: red;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wp">
+			
+		</div>
+		<script>
+			$('.wp').append('<div class="div"></div>');
+			for (var i=0; i<data.length;i++) {
+				$('.div').append('<h3>'+data[i].title+'</h3>')
+				
+				for (var j=0 ;j<data[i].list.length;j++) {
+//					$('.div').append("<p class='"+(j==0 ? 'on' : '')+"'>"+data[i].list[j].book+","+data[i].list[j].name+"</p>")
+//					$('.div').append("<p class=' "+ (j==0 ? "on" : "")+" '>"+data[i].list[j].book+","+data[i].list[j].name+"</p>").
+					$('.div').append(`<p class = "${j==0 ? 'on' : ''}">${data[i].list[j].book} , ${data[i].list[j].name}</p>`)
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

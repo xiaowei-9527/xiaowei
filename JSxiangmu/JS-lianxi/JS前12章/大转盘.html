@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>大转盘</title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0 ;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+				float: left;
+				width: 186px;
+				height: 186px;
+				border: 1px solid blue;
+				box-sizing: border-box;
+				text-align: center;
+				line-height: 200px;
+				margin-top: 10px;
+				margin-left: 10px;
+				cursor: pointer;
+			}
+			.one{
+				margin: 0 auto;
+				width: 600px;
+				height: 600px;
+				box-sizing: border-box;
+				border: 1px solid red;
+			}
+			.kai{
+				font-size: 25px;
+				color: #fff;
+				background-color: #CCCCCC;
+			}
+			.on{
+				border: 3px solid red;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="one">
+			<div class="">
+				<ul>
+					<li class="on">111</li>
+					<li>222</li>
+					<li>333</li>
+					<li>444</li>
+					<li class="kai">开始</li>
+					<li>666</li>
+					<li>777</li>
+					<li>888</li>
+					<li>999</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			//点击之后随机变颜色
+			var i=0;
+			$('.kai').click(function(){
+				if(!i%2==0){
+					$(this).text('开始')
+					i=0;
+					ting();
+				}else{
+					$(this).text('停止')
+					i=1;
+					kai();
+				}
+			})
+			var shi;
+			function kai(){
+				shi = setInterval(function(){
+					var sui = parseInt(Math.random()*$('ul li').length)
+					if(sui==4){
+						sui=10
+						console.log(1111)
+					}
+					$('ul li').eq(sui).addClass('on').siblings().removeClass('on')
+				},50)
+			}
+			function ting(){
+				clearInterval(shi);
+			}
+		</script>
+	</body>
+</html>

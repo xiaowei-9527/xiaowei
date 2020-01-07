@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<!--同步调用-->
+		<script>
+//			var xhl0 = new XMLHttpRequest()
+//			console.log(xhl0)
+			
+			document.onclick = function(){
+				//创建对象
+				var xhr = new XMLHttpRequest()
+					//open有三个参数，如果不需要必须填写null
+						//三个参数：请求类型(get、post)、请求的URL和表示是否异步(false：同步、true：异步)
+				//打开目标地址	
+				xhr.open('get','ajax1.php',false)
+				//发送请求
+				xhr.send(null);
+				if(xhr.readyState==4){
+					if(xhr.status==200){
+						console.log(xhr.responseText)
+					}else{
+						console.log('数据返回失败!状态码：'+xhr.status+'状态信息：'+xhr.statusText)
+					}
+				}
+			}
+		</script>
+		
+	<!--异步调用-->
+		<script>
+			document.onclick = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState==4){
+						if(xhr.status==200){
+							console.log(xhr.responseText)
+						}else{
+							console.log('数据返回失败!状态码：'+xhr.status+'状态信息：'+xhr.statusText)
+						}
+					}
+				}
+				xhr.open('get','ajax1.php?random='+Math.random(),true);
+				xhr.send(null);
+			}
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="inp"/>
+	</body>
+	<script>
+//		var inp = document.getElementById('inp');
+//		
+//		inp.addEventListener('blur',function(){
+//			alert(222)
+//		})
+//		
+//		inp.addEventListener('click',function(){
+//			alert(1111)
+//		})
+	</script>
+	
+<!--鼠标事件-->
+	<script>
+		var inp = document.getElementById('inp');
+		//点击
+//		inp.onclick = function(){
+//			console.log('鼠标点击')
+//		}
+		//双击
+//		inp.ondblclick = function(){
+//			console.log('鼠标双击')
+//		}
+//		//按下鼠标
+//		inp.onmousedown = function(){
+//			console.log('按下鼠标')
+//		}
+//		//释放鼠标
+//		inp.onmouseup = function(){
+//			console.log('释放鼠标')
+//		}
+//		//鼠标移动到上方
+//		inp.onmouseover = function(){
+//			console.log('鼠标移动到上方')
+//		}
+//		//鼠标移出
+//		inp.onmouseout = function(){
+//			console.log('鼠标移出')
+//		}
+//		//鼠标在元素上移动
+		inp.onmouseover = function(){
+			console.log('鼠标在元素上移动')
+		}
+	</script>
+	
+<!--键盘事件-->
+	<script>
+//		window.onkeydown = function(){
+//			console.log(111)
+//		}
+		
+		window.onkeypress = function(){
+			console.log(111)
+		}
+	</script>
+</html>

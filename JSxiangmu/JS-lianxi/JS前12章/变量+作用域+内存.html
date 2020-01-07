@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//基本数据类型：undefined、null、boolean、number、string
+			
+		//动态属性
+			//引用数据类型可以随意添加属性
+			var box = new Object();//创建引用类型
+			box.name = '小威';//新增一个属性
+//			alert(box.name)
+			
+			//基本数据类型不能添加属性
+			var box1 = '小威'
+			box1.age = 20;
+//			alert(box1.age) //undefined
+			
+		//复制变量值
+		
+			//基本数据类型复制的是值本身
+			
+			//引用数据类型复制的是地址
+			
+			//两个操作互不影响
+			var box2 = '小威';//在栈内存生成一个box2'小威'
+			var box3 = box2;//在栈内存再生成一个box3'小威'
+			
+			
+			var box4 = new Object();//创建一个引用类型
+			box.name = 'xiaowei';//新增属性
+			var box5 = box4;//把引用地址赋值给box5
+			
+		//传递参数
+			//基本数据类型
+			function box6(num){//按值传递，传递的参数是基本数据类型
+				num+=10;//num是局部变量，全局无效
+				return num;
+			}
+			var a = 50;
+			var result = box6(a)
+//			alert(result)
+//			alert(a)
+			
+			//引用类型
+			function box7(obj){
+				obj.name = 'xiaowei';
+			}
+			var z = new Object();
+			box7(z)
+//			alert(z.name)
+			
+			//
+			function bo(obj){
+				obj.name = 'xiaowei';
+				var obj = new Object();//函数内部又创建一个对象
+				obj.name = 'haha';//并没有替换掉原来的obj
+			}
+			
+			
+		//检测类型
+			//type：只能判断出object和function
+			//instanceof
+			var box8 = [1,2,3,4]
+//			alert(box8 instanceof Array);
+			var box9 = {}
+//			alert(box9 instanceof Object)
+			var box11 = /g/;
+//			alert(box11 instanceof RegExp)
+			var box12 = new String('小威')
+//			alert(box12 instanceof String)
+			
+			
+		//执行环境及作用域
+			//全局变量可以再函数里访问
+			var box13 = 'xiaowei'
+			function setBox(){
+//				alert(box13)
+			}
+			setBox()
+			
+			function setBox2(){
+//				alert(window.box13)
+			}
+			window.setBox2()
+			
+			
+			var a1 = 'xiaowei'
+			function seta(){
+				var a1 = '小威'
+//				alert(a1)
+			}
+			seta()
+//			alert(a1)
+			
+			var a2 = 'xiaowei'
+			function seta2(a2){
+//				alert(a2)
+			}
+			seta2('小威')
+//			alert(a2)
+			
+			
+			//函数体内有函数
+			function seta3(){
+				function seta4(){
+					var b='小威'
+					alert(a2)
+					alert(b)
+				}
+				seta4()
+			}
+			seta3()
+			
+			
+		//内存问题
+			var o = {
+				name:'小威'
+			}
+			o = null;		//解除对象引用，等待垃圾收集器回收
+		</script>
+	</body>
+</html>

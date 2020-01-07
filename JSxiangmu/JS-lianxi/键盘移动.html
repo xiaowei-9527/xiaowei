@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#a {
+				width: 50px;
+				height: 50px;
+				/*border-radius: 50%;*/
+				background-color: red;
+				position: relative;
+				/*top: 100px;
+				left: 100px;*/
+			}
+			.randomDiv{
+				width: 50px;
+				height: 50px;
+				background-color: #ccc;
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="a"></div>
+	</body>
+	<script>
+		//上：38
+		//下：40
+		//左:37
+		//右:39
+		var kuai = document.getElementById('a')
+		var W = document.documentElement.clientWidth
+		var H = document.documentElement.clientHeight
+		console.log('宽：'+W)
+		console.log('GAO：'+H)
+
+		//获得方块的宽高
+		var kk = kuai.scrollWidth
+		var kg = kuai.scrollHeight
+
+		function dian(evt) {
+			var top = kuai.offsetTop
+			var left = kuai.offsetLeft
+			if(evt.keyCode == 38) {
+				if(top <= 0) {
+					kuai.style.top = 0 + 'px'
+				} else {
+					kuai.style.top = top - 10 + 'px'
+					console.log(kuai.style.top)
+				}
+			} else if(evt.keyCode == 40) {
+				if(top + kg + 10 >= H) {
+					kuai.style.top = H - kg + 'px'
+				} else {
+					kuai.style.top = top + 10 + 'px'
+					console.log(kuai.style.top)
+					
+				}
+			} else if(evt.keyCode == 37) {
+				if(left <= 0) {
+					kuai.style.left = 0 + 'px'
+				} else {
+					kuai.style.left = left - 10 + 'px'
+				}
+			} else if(evt.keyCode == 39) {
+				if(left + kk + 10 >= W) {
+					kuai.style.left = W - kk + 'px'
+				} else {
+					kuai.style.left = left + 10 + 'px'
+				}
+			}
+		}
+		document.onkeydown = function(evt) {
+			dian(evt)
+		}
+		console.log(kuai.offsetTop)
+		
+		//随机生成食物位置
+		var swk = parseInt(Math.random()*W-80)
+		var swg = parseInt(Math.random()*H-80)
+		console.log('随机宽：'+swk)
+		console.log('随机高：'+swg)
+		
+		//创建div
+		var randomDiv = document.createElement('div')
+		var bodyObj = document.getElementsByTagName('body')[0]
+		randomDiv.className = 'randomDiv'
+		bodyObj.appendChild(randomDiv)
+		
+		//随机生成位置
+		var kuan = parseInt(swk)>W-80 ? W-80 : swk
+		var gao = parseInt(swg)>H-80 ? 0 : swg
+		//初始位置
+		randomDiv.style.top = gao+'px'
+		randomDiv.style.left = kuan+'px'
+		//获得随机块的宽高
+		randomKuan = randomDiv.scrollWidth
+		randomGao = randomDiv.scrollHeight
+		
+		//获得随机快距上方距离
+		randomTop = randomDiv.offsetTop-50
+		randomLeft = randomDiv.offsetLeft-50
+		
+		
+		
+		
+		console.log('块top：'+randomTop)
+		console.log('块left：'+randomLeft)
+		
+		console.log(randomDiv.scrollWidth)
+		console.log(randomDiv.scrollHeight)
+		
+		
+		console.log(randomDiv.style.top)
+		console.log(randomDiv.style.left)
+		
+		
+		
+	</script>
+
+</html>

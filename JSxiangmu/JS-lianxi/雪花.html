@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#kuang{
+				background: #000;
+				/*background: url('../img/雪背景.jpg') no-repeat;*/
+				background-size: 100%;
+				position: relative;
+				overflow: hidden;
+			}
+			.xue{
+				background: url('../img/雪花.png') no-repeat center;
+				background-size: 100%;
+				position: absolute;
+				animation: dong 4s linear infinite;
+			}
+			@keyframes dong{
+				from{
+					transform: rotate(0deg);
+				}
+				to{
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="kuang">
+			
+		</div>
+		
+		<script>
+			//获取屏幕宽、高
+			var kuan = document.documentElement.clientWidth
+			var gao = document.documentElement.clientHeight
+			var div = document.getElementById('kuang');
+			$('#kuang').width(kuan+'px')
+			$('#kuang').height(gao+'px')
+			
+			setInterval(function(){
+				//创建雪花
+				var xh = document.createElement('div')
+				//把创建的雪花添进div中
+				div.appendChild(xh)
+				//给雪花添加一个类
+				xh.className = 'xue'
+				//随机数
+				var sKuan = parseInt(Math.random()*kuan);
+				var sGao = parseInt(Math.random()*gao);
+				var sjW = parseInt(sKuan)>kuan-50 ?  0 : sKuan
+				var sjH = parseInt(sGao)>gao-50 ? 0 : sGao
+				
+				var xue = document.getElementsByClassName('xue')[0]
+				//雪花随机变化大小
+				var s = Math.random()*30
+				xh.style.width = s+'px'
+				xh.style.height = s+'px'
+				
+				//初始位置
+				xh.style.top = 0+'px'
+				xh.style.left = sjW+'px'
+				
+				//去除后两位-px
+//				console.log(xh.style.top.slice(0,-2))
+				
+				setInterval(function(){
+					if(xh.style.top.slice(0,-2)>gao|| xh.style.left.slice(0,-2)>kuan){
+						xh.remove(xue)
+					}
+					xh.style.top = xh.offsetTop+Math.random()+3+'px'
+					xh.style.left = xh.offsetLeft+Math.random()+1+'px'
+				},100)
+			},1000)
+		</script>
+	</body>
+</html>

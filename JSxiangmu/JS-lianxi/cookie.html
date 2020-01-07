@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<!--cookie-->
+		<script>
+			//
+		</script>
+		
+	<!--sessionStorage：会话存储-->
+		<script>
+			//通过方法存储和获取
+			sessionStorage.setItem('name','小威')
+			console.log('sessionStorage通过方法存储和获取----'+sessionStorage.getItem('name'))
+			
+			//进入页面之后直接跳转到cookie11.html，用sessionStorage带过去数据
+			//sessionStorage只能是从本页面点击或者用location.href跳转过去才有
+			window.onload = function(){
+				location.href = 'cookie11.html'
+			}
+				
+			//通过属性存储和获取
+			sessionStorage.book = 'xiaowei';
+			console.log('sessionStorage通过属性存储和获取---'+sessionStorage.book)
+			
+			//删除存储
+//			sessionStorage.removeItem('name')
+		</script>
+		
+	<!--localStorage-->
+		<script>
+//			//通过方法存储和获取
+//			localStorage.setItem('name','小威')
+//			console.log('localStorage通过方法存储和获取-----'+localStorage.getItem('name'))
+//			
+//			//通过属性储存和获取
+//			localStorage.book = 'xiaowei';
+//			console.log('localStorage通过属性存储和获取-----'+localStorage.book)
+//			
+//			//删除存储
+////			localStorage.removeItem('name')
+		</script>
+	</body>
+</html>
