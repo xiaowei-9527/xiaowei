@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div>
+			121212121
+			<div id="box">
+				<p>
+					12121
+					<span>asasasasa</span>
+				</p>
+			</div>
+		</div>
+		<script>
+			var txt=$('span').parent().html()
+//			alert(txt)
+//				$('span').parents('p')
+				$('span').parentsUntil('div').css('background','green')
+		</script>
+	</body>
+</html>

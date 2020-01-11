@@ -1,0 +1,26 @@
+<?php
+	echo json_encode(
+		array("code"=>200,"message"=>"success",
+		"data"=>array(
+			array("id"=>1,"title"=>"幸福家庭","jumpurl"=>"http://xxx.com",
+				"children"=>array(
+					array("id"=>101,"title"=>"1111家庭教育公开课","jumpurl"=>"http://gkk.com"),
+					array("id"=>101,"title"=>"2222课堂学习公开课","jumpurl"=>"http://gkk.com")
+					)
+				),
+				array("id"=>2,"title"=>"幸福家庭","jumpurl"=>"http://xxx.com",
+				"children"=>array(
+					array("id"=>102,"title"=>"33333家庭公开课","jumpurl"=>"http://gkk.com"),
+					array("id"=>103,"title"=>"44444课堂公开课","jumpurl"=>"http://gkk.com")
+					)
+				),
+				array("id"=>3,"title"=>"幸福家庭","jumpurl"=>"http://xxx.com",
+				"children"=>array(
+					array("id"=>104,"title"=>"555家庭公开课","jumpurl"=>"http://gkk.com"),
+					array("id"=>105,"title"=>"666课堂公开课","jumpurl"=>"http://gkk.com")
+					)
+				)
+			)
+		)
+	);
+?>

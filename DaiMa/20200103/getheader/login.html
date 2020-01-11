@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</head>
+<body>
+	<div>用户名: <input type="text" id="username"></div>
+	<div>密码: <input type="password" id="password"></div>
+	<div><button>提交</button></div>
+	<script>
+		$('button').click(function(){
+			$.ajax({
+				url:'login.php',
+				type:'post',
+				data:{
+					username:$("#username").val(),
+					password:$("#password").val(),
+				},
+				dataType:'json',
+				success:function(res){
+					console.log(res)
+					$.cookie('access-token',res.token)
+					location.href="1.html"
+				}
+			})
+		})
+	</script>
+</body>
+</html>

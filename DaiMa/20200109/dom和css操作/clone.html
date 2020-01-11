@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<span>hello world</span>
+		<div>asdasd</div>
+		<script>
+			$("span").click(function(){
+				alert('span')
+			})
+			$("div").append($("span").clone(true))
+			$("div").remove()
+		</script>
+	</body>
+</html>

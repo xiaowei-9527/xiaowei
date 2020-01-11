@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+		<style>
+			*{
+				margin:0;padding:0;
+			}
+			#fileBox{
+				float: left;
+				cursor: pointer;
+				width:80px;
+				height:80px;
+				border:1px solid #000;
+				position: relative;
+				font-size: 50px;
+				line-height: 80px;text-align: center;
+			}
+			#file{
+				cursor: pointer;
+				opacity: 0;
+				display: block;
+				width:80px;
+				height:80px;
+				position: absolute;
+				left:0;
+				top:0;
+			}
+			#pic{
+				overflow: auto;
+				width:260px;
+			}
+			#pic img{
+					display: block;
+					width:80px;
+					height: 80px;
+					float: left;
+					margin:0 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pic">
+			<div id="fileBox">
+				+
+				<input type="file" id="file" />
+			</div>
+		</div>
+		<script>
+			var fileObj=document.getElementById('file')
+			var pic=document.getElementById('pic')
+			var fileBox=document.getElementById('fileBox')
+			fileObj.onchange = changepic
+			function changepic() {
+				var formData = new FormData(); 
+				formData.append('file',fileObj.files[0])
+				$.ajax({
+					url:'upload.php',
+					type:'post',
+					data: formData,
+			    dataType: "json",    //重点、重点、重点
+			    cache: false,//不缓存
+			    processData: false,//告诉jQuery不要去处理发送的数据
+			    contentType: false,
+					success:function(res){
+						if(res.code==200){
+							var reads = new FileReader();
+							f = document.getElementById('file').files[0];
+							reads.readAsDataURL(f);
+							reads.onload = function(e) {
+								var imgObj=document.createElement('img')
+								imgObj.src = this.result;
+								fileBox.parentNode.insertBefore(imgObj,fileBox)
+							}
+						}
+					}
+				})
+			}
+		</script>
+	</body>
+</html>

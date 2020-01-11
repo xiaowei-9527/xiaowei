@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>-->
+		<script src="../js/jquery-3.2.0.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="a">
+			<ul>
+				<li>1111</li>
+				<li class="li">2222</li>
+				<li>3333</li>
+				<li class="li">4444</li>
+				<li>5555</li>
+				<li>6666</li>
+			</ul>
+			<h2>哈哈</h2>
+			<h4>哈哈</h4>
+			姓名：<input type="text" />
+			密码：<input type="password" />
+		</div>
+		
+	<!--过滤选择器-->
+		<script>
+//			//第一个元素
+//			$('li:first').css('background','#ccc');
+//			//最后一个元素
+//			$('li:last').css('background','red')
+//			//class不是li的元素
+//			$('li:not(.li)').css('font-size','20px')
+//			//索引为偶数的元素
+//			$('li:even').css('color','blue')
+//			//索引为奇数的元素
+//			$('li:odd').css('color','yellow')
+//			//制定索引的元素
+//			$('li:eq(2)').css('margin-left','20px')
+//			//大于索引的元素
+//			$('li:gt(2)').css('margin-left','50px')
+//			//小于索引的元素
+//			$('li:lt(2)').css('border','1px solid red')
+//			//页面所有h1~h6元素
+//			$(':header').css('background','#333333')
+
+
+		/*最常用的过滤器提供了专门的方法*/
+			//元素li的第三个元素，负数从后开始
+			$('li').eq(2).css('background','red')
+			//元素的第一个元素
+			$('li').first().css('background','#ccc')
+			//元素的最后一个元素
+			$('li').last().css('background','#008000')
+			//元素li不含class为.li的元素
+			$('li').not('.li').css('font-size','20px')
+		</script>
+		
+		<script>
+			$('input').get(0).focus();
+			$(':focus').css('background','#333333')
+			
+			
+		</script>
+	</body>
+</html>

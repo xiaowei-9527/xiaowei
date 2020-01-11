@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<!--<input type="text" name="lname" disabled="disabled" />
+		<input type="text" name="lname" disabled="disabled" />
+		<input type="text" name="lname" disabled="disabled" />-->
+		<!--<input type="radio" checked/>
+		<input type="radio" />
+		<input type="radio" checked/>-->
+		<input type="checkbox" name="checkbox" value="1"/>篮球
+		<input type="checkbox" name="checkbox" value="2"/>足球
+		<input type="checkbox" name="checkbox" value="3"/>乒乓球
+		<button>点击</button>
+		<script>
+			
+//			alert($(":enabled").size())
+//			alert($(":disabled").size())
+//			alert($(":checked").size())
+//				$("button").click(function(){
+//					alert($("input[type='checkbox']:checked").val())
+//				})
+				$("button").click(function(){
+					var arr=[]
+//					alert($('input[type=checkbox]:checked').length);
+					$.each($('input:checkbox:checked'),function(){
+            arr.push($(this).val())
+	       	});
+//	       	alert(arr)
+					
+       	})
+		</script>
+	</body>
+</html>

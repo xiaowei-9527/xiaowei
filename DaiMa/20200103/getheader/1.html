@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>php获取头信息</title>
+	<script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</head>
+<body>
+	<script>
+		$.ajax({
+			url: '1.php',
+			data: {'key':'123'},//如果需要字符串json方式，请使用JSON.stringify(setting.data)
+			type: 'POST',
+			//dataType: 'json',
+			//contentType: 'application/json',
+			//processData: true,//为true不会序列化数据
+			beforeSend: function () {
+			// layer.load(2);
+			},
+			headers: {
+				"access-token":$.cookie('access-token')//自定义token及值
+			},
+			success: function (responseData) {
+				console.log(responseData);
+			},
+			error: function (error) {
+				console.log(error);
+			}
+		});
+	</script>
+</body>
+</html>

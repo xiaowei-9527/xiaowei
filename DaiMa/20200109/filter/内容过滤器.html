@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+		<style>
+			.empty{
+				height:20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			ycku.com
+		</div>
+		<div>asdasdsa</div>
+		<div>11111111111111111111</div>
+		<span></span>
+		<div class="empty"></div>
+		<ul>
+			<li class="red">asdasdsadaaaaaaaaaaaaaaaaaaaa</li>
+		</ul>
+		<script>
+//			$("div:contains('ycku.com')").css('color','red')
+//			$("div:empty").css('backgroundColor','red')
+				$("ul").has('.red').css('backgroundColor','red')
+		</script>
+	</body>
+</html>

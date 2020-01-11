@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			原型   只有函数对象才有原型属性
+//			prototype -------  constructor--->Box
+			function Box(){}
+			Box.age=20
+			Math.PI
+			const a=100
+//			Box.prototype.constructor==Box
+			var b = new Box()
+//			b.constructor==Box
+			alert(b.__proto__==Box.prototype)
+			alert(Box.prototype.__proto__==Object.prototype)
+			alert(Object.prototype.__proto__==null)
+			
+			
+			
+		</script>
+	</body>
+</html>

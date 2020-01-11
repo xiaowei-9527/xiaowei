@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			a{
+				text-decoration: none;
+				color: #000;
+			}
+			#box{
+				width: 1000px;
+				height: 50px;
+				/*border: 1px dashed red;*/
+				margin: 0 auto;
+			}
+			
+			#box ul li{
+				list-style: none;
+				float: left;
+				margin-left: 20px;
+				border: 1px solid red;
+				padding: 5px 10px;
+				height: 40px;
+				line-height: 40px;
+			}
+			/*#box ul li:nth-child(1){
+				background-color: red;
+			}*/
+			.a{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		点击左侧下拉,置顶,
+		<nav>
+			<div id="box">
+				<ul>
+					<li>
+						<a href="javascript:;">111</a>
+						<div class="a yi">
+							<dl>
+								<dd>1-1</dd>
+								<dd>1-2</dd>
+								<dd>1-3</dd>
+							</dl>
+						</div>
+					</li>
+					<li>
+						<a href="javascript:;">222</a>
+						<div class="a er">
+							<dl>
+								<dd>2-1</dd>
+								<dd>2-2</dd>
+								<dd>2-3</dd>
+							</dl>
+						</div>
+					</li>
+					<li>
+						<a href="javascript:;">333</a>
+						<div class="a san">
+							<dl>
+								<dd>3-1</dd>
+								<dd>3-2</dd>
+								<dd>3-3</dd>
+							</dl>
+						</div>
+					</li>
+					<li>
+						<a href="javascript:;">444</a>
+						<div class="a si">
+							<dl>
+								<dd>4-1</dd>
+								<dd>4-2</dd>
+								<dd>4-3</dd>
+							</dl>
+						</div>
+					</li>
+					<li>
+						<a href="javascript:;">555</a>
+						<div class="a wu">
+							<dl>
+								<dd>5-1</dd>
+								<dd>5-2</dd>
+								<dd>5-3</dd>
+							</dl>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</body>
+	<script>
+		$('#box ul li').mouseover(function(){
+			$('#box ul li .a').css('display','block')
+			$('#box ul li').css('background-color','red')
+			$(this).siblings().children('.a').css('display','none').end().css('background-color','')
+		})
+		$('#box ul li').mouseout(function(){
+			$('#box ul li .a').css('display','none')
+			$('#box ul li').css('background-color','')
+		})
+	</script>
+</html>

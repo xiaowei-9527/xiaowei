@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+		<style>
+			ul li{
+				list-style-type: none;
+			}
+			ul li dl{
+				display: none;
+				padding-left:20px;
+			}
+			
+			ul li.on h3{
+				color:red;
+			}
+			ul li:nth-child(1) dl{
+				display: block;
+			}
+			*{
+				margin:0 ;padding:0;
+			}
+			.wp{
+				width:1000px;
+				margin:0 auto;
+			}
+			.toTop{
+				width:50px;
+				height:50px;
+				line-height: 50px;
+				text-align: center;
+				position:fixed;
+				right:10%;
+				bottom:50px;
+				background: #ccc;
+				border-radius: 50%;
+				cursor: pointer;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<aside>
+			<div class="wp">
+				<ul>
+					<li class="on">
+						<h3>第一项</h3>
+						<dl>
+							<dt>我是标题</dt>
+							<dd>1111</dd>
+							<dd>2222</dd>
+						</dl>
+					</li>
+					<li>
+						<h3>第二项</h3>
+						<dl>
+							<dt>我是标题</dt>
+							<dd>11111</dd>
+							<dd>22222</dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</aside>
+		<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`
+		<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`
+		<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`
+		<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`<br />`
+		<div class="toTop">Top</div>
+		<script>
+			$("ul li").click(function(){
+				$(this).addClass('on').siblings().removeClass('on')
+				$(this).find('dl').slideDown(300).parent().siblings().find('dl').slideUp(300)
+			})
+			
+			//检查是不是小于50
+			$(window).scroll(function() {
+        if ($(window).scrollTop() > 50) {
+          $(".toTop").fadeIn(200);
+        } else {
+          $(".toTop").fadeOut(200);
+        }
+      });
+			
+			$(".toTop").click(function() {
+        $('body,html').animate({
+          scrollTop: 0
+        },
+        500);
+        return false;
+      });
+		</script>
+		
+	</body>
+</html>

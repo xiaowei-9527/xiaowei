@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			
+		</style>
+		<script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<div id="box">测试div</div>
+		<script>
+			alert($(document).height())
+			alert($(document.body).height())
+//				alert($(window).height())
+//				alert($("#box").offset().top)
+				$("<div>世界你好</div>").css({
+					position:'absolute',
+					top:'584px',
+					left:'0px'
+				}).appendTo($('body'))
+		</script>
+	</body>
+</html>

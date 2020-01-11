@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<input type="text" value="输入内容"/>
+		<script>
+//			$("input").click(function(){
+//				alert('点击1')
+//			})
+//			$("input").click(function(){
+//				alert('点击2')
+//			})
+//			$("input").bind('click',function(){
+//				alert('测试一下')
+//			})
+			
+//			$("input").bind('click',fn)
+//			function fn(){
+//				alert('hello world')
+//			}
+			
+//			$("input").bind('mouseover mouseout',function(){
+//				alert('你好')
+//			})
+				$("input").bind({
+					'mouseover':function(){
+						alert('mouseover')
+					},
+					'mouseout':function(){
+						alert('mouseout')
+					}
+				})
+				$("input").unbind('mouseover')
+				
+//				document.onmouseover=function(){}
+//				document.onclick=function(){}
+//				$(document).mouseover()
+//				$(document).click()
+//				hover(function(){},function(){})
+		</script>
+	</body>
+</html>

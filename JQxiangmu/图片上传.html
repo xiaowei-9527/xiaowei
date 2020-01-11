@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#fileBox{
+				width: 80px;
+				height: 80px;
+				border: 1px solid #000000;
+				position: relative;
+				font-size: 50px;
+				line-height: 80px;
+				text-align: center;
+				float: left;
+			}
+			#file{
+				cursor: pointer;
+				opacity: 0;
+				display: block;
+				width: 80px;
+				height: 80px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#pic{
+				overflow: auto;
+				width: 260px;
+				height: 252px;
+				overflow: hidden;
+			}
+			#pic img{
+				display: block;
+				width: 80px;
+				height: 80px;
+				float: left;
+				margin: 2px 2px ;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pic">
+			<div id="fileBox">
+				+
+				<input type="file" id="file" multiple="multiple" />
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		var fileObj = document.getElementById('file')
+		var pic = document.getElementById('pic')
+		var fileBox = document.getElementById('fileBox')
+		fileObj.onchange = changepic;
+		function changepic() {
+			//多选图片
+			var tu = pic.getElementsByTagName('img');
+			//判断上传数量
+			if(tu.length>=9){
+				alert(11111)
+				return false;
+			}
+			
+			var reads = new FileReader();
+			//上传多张需要循环
+			var num = document.getElementById('file').files
+			var filenum = document.getElementById('file');
+			console.log('上传数量：'+num.length)
+			for (var j=0;j<num.length;j++) {
+				f = filenum.file[j]
+//				
+				console.log(f)
+				
+			}
+			reads.readAsDataURL(f);
+//			f = document.getElementById('file').files[0];
+//			reads.readAsDataURL(f);
+			
+			reads.onload = function(e) {
+				var imgObj = document.createElement('img');
+				imgObj.src = this.result;
+				fileBox.parentNode.insertBefore(imgObj,fileBox)
+			};
+			
+		}
+	</script>
+</html>

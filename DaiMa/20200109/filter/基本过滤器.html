@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<ul>
+			<li class="red">第一个</li>
+			<li class="red">第二个</li>
+			<li>第三个</li>
+		</ul>
+		<div>sadadsad</div>
+		<input type="text"/>
+		<script type="text/javascript">
+//				$("li:first").css('backgroundColor','red')
+//				$("li:last").css('backgroundColor','red')
+//				$("li:not('.red')").css('backgroundColor','red')
+//					$("li:odd").css('backgroundColor','red')
+//					$("li:even").css('backgroundColor','green')
+//					$("li:eq(1)").css('backgroundColor','green')
+//					$("input").get(0).focus()
+//					$(":focus").css('backgroundColor','green')
+					$("div").animate({
+						width:'500px',
+						height:'300px',
+						color:'red'
+					},3000)
+					$(":animated").css('backgroundColor','green')
+		</script>
+	</body>
+</html>

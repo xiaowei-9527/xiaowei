@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			const PI=Math.PI
+//			var box = '[{"name" : "a","age" : 1},{"name" : "b","age" : 2}]'
+////			var arr=JSON.parse(box)          // Array
+////			alert(arr instanceof Array)
+//			var json=eval(box)   // es6新特性
+//			console.log(json)
+//			alert(json)
+		
+//				var box = [{name : 'a', age : 1, height : 177},{name : 'b', age : 2, height : 188}];
+//				var json = JSON.stringify(box, ['name', 'age'], 4);
+//				alert(json);
+		
+//					var box = [{name : 'a', age : 1, height : 177},{name : 'b', age : 2, height : 188}];
+//					var json = JSON.stringify(box, function (key, value) {
+//						switch (key) {
+//							case 'name' : 
+//								return 'Mr. ' + value;
+//							case 'age' : 
+//								return value + '岁';
+//							default : 
+//								return value;
+//						}
+//					}, 4);
+//					alert(json);
+
+						var box = [{name : 'a', age : 1, height : 177, toJSON : function () {
+							return this.name;
+						}},{name : 'b',age : 2, height : 188, toJSON : function () {
+							return this.name;
+						}}];
+						var json = JSON.stringify(box);   //string
+//						alert(json);
+						var newJson = JSON.parse(json);
+						console.log(typeof newJson);
+						console.log(newJson)
+						
+						//  序列化   反序列化
+							JSON.stringify()    //  return string
+							JSON.parse()        //  return object
+
+		</script>
+	</body>
+</html>

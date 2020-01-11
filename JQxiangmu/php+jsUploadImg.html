@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#fileBox{
+				width: 80px;
+				height: 80px;
+				border: 1px solid #000000;
+				position: relative;
+				font-size: 50px;
+				line-height: 80px;
+				text-align: center;
+				float: left;
+			}
+			#file{
+				cursor: pointer;
+				opacity: 0;
+				display: block;
+				width: 80px;
+				height: 80px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#pic{
+				overflow: auto;
+				width: 260px;
+				height: 252px;
+				overflow: hidden;
+			}
+			#pic img{
+				display: block;
+				width: 80px;
+				height: 80px;
+				float: left;
+				margin: 2px 2px ;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pic">
+			<div id="fileBox">
+				+
+				<input type="file" id="file" multiple="multiple" />
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		var fileObj = document.getElementById('file')
+		var pic = document.getElementById('pic')
+		var fileBox = document.getElementById('fileBox')
+		
+		fileObj.onchange = changepic
+		
+		function changepic() {
+			console.log(fileObj.files[0])
+			var formData = new FormData();
+			formData.append('file',fileObj.files[0]);
+			$.ajax({
+				url:"shangchuan.php",
+				type:"post",
+				data:formData,
+				dataType:'json',
+				cache:false,	//不缓存
+				processData:false,	//告诉JQ不要去处理发送的数据
+				contentType:false,	//告诉JQ不要设置content-type请求头
+				success:function(res){
+					if(res.code==200){
+						var reads = new FileReader();
+						f = document.getElementById('file').files[0];
+						reads.readAsDataURL(f);
+						reads.onload = function(e) {
+							var imgObj = document.createElement('img');
+							imgObj.src = this.result;
+							fileBox.parentNode.insertBefore(imgObj,fileBox)
+						};
+					}
+				}
+			});
+			
+			
+			
+//			var reads = new FileReader();
+//			f = document.getElementById('file').files[0];
+//			reads.readAsDataURL(f);
+//			reads.onload = function(e) {
+//				var imgObj = document.createElement('img');
+//				imgObj.src = this.result;
+//				fileBox.parentNode.insertBefore(imgObj,fileBox)
+//			};
+		}
+	</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.fileObj {
+				width: 80px;
+				height: 80px;
+				border: 1px solid red;
+				font-size: 50px;
+				line-height: 80px;
+				text-align: center;
+				position: relative;
+			}
+			
+			#file {
+				cursor: pointer;
+				width: 80px;
+				height: 80px;
+				opacity: 0;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#fileBox{
+				width: 80px;
+				height: 80px;
+				border: 1px solid #000000;
+				position: relative;
+				font-size: 50px;
+				line-height: 80px;
+				text-align: center;
+			}
+			#file{
+				cursor: pointer;
+				opacity: 0;
+				display: block;
+				width: 80px;
+				height: 80px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="fileBox">
+			<img src="" alt="" id="pic" />
+			<div class="fileObj">
+				+
+				<input type="file" id="file" />
+			</div>
+		</div>
+		<div id="fileBox">
+			+
+			<input type="file" id="file" />
+		</div>
+	</body>
+	<script>
+//		function changepic() {
+//			$("#prompt3").css("display", "none");
+//			var reads = new FileReader();
+//			f = document.getElementById('file').files[0];
+//			reads.readAsDataURL(f);
+//			reads.onload = function(e) {
+//				document.getElementById('img3').src = this.result;
+//				$("#img3").css("display", "block");
+//			};
+//		}
+
+		var fileObj = document.getElementById('file')
+//		var pic = document.getElementById('pic')
+//		var fileBox = document.getElementById('fileBox')
+		
+		fileObj.onchange = changepic;
+		
+		function changepic(){
+			var formData = new forward(); 
+			formData.append('file',fileObj.files[0])
+			$.ajax({
+				url:"shangchuan.php",
+				type:"post",
+				dataType:"json",
+				cache:false,//不缓存
+				processData:false,//告诉jQuery不要去处理发送数据
+				contentTvpe:false,
+				success:function(res){
+					if(res.code==200){
+						var reads = new FileReader();
+						f = document.getElementById('file').files[0];
+						reads.readAsDataURL(f);
+						reads.onload = function(e){
+							var imgObj = document.createElement('img')
+							imgObj.src = this.result;
+							fileBox.parentNode.insertBefore(imgObj,fileBox)
+						}
+					}
+				}
+			});
+		}
+	</script>
+
+</html>
+-->

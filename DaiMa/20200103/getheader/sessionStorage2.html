@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		每个页面都可以用sessionStorage
+		<script>
+			
+			alert(localStorage.getItem('name'))
+			alert(sessionStorage.getItem('user'))
+			sessionStorage.removeItem('user')
+			alert(sessionStorage.getItem('user'))  //null
+		</script>
+	</body>
+</html>

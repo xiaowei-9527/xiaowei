@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">点击</div>
+		<!--<a href="sessionStorage2.html">点击</a>-->
+		<script>
+//			sessionStorage.setItem('name','张三')
+//			var box={
+//				name:'张三',
+//				age:20
+//			}
+////			alert(typeof JSON.stringify(box)) //sessionStorage还是localStorage值必须是字符串
+//			sessionStorage.setItem('name',JSON.stringify(box))
+//			console.log(typeof sessionStorage.getItem('name'))
+//			var str = sessionStorage.getItem('name')  // '{"name":"张三","age":20}'
+//			console.log(typeof JSON.parse(str))  // string---->object
+//			alert(JSON.parse(str).name)
+			var box=document.getElementById('box')
+			localStorage.setItem('name','1111')
+			sessionStorage.setItem('user','user')
+			box.onclick=function(){
+				location.href='sessionStorage2.html'
+			}
+		</script>
+	</body>
+</html>

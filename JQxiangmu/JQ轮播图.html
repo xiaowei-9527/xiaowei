@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wai{
+				width: 200px;
+				height: 200px;
+				border: 1px solid red;
+				/*overflow: hidden;*/
+			}
+			.kuang{
+				width: 800px;
+				height: 200px;
+			}
+			ul{
+				height: 200px;
+				position: relative;
+				top: 0;
+				left: 0;
+			}
+			ul li{
+				list-style: none;
+				float: left;
+				width: 200px;
+				height: 200px;
+			}
+			ul li img{
+				width: 200px;
+				height: 200px;
+			}
+			button{
+				width: 40px;
+				height: 40px;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wai">
+			<div class="kuang">
+				<ul>
+					<li><img src="img/哪吒.jpg"/></li>
+					<li><img src="img/刺激战场.jpg"/></li>
+					<li><img src="img/哪吒.jpg"/></li>
+					<li><img src="img/刺激战场.jpg"/></li>
+				</ul>
+			</div>
+		</div>
+		<button id="shang">上</button>
+		<button id="xia">下</button>
+	</body>
+	<script>
+//		var $ul = document.getElementsByTagName('ul')[0]
+//		var $li = $ul.getElementsByTagName('li')
+//		console.log($ul.style.left)
+
+		$('#shang').click(function(){
+			var i=0 ;
+			i++;
+			if(){
+				$('ul').css('left',i*200+'px')
+			}
+			i = $('li').index()
+		})
+		$('#xia').click(function(){
+			var i=0
+			i++;
+			$('ul').css('left',i*(-200)+'px')
+			
+		})
+	</script>
+</html>

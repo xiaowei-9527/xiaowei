@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			document.onclick=function(){
+				var xhr=new XMLHttpRequest()
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4){
+						if(xhr.status==200){
+							alert(xhr.responseText)
+						}else{
+							alert('error code:'+xhr.status+'error info:'+xhr.statusText)
+						}
+					}
+				}
+				xhr.open('get','get.php?rand='+Math.random()+'&name=王老师',true)
+				xhr.send(null)
+			}
+		</script>
+	</body>
+</html>
