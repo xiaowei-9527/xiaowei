@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>php+模板化+事件委托</title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<style type="text/css">
+			li{
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+		</ul>
+	</body>
+	<script>
+		var zong = {
+			//初始化
+			init:function(){
+				zong.huoqushuju();
+				zong.bindEvent();
+			},
+			//获取数据
+			huoqushuju:function(){
+				$.ajax({
+					url:"weituo.php",
+					type:"get",
+					dataType:'json',
+					success:function(res){
+						console.log(res)
+						zong.xunran(res)
+					}
+				});
+			},
+			//渲染
+			xunran:function(res){
+				for (var i = 0 ; i <res.length; i++) {
+					$('ul').append('<li>'+res[i].title+'</li>')
+				}
+			},
+			//事件
+			bindEvent:function(){
+				//因为使用异步，需要使用delegate或on
+				$('ul').delegate('li','click',function(){
+					alert($(this).text())
+				})
+			}
+		}
+		zong.init();
+	</script>
+</html>

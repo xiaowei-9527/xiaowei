@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			{'id'=>'1','title'=>'1111'},
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<title></title>
+		<style type="text/css">
+			li{
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	
+<!--事件委托+未来元素-->
+	<!--<body>
+		<ul>
+			<li>行动大于幻想</li>
+			<li>细节决定成败</li>
+			<li>拼搏成就明天</li>
+			<li>胜利走向未来</li>
+			<li>祝鼠年大吉</li>
+		</ul>
+	</body>
+	<script>
+		$(function(){
+			$('ul').on('click','li,.a',function(){
+				console.log(this.innerHTML);
+			})
+			//未来追加的元素
+			$('ul').append('<a class="a">我是春节</a>')
+		})
+	</script>-->
+<!--事件委托-->
+	<body>
+		<ul>
+			<li>行动大于幻想</li>
+			<li>细节决定成败</li>
+			<li>拼搏成就明天</li>
+			<li>胜利走向未来</li>
+			<li>祝鼠年大吉</li>
+			<li>666</li>
+		</ul>
+	</body>
+	
+<!--注意on和delegate-->
+	<script>
+		
+	//on()
+		
+//		$(function(){
+//			$('ul').on('click','li',function(){
+//				console.log($(this).text())
+//			})
+//		})
+
+	//deletage：未来元素添加事件+委托
+			$('ul').delegate('li','click',function(){
+				console.log($(this).text())
+			})
+	</script>
+</html>

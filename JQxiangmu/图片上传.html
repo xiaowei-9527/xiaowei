@@ -30,8 +30,8 @@
 			}
 			#pic{
 				overflow: auto;
-				width: 260px;
-				height: 252px;
+				width: 82px;
+				height: 82px;
 				overflow: hidden;
 			}
 			#pic img{
@@ -40,6 +40,33 @@
 				height: 80px;
 				float: left;
 				margin: 2px 2px ;
+			}
+			
+			
+			.gallery .img-item {
+				position: relative;
+			}
+			.gallery .img-item img{
+				
+			}
+			.gallery .img-item .delete {
+				position: absolute;
+				display: block;
+				width: 20px;
+				height: 20px;
+				color: #fff;
+				background: rgba(0, 0, 0, 0.7);
+				line-height: 20px;
+				text-align: center;
+				border-radius: 50%;
+				top: 25px;
+				right: 25px;
+				cursor: pointer;
+			}
+			.img {
+				width: 150px;
+				height:150px
+				margin: 20px;
 			}
 		</style>
 	</head>
@@ -56,10 +83,17 @@
 		var fileObj = document.getElementById('file')
 		var pic = document.getElementById('pic')
 		var fileBox = document.getElementById('fileBox')
+		
+		//创建数组保存图片
+		var files = new Array();
+		var id = 0;
+		
 		fileObj.onchange = changepic;
+		
 		function changepic() {
 			//多选图片
 			var tu = pic.getElementsByTagName('img');
+			var arrImg = []
 			//判断上传数量
 			if(tu.length>=9){
 				alert(11111)
@@ -68,24 +102,50 @@
 			
 			var reads = new FileReader();
 			//上传多张需要循环
-			var num = document.getElementById('file').files
-			var filenum = document.getElementById('file');
-			console.log('上传数量：'+num.length)
-			for (var j=0;j<num.length;j++) {
-				f = filenum.file[j]
-//				
-				console.log(f)
-				
-			}
-			reads.readAsDataURL(f);
-//			f = document.getElementById('file').files[0];
-//			reads.readAsDataURL(f);
+			var img = document.getElementById('file').files
 			
-			reads.onload = function(e) {
-				var imgObj = document.createElement('img');
-				imgObj.src = this.result;
-				fileBox.parentNode.insertBefore(imgObj,fileBox)
-			};
+			
+			for (var i = 0; i < img.length; i++) {
+				//得到图片
+				var file = img[i];
+				//把图片存到数组中
+				files[id] = file;
+				id++;
+				//获取图片路径
+				var url = URL.createObjectURL(file);
+				//创建img
+				var box = document.createElement("img");
+				box.setAttribute("src", url);
+				box.className = 'img';
+				//创建div
+				var imgBox = document.createElement("div");
+				imgBox.style.display = 'inline-block';
+				imgBox.className = 'img-item';
+				imgBox.appendChild(box);
+				//获取id=gallery的div
+				var body = document.getElementsByTagName('body')[0];
+				body.appendChild(imgBox);
+			}
+			
+//			//遍历
+//			for (var j=0;j<img.length;j++) {
+//				//得到图片
+//				f = filenum.files[j]
+//				
+//				console.log(f)
+//				setTimeout(function(){
+//					reads.readAsDataURL(f);
+//				},500)
+//			}
+////			f = document.getElementById('file').files[0];
+//			
+//			reads.onload = function(e) {
+//				console.log(2222,reads)
+//				//创建
+//				var imgObj = document.createElement('img');
+//				imgObj.src = this.result;
+//				fileBox.parentNode.insertBefore(imgObj,fileBox)
+//			};
 			
 		}
 	</script>

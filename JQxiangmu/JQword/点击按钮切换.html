@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+				
+			}
+			.kuang{
+				margin: 0 auto;
+				margin-top: 100px;
+				width: 500px;
+				height: 500px;
+				border: 1px dotted yellow;
+				position: relative;
+				overflow: hidden;
+			}
+			.kuang .xuHao ul{
+				z-index: 1;
+				position: absolute;
+				top: 50%;
+				right: 5px;
+				transform: translateY(-50%);
+				border: 1px solid #000;
+				
+			}
+			.kuang .xuHao ul li{
+				cursor: pointer;
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+			}
+			.kuang .xuHao ul li:nth-child(2){
+				border-top: 1px solid #000;
+				border-bottom: 1px solid #000;
+			}
+			
+			.neiKuang ul{
+				width: 500px;
+				height: 500px;
+				position: absolute;
+				top: 0;
+				transition: all .3s linear;
+			}
+			.neiKuang ul li{
+				width: 500px;
+				height: 500px;
+			}
+			.neiKuang ul li:nth-child(1){
+				background-color: red;
+			}
+			.neiKuang  ul li:nth-child(2){
+				background-color: blue;
+			}
+			.neiKuang ul li:nth-child(3){
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="kuang">
+			<div class="xuHao">
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>
+			</div>
+			<div class="neiKuang">
+				<ul>
+					<li>111</li>
+					<li>222</li>
+					<li>333</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script>
+		$('ul').delegate('li','click',function(){
+			var index = $(this).index()
+			var a = index * -500 +'px'
+			$('.neiKuang ul').css('transform','translateY('+a+')')
+		})
+	</script>
+</html>

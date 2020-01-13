@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<title>123</title>
+		<style>
+			#outter {
+				background: blue;
+				width: 200px;
+				height: 200px;
+			}
+			
+			#inner {
+				background: red;
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="outter">
+			<p id=inner></p>
+		</div>
+		<script>
+			function addEvent(obj, ev, handler) {
+				if(window.attachEvent) {
+					obj.attachEvent("on" + ev, handler);
+				} else if(window.addEventListener) {
+					obj.addEventListener(ev, handler, false);
+				}
+			}
+
+			function action(e) {
+				console.log("e.target.tagName : " + e.target.tagName + "\n e.currentTarget.tagName : " + e.currentTarget.tagName);
+			}
+			addEvent(document.getElementById('outter'), "click", action);
+		</script>
+	</body>
+
+</html>
