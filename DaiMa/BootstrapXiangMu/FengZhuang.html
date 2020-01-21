@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+		(function($){
+			//封装一个弹框
+			$.fn.tan = function(){
+				alert('我是自己封装的函数，吼吼吼')
+			}
+		})(jQuery)
+		
+		//上面封装一个匿名函数，然后下面直接调用名字
+		$('#box').tan()
+
+
+//把ajax封装了，然后外面直接调用
+		hanshu('1.php','get',{},'json',function(res){
+			console.log(res)
+		})
+
+		//封装一个ajax
+			function hanshu(url,type,data,dataType,callBack){
+				$.ajax({
+					url:url,
+					type:type,
+					data:data,
+					dataType:dataType,
+					success:function(res){
+						callBack(res)
+					},
+					error:function(err){
+						alert(2222)
+					}
+				});
+			}
+		
+	</script>
+</html>

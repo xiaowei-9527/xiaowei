@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标经过下拉菜单</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.a ul li dl{
+				display: none;
+			}
+			.a ul li{
+				margin-left: 15px;
+				float: left;
+				width: 50px;
+				height: 30px;
+				line-height: 30px;
+				border: 1px solid red;
+				text-align: center;
+				list-style: none;
+				cursor: pointer;
+			}
+		</style>
+	    <script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+	</head>
+	<body>
+		<div class="a">
+			<ul>
+				<li>
+					一
+					<dl>
+						<dd>111</dd>
+						<dd>111</dd>
+						<dd>111</dd>
+					</dl>
+				</li>
+				<li>
+					二
+					<dl>
+						<dd>222</dd>
+						<dd>222</dd>
+						<dd>222</dd>
+					</dl>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		$('.a ul').delegate('li','mouseover',function(){
+			$(this).children('dl').show(300)
+			$(this).siblings().children('dl').hide()
+		})
+		$('ul li').mouseleave(function(){
+			$('ul li').children('dl').hide(300)
+		})
+	</script>
+</html>

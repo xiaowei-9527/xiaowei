@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>Bootstrap 101 Template</title>
+
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		
+		<!--分页-->
+		<link rel="stylesheet" type="text/css" href="css/page.css"/>
+	    <script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+	    <script type="text/javascript" src="js/xlPaging.js"></script>
+	    <script src="js/layer/layer.js"></script>
+	    <style type="text/css">
+	    	.container .span2 .nav{
+	    		border: 1px solid #ccc;
+	    		border-bottom: none;
+	    	}
+	    	.container .span2 .nav li{
+	    		border-bottom: 1px solid #ccc;
+	    	}
+	    	.container .span2 .nav li a{
+	    		color: #000;
+	    	}
+	    	.panel-heading {
+			    color: #333;
+			    background-color: #f5f5f5;
+			    border-color: #ddd;
+			}
+			.table{
+				margin-top: 10px;
+			}
+	    </style>
+	</head>
+
+	<body>
+		<div class="container ">
+			<div class="row">
+				<h1 class="text-center">小项目首页</h1>
+				<hr width="500px" />
+			</div>
+			<div class="row">
+			<!--左面面包屑导航-->
+				<div class="col-md-3">
+			        <div class="span2">
+			            <ul class="nav nav-pills nav-stacked ">
+			                <li class="active"><a href="#">类别</a></li>
+			                <li class="quan"><a href="#">全部</a></li>
+			            </ul>
+			        </div>
+			    </div>
+			    
+			<!--右面整体-->
+			    <div class="col-md-8 table-bordered">
+			    	<div class="row panel-heading">
+			    		<button class="add btn btn-primary">新增内容</button>
+			    	</div>
+			    	<!--显示分页内容-->
+			    	<table class="table table-striped"></table>
+					<div id="page" style="display: inline-block;"></div>
+					<div class="fenye" style="display: inline-block;">
+						每页
+						<select class="select">
+							<option value="5">5</option>
+							<option value="10">10</option>
+							<option value="15">15</option>
+							<option value="20">20</option>
+						</select>
+						条
+					</div>
+			    </div>
+			</div>
+		</div>
+	</body>
+	
+	
+
+<!--登录成功后直接调用-->
+	<script>
+		//获得url后面的id值(点击操作之后下拉框中的id)
+		var leibieId;
+		var module = {
+		//初始化
+			init:function(){
+				//获取url后面的值
+				module.GetRequest()
+				//获得左侧导航信息
+				module.getData('get.php','get',{where:'reid=0',action:'get_arctype'},0,0,'json',function(res){
+					module.xuanran.nav(res)
+				})
+				//获取分页信息
+				module.getData('get.php','get',{action:'get_list',orderField:'id',orderBy:'DESC'},offset,rows,'json',orderField,function(res){
+//					module.getData('get.php','get',{action:'get_total'},page,size,'json',function(res){
+//						
+//					})
+				})
+				//获得
+				
+				//判断首页url后面是否有id
+				if(leibieId){
+					module.getPageData(1,5,leibieId)
+				}else{
+					module.getPageData1(1,5)
+				}
+			},
+				
+		//获得数据
+			getData:function(url,type,data,offset,rows,dataType,orderField,callBack){
+				$.ajax({
+					url:url,
+					type:type,
+					data:data,
+					dataType:dataType,
+					success:function(res){
+						callBack(res)
+					}
+				})
+			},
+		//分页
+			//页码
+			getPageData1:function(page,pagesize,orderField,res){
+				module.getData('get.php','get',{action:'get_total'},offset,rows,'json',orderField,function(res){
+					//清空上一次的
+					$("#page").html('')
+					if(Math.ceil(res.total/pagesize)==1){
+						$('.fenye').css('display','none')
+					}else{
+						$('.fenye').css('display','inline-block')
+					}
+					$("#page").paging({
+				        nowPage: page, // 当前页码
+				        pageNum: Math.ceil(res.total/pagesize), // 总页码
+				        buttonNum: 4, //要展示的页码数量
+						canJump: 0,// 是否能跳转。0=不显示（默认），1=显示
+						showOne: 1,//只有一页时，是否显示。0=不显示,1=显示（默认）
+				        callback: function (num) { //回调函数
+				            module.getPageData1(num,pagesize)
+				        }
+				    });
+				    module.xuanran.fenye(res)
+				})
+				
+			},
+			
+		//获取url后面的值
+			GetRequest:function(){
+				var url = location.search; // 获取url中"?"符后的字串
+				var theRequest = new Object();
+				if (url.indexOf("?") != -1) {
+					var str = url.substr(1);
+					strs = str.split("&");
+					for (var i = 0; i < strs.length; i++) {
+						theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+					}
+				}
+				return theRequest;
+			},
+		//渲染
+			xuanran:{
+				//导航渲染
+				nav:function(res){
+					for (var i=0;i<res.length;i++) {
+						$('.nav').append("<li data_id="+res[i].id+"><a href='javaceript:;'>"+res[i].typename+"</a></li>")
+					}
+				},
+				//分页渲染
+				fenye:function(res){
+					console.log(res.length)
+					$('.table').append(`
+						<tr>
+			    			<th>标题</th>
+			    			<th class="text-center">操作</th>
+			    		</tr>
+					`)
+					for (var i=0;i<res.length;i++) {
+						$('.table').append('<tr><td>'+res[i].title+'</td><td class="text-center"><div class="btn-group m-auto" ><a class="btn btn-success btn-xs" href="xiangqing.html?id='+res[i].id+'">详情</a><a class="btn btn-info btn-xs" href="xiugai.html?id='+res[i].id+'">修改</a><a class="del btn btn-danger btn-xs" delete_id='+res[i].id+'>删除</a></div></td></tr>')
+					}
+				}
+			},
+		}
+		
+		//进入直接初始化
+		$(function(){
+			leibieId = module.GetRequest().leibeiId
+			module.init();
+		})
+		
+		
+//		$(function(){
+//		//左边导航
+//			nav('get.php','get',{where:'reid=0',action:'get_arctype'},'json',function(res){
+//				navReader(res)
+//			})
+//		})
+//	//左侧导航
+//		function nav(url,type,data,dataType,callBack){
+//			$.ajax({
+//				url:url,
+//				type:type,
+//				data:data,
+//				dataType:dataType,
+//				success:function(res){
+//					callBack(res)
+//				}
+//			});
+//		}
+//		//渲染导航
+//		function navReader(res){
+//			for (var i=0;i<res.length;i++) {
+//				$('.nav').append("<li data_id="+res[i].id+"><a href='javaceript:;'>"+res[i].typename+"</a></li>")
+//			}
+//		}
+//	//获取URL后面的值
+//		function getRequest(){
+//			var url = location.search; // 获取url中"?"符后的字串
+//			var theRequest = new Object();
+//			if (url.indexOf("?") != -1) {
+//				var str = url.substr(1);
+//				strs = str.split("&");
+//				for (var i = 0; i < strs.length; i++) {
+//					theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+//				}
+//			}
+//			return theRequest;
+//		}
+//	//显示全部信息
+//		function getPageData(page,pagesize){
+//			$.ajax({
+//				
+//			})
+//		}
+		
+		
+	</script>
+	
+	<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+	<!--<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>-->
+	<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+	<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>-->
+</html>

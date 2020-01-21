@@ -1,0 +1,8 @@
+<div id="myTab" class="list-group" ng-controller="ListTypeCtrl">
+    <a href="javascript:void(0)" class="list-group-item active">类别</a>
+    <a ui-sref="list({type:0})" class="list-group-item">全部</a>
+    <a ng-repeat="list in lists" class="list-group-item"
+       ui-sref="list({type:{{list.id}}})">{{list.typename}}</a>
+</div>
+
+

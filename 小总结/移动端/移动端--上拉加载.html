@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/rem.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+		<style type="text/css">
+			.wai {
+				width: 100%;
+				height: 13.2rem;
+				border: 1px solid red;
+				display: flex;
+				justify-content: center;
+				overflow: scroll;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wai">
+			111<br />222<br />333<br />444<br />555<br />666<br /> 111
+			<br />222<br />333<br />444<br />555<br />666<br /> 111
+			<br />222<br />333<br />444<br />555<br />666<br /> 111
+			<br />222<br />333<br />444<br />555<br />666<br />
+		</div>
+	</body>
+	<script>
+		$(function() {
+			var page = 1
+			var turn_on = true
+			$(".wai").scroll(function() {
+				if(($(this)[0].scrollTop + $(this).height()) >= $(this)[0].scrollHeight) {
+					//这里用[ off_ on ]来控制是否加载 (这样就解决了当上页的条件满足时，一下子加载多次的问题啦)
+					if(turn_on) {
+						page++
+						turn_on = false
+						setTimeout(function() {
+							turn_on = true
+							$('.wai').append('一<br />二<br />三<br />四<br />五<br />六<br />')
+						}, 1000)
+						console.log('滚动到底部了')
+					}
+				}
+			})
+		})
+	</script>
+
+</html>

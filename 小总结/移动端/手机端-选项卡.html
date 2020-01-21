@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>手机端-选项卡</title>
+		<link rel="stylesheet" href="../css/cui.css" />
+		<link rel="stylesheet" href="../css/lib.css" />
+		<script src="../js/jquery.js"></script>
+		<script src="../js/cui.js"></script>
+		<style>
+			.menu{
+				
+				height:40px;
+				border:1px solid #0000FF;
+			}
+			.menu li{
+				font-size:18px;
+				float: left;
+				width:148px;
+				height:40px;
+				line-height: 40px;
+				text-align:center;
+
+			}
+			.menu li:nth-child(1){
+				border-right:1px solid #0000FF;
+				box-sizing: border-box;
+			}
+			.contentTab{
+				width:300px;
+				height:360px;
+			}
+			.contentTab ul{
+				width:60px;
+			}
+			.contentTab ul li{
+				line-height: 40px;
+				text-align: center;
+			}
+			.parent{
+				margin:100px;
+				width:300px;
+			}
+			.contentTab ul{
+				border:1px solid #0000FF;
+				border-top:none;
+			}
+			.contentTab ul li{
+				border-bottom:1px solid #0000FF;
+			}
+			.contentTab ul li:last-child{
+				border:none;
+			}
+			.dn{
+				display: none;
+			}
+			.menu ul li.hover{
+				background: blue;
+				color:#fff;
+			}
+			.contentTab ul{
+				float: left;
+			}
+			.contentTab .ulRight,.contentTab .ulRight1{
+				margin-left:62px;
+				height:242px;
+				border:1px solid red;
+				box-sizing: border-box;
+			}
+			.contentTab ul li.hover{
+					background: red;
+					color:#fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="parent">
+				<div class="menu">
+					<ul class="TAB" id=".contentTab">
+						<li class="hover">菜单一</li>
+						<li>项目一</li>
+					</ul>
+				</div>
+				<div class="contentTab">
+					<ul class="TAB" id=".ulRight">
+						<li class="hover">菜单1</li>
+						<li>菜单2</li>
+						<li>菜单3</li>
+						<li>菜单4</li>
+						<li>菜单5</li>
+						<li>菜单6</li>
+					</ul>
+					<div class="ulRight">
+						我是第一项
+					</div>
+					<div class="ulRight dn">
+						我是第二项
+					</div>
+					<div class="ulRight dn">
+						我是第三项
+					</div>
+					<div class="ulRight dn">
+						我是第四项
+					</div>
+					<div class="ulRight dn">
+						我是第五项
+					</div>
+					<div class="ulRight dn">
+						我是第六项
+					</div>
+				</div>
+				<div class="contentTab dn">
+					<ul class="TAB" id=".ulRight1">
+						<li class="hover">项目1</li>
+						<li>项目2</li>
+						<li>项目3</li>
+						<li>项目4</li>
+						<li>项目5</li>
+						<li>项目6</li>
+					</ul>
+					<div class="ulRight1">
+						我是项目一
+					</div>
+					<div class="ulRight1 dn">
+						我是项目二
+					</div>
+					<div class="ulRight1 dn">
+						我是项目三
+					</div>
+					<div class="ulRight1 dn">
+						我是项目四
+					</div>
+					<div class="ulRight1 dn">
+						我是项目五
+					</div>
+					<div class="ulRight1 dn">
+						我是项目六
+					</div>
+				</div>
+			</div>
+	</body>
+</html>

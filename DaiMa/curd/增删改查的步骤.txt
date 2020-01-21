@@ -1,0 +1,716 @@
+﻿准备工作：安装wampserver,并执行SQL文件夹下的SQL语句，创建对应的数据库
+
+
+第一步:
+引入所有的JS文件，包括了
+    bootstrap的CSS样式
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    表格的样式
+    <link rel="stylesheet" href="js/ng-grid-2.0.12/ng-grid.css">
+    JQ的文件
+    <script src="js/jquery-1.9.1.js"></script>
+    angular的文件
+    <script src="js/angular-1.3.0.14/angular.js"></script>
+    让angular支持动画操作
+    <script src="js/angular-1.3.0.14/angular-animate.min.js"></script>
+    angular路由的支持
+    <script src="js/angular-ui-router.js"></script>
+    angular中提供了支持boostrap的功能
+    <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
+    angular设计表格
+    <script src="js/ng-grid-2.0.12/ng-grid.debug.js"></script>
+    分页
+    <script src="js/page.js"></script>
+    动画样式
+    <link rel="stylesheet" href="css/animations.css">
+    我们自定义的一些样式
+    <link rel="stylesheet" href="css/app.css">
+    启动核心代码
+    <script src="js/app.js"></script>
+    动画
+    <script src="js/animations.js"></script>
+    所有的控制器
+    <script src="js/controllers.js"></script>
+    所有的过滤器
+    <script src="js/filters.js"></script>
+    所有的服务
+    <script src="js/services.js"></script>
+
+第二步：
+创建angular模块，并配置路由
+
+var routerApp = angular.module('routerApp', ['ui.router']);
+
+routerApp.run(function($rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+});
+
+routerApp.config(function($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/index');
+    $stateProvider
+});
+
+第三步:
+我们首先要创建我们的首页路由,让用户在打开这个项目的时候，进入登录页面
+
+在index.html中添加<div ui-view></div>来交给路由处理
+
+在$stateProvider中添加首页路由
+
+.state('index',{
+            url:'/index',
+            views:{
+                '':{
+                    templateUrl:'tpls/home.html'
+                },
+                'main@index':{
+                    templateUrl:'tpls/login.html'
+                }
+            }
+        })
+
+在home.html中添加main视图
+
+<div class="container">
+    <div ui-view="main"></div>
+</div>
+
+最后创建login.html用户登录页面
+
+这里，我们要说明一下，任何一个页面都需要一个单独的模块来进行管理才行,一个页面对应一个模块
+
+<div class="container" ng-app="loginApp" ng-controller="loginController">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="page-header">
+            <h1>angularJS 前端MVC开发实例</h1>
+        </div>
+        <form ng-submit="postForm()">
+            <div class="form-group">
+                <label>用户名</label>
+                <input type="text" name="username" class="form-control" placeholder="用户名" ng-model="formData.username">
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input type="text" name="password" class="form-control" placeholder="密码" ng-model="formData.password">
+            </div>
+            <buton type="submit" class="btn btn-success btn-lg btn-block">
+                <span class="glyphicon glyphicon-flash"></span> 提交
+            </buton>
+        </form>
+    </div>
+</div>
+
+第四步:
+
+完成我们登录的业务逻辑
+
+创建登录模块loginApp,创建登录模块下的登录控制器loginController,让它来管理整个登录逻辑,并选择在app.js中注入这个模块.
+
+//创建login模块
+
+var loginApp = angular.module('loginApp',[]);
+loginApp.controller('loginController',function($scope,$http){
+    $scope.formData = {};
+    $scope.postForm = function(){
+        //这句话必须加
+        $scope.formData.action='login';
+        $http({
+            method:'POST',
+            url:'./get.php',
+            data: $.param($scope.formData),
+            headers:{'Content-Type':'application/x-www-form-urlencoded'}
+        }).success(function(data){
+            console.log(data);
+            if(!data.success){
+                if(!data.errors){
+                    $scope.message = data.message;
+                }else{
+                    $scope.errorUsername = data.errors.username;
+                    $scope.errorPassword = data.errors.password;
+                }
+            }else{
+                window.location.href = '#/0';
+            }
+        })
+    }
+})
+
+最后完成错误信息的显示
+
+<span class="help-block" ng-show="errorUsername">{{ errorUsername }}</span>
+
+<span class="help-block" ng-show="errorPassword">{{ errorPassword }}</span>
+
+<div id="messages" class="well" ng-show="message">{{ message }}</div>
+
+第五步:跳转到列表页面
+
+1、首先创建列表路由
+
+ .state('list', {
+            url: '/{type:[0-9]{1,4}}',
+            views: { //注意这里的写法，当一个页面上带有多个ui-view的时候如何进行命名和视图模板的加载动作
+                '': {
+                    templateUrl: 'tpls/list.html'
+                },
+                'type@list': {
+                    templateUrl: 'tpls/type.html'
+                },
+                'grid@list': {
+                    templateUrl: 'tpls/grid.html'
+                }
+            }
+        })
+2、完善列表页面
+
+<div class="container" ng-app="pageList">
+    <div class="page-header">
+        <h2>angularJS 前端MVC开发实例</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div ui-view="type">
+                分类加载中..
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div ui-view="grid">
+                列表加载中...
+            </div>
+        </div>
+    </div>
+</div>
+
+3、完善type.html
+
+<div id="myTab" class="list-group" ng-controller="ListTypeCtrl">
+	<a href="javascript:void(0);" class="list-group-item active">类别名称</a>
+	<a ui-sref="list({type:0})" class="list-group-item">全部</a>
+	<a ng-repeat="list in lists" ui-sref="list({type:{{list.id}}})" class="list-group-item">{{list.typename}}</a>
+</div>
+
+4、创建pageList模块，创建ListTypeCtrl控制器,并加载到routerApp中去.
+
+var pageList = angular.module('pageList',[]);
+pageList.controller('ListTypeCtrl',function($scope,$http){
+    $http({
+        method:'GET',
+        url:'get.php?action=get_arctype&where=reid=0'
+    }).success(function(data,status,headers,config){
+        $scope.lists = data;
+    }).error(function(data,status,headers,config){
+        console.log('error...');
+    })
+})
+
+5.创建arcListCtrl控制器
+
+totals = 0;
+pageList.controller('arcListCtrl',function($scope,$http,$location){
+    //首先先获取到当前的路径
+    $scope.typeid = $location.path().replace('/','');
+    //获取文章的总数
+    if($scope.typeid==0){
+        $get_total_url = 'get.php?action=get_total';
+    }else{
+        $get_total_url = 'get.php?action=get_total&where=typeid=' + $scope.typeid;
+    }
+    //发送请求
+    $http({
+        method:'GET',
+        url:$get_total_url
+    }).success(function(data,status,headers,config){
+        $scope.paginationConf.totalItems = data.total;
+    }).error(function(data,status,headers,config){
+        console.log('error....');
+    })
+
+    //获取到总的文章数量之后，我们其实就可以开始设置分页显示内容了.
+
+    $scope.paginationConf = {
+        currentPage:1,
+        itemsPerPage:5,
+        pagesLength:5,
+        //这里一定要注意有一个空格
+        perPageOptions:[10, 20, 30, 40, 50],
+        rememberPerPage:'perPageItems',
+        onChange:function(){
+            //获取分页的开始数
+            if($scope.paginationConf.currentPage == 1){
+                $scope.limit = 0;
+            }else{
+                //比如这里从第二页开始，那么每页显示五条数据，那么第二页就应该从第五条数据后显示五条才行.
+                $scope.limit = $scope.paginationConf.currentPage * $scope.paginationConf.itemsPerPage - $scope.paginationConf.itemsPerPage;
+            }
+
+            //根据当前的type类型，显示不同的栏目里面的内容,先显示的就是第一页的五条数据
+            if($scope.typeid == 0){
+                $geturl = 'get.php?action=get_list&offset=' + $scope.limit + 'rows=' + $scope.paginationConf.itemsPerPage + '&orderField=id&orderBy=DESC';
+            }else{
+                $geturl='get.php?action=get_list&offset='+$scope.limit+'&rows='+$scope.paginationConf.itemsPerPage+'&where=typeid='+$scope.typeid+'&orderField=id&orderBy=DESC';
+            }
+            $http({
+                method:'GET',
+                url:$geturl,
+            }).success(function(data,status,headers,config){
+                $scope.lists = data;
+                console.log(data);
+            }).error(function(data,status,headers,config){
+                console.log('error....')
+            })
+        }
+    }
+6、完善grid.html页面
+
+<div class="tab-content" ng-controller="arcListCtrl">
+    <!--这是显示错误信息的地方-->
+    <div class="row megbox">
+        <div id="successbox" role="alert" ng-show="meg_success">
+            {{meg_success}}
+        </div>
+        <div id="errorbox" role="alert" ng-show="meg_error">
+            {{meg_error}}
+        </div>
+    </div>
+    <!--页面内容的显示-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a ui-sref="add" class="btn btn-primary">新增内容</a>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <tr>
+                    <th>标题</th>
+                    <th class="center">操作</th>
+                </tr>
+                <tr ng-repeat="list in lists">
+                    <td>
+                        {{list.title}}
+                    </td>
+                    <td class="center">
+                        <div class="btn-group btn-group-xs" role="group">
+                            <a ui-sref="show({Id:{{list.id}}})" class="btn btn-primary">详情</a>
+                            <a ui-sref="modify({Id:{{list.id}}})" class="btn btn-info">修改</a>
+                            <a ng-click="del($index,list.id)" class="btn btn-danger">删除</a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <xg-page conf="paginationConf"></xg-page>
+        </div>
+    </div>
+</div>
+
+第六步:新增
+
+1、创建新增路由
+.state('add',{
+            url:'/add',
+            views: {
+                '': {
+                    templateUrl: 'tpls/add.html'
+                },
+                'type@add': {
+                    templateUrl: 'tpls/type.html'
+                },
+                'addcon@add': {
+                    templateUrl: 'tpls/addcon.html'
+                }
+            }
+        })
+2、创建新增页面
+
+<div class="container">
+    <div class="page-header">
+        <h2>Angularjs 前端MVC开发实例</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div ui-view="type">
+                分类加载中...
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div ui-view="addcon">
+                列表加载中...
+            </div>
+        </div>
+    </div>
+</div>
+
+3、创建新增表单页面addcon.html
+
+<div class="panel panel-primary" ng-app="addCont">
+    <div class="panel-heading">
+        <div class="panel-title">新增内容</div>
+    </div>
+    <div class="panel-body" ng-controller="AddContCtrl">
+        <!--错误页面-->
+        <div class="row megbox">
+            <div id="successbox" role="alert" ng-show="meg_success">
+                {{meg_success}}
+            </div>
+            <div id="errorbox" role="alert" ng-show="meg_error">
+                {{meg_error}}
+            </div>
+        </div>
+        <!--提交表单-->
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form" name="form" ng-submit="postForm()">
+                    <div class="form-group">
+                        <label class="col-md-2">
+                            标题:
+                        </label>
+                        <div class="col-md-10">
+                            <input type="text" name="title" class="form-control" placeholder="标题" ng-model="formData.title" ng-click="errorBye()">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            内容：
+                        </label>
+                        <div class="col-md-10">
+                            <textarea rows="6" name="content" class="form-control" placeholder="内容" ng-model="formData.content" ng-click="errorBye()"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            类别：
+                        </label>
+                        <div class="col-md-3">
+                            <select name="typeid" class="form-control" ng-model="formData.typeid" ng-options="m.typename for m in lists" ng-click="errorBye()">
+                                <option value="">-- 选择分类 --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="保存" class="btn btn-success" ng-disabled="!form.$dirty" ng-click="errorShow()"/>
+                            <a ui-sref="list({type:0})" class="btn btn-primary">取消</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+4、创建新增模块addCont,创建新增控制器AddContCtrl,别忘了添加到routerApp模块
+
+var addCont = angular.module('addCont',[]);
+addCont.controller('AddContCtrl',function($scope,$http){
+    //获取分类的列表
+    $http({
+        method:'GET',
+        url:'get.php?action=get_arctype&where=reid=0'
+    }).success(function(data,status,headers,config){
+        $scope.lists = data;
+    }).error(function(data,status,headers,config){
+        console.log('get type is error');
+    })
+    //执行写入数据的操作
+    $scope.formData = {};
+    $scope.formData.action = 'add_article';
+    $scope.postForm = function(){
+        $http({
+            method:'POST',
+            url:'get.php',
+            data: $.param($scope.formData),
+            headers:{'Content-Type':'application/x-www-form-urlencoded'}
+        }).success(function(data){
+            $scope.errorBye = function(){
+                $('#errorbox').fadeOut();
+            }
+            $scope.errorShow = function(){
+                $('#errorbox').fadeIn();
+            }
+            if(!data.errors){
+                $scope.meg_success = '插入成功！正在返回列表页面..';
+                $scope.meg_error = '';
+                setTimeout(function(){location.href='#/0'},1000);
+            }else{
+                //添加失败
+                $scope.meg_success = '';
+                var get_error = '';
+                if(data.errors.hasOwnProperty('title')){
+                    get_error=data.errors.title;
+                }
+                if(data.errors.hasOwnProperty('content')){
+                    get_error=get_error+(get_error?"&":"")+data.errors.content;
+                }
+                if(data.errors.hasOwnProperty('typeid')){
+                    get_error=get_error+(get_error?"&":"")+data.errors.typeid;
+                }
+                $scope.meg_error=get_error;
+
+            }
+        })
+    }
+})
+
+第七步:修改数据
+
+1.创建修改的路由
+
+.state('modify', {
+            url: '/modify/:Id',
+            views: {
+                '': {
+                    templateUrl: 'tpls/modify.html'
+                },
+                'type@modify': {
+                    templateUrl: 'tpls/type.html'
+                },
+                'modifycon@modify': {
+                    templateUrl: 'tpls/modifycon.html'
+                }
+            }
+        })
+
+2、创建修改页面modify.html
+
+<div class="container" an-app="pageList">
+	<div class="page-header">
+		<h2>Angularjs 前端MVC开发实例</h2>
+	</div>
+	<div class="row">
+	    <div class="col-md-3">
+	        <div ui-view="type">
+	        	分类加载中...
+	        </div>
+	    </div>
+	    <div class="col-md-9">
+	        <div ui-view="modifycon">
+	        	列表加载中...
+	        </div>
+	    </div>
+	</div>
+</div>
+
+3、创建修改的列表modifycon.html
+
+<div class="panel panel-primary" ng-app="modifyCont">
+    <div class="panel-heading">
+        <div class="panel-title">修改内容</div>
+    </div>
+    <div class="panel-body" ng-controller="ModifyContCtrl">
+
+        <div class="row megbox">
+            <div id="successbox" role="alert" ng-show="meg_success">
+                {{meg_success}}
+            </div>
+            <div id="errorbox" role="alert" ng-show="meg_error">
+                {{meg_error}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" name="form" ng-submit="postForm()">
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            标题：
+                        </label>
+                        <div class="col-md-10">
+                            <input type="text" name="title" id="title" class="form-control" value="{{lists.title}}" ng-click="errorBye()" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            内容：
+                        </label>
+                        <div class="col-md-10">
+                            <textarea name="content" id="content" rows="6" class="form-control" ng-click="errorBye()">{{lists.content}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            类别：
+                        </label>
+                        <div class="col-md-10">
+
+                            <select class="form-control" name="typeid" id="typeid" ng-click="errorBye()">
+                              <option ng-show="{{tclick}}" value="{{lists.typeid}}" checked>{{lists.typename}}</option>
+                              <option ng-repeat="type in types" value="{{type.id}}">{{type.typename}}</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="保存" class="btn btn-success" ng-click="errorShow()"/>
+                            <a ui-sref="list({type:0})" class="btn btn-primary">取消</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+4.创建修改的模块modifyCont,创建修改的控制器ModifyContCtrl,别忘了添加到routerApp 中去
+//修改模块
+var modifyCont = angular.module('modifyCont',[]);
+modifyCont.controller('ModifyContCtrl',function($scope,$http,$stateParams){
+    //获取分类列表
+    $http({
+        method: 'GET',
+        url: 'get.php?action=get_arctype&where=reid=0'
+    }).success(function(data, status, headers, config) {
+        $scope.types=data;
+    }).error(function(data, status, headers, config) {
+        console.log("get type list error...");
+    });
+    //读取这一条数据
+    console.log($stateParams);
+    $http({
+        method: 'GET',
+        url: 'get.php?action=get_article&id='+$stateParams.Id
+    }).success(function(data, status, headers, config) {
+        $scope.lists=data;
+    }).error(function(data, status, headers, config) {
+        console.log("error...");
+    });
+    //更新数据
+    $scope.formData = {};
+    $scope.postForm = function() {
+        $scope.formData.action = 'update_article';
+        $scope.formData.id = $stateParams.Id;
+        $scope.formData.title = form.title.value;
+        $scope.formData.content = form.content.value;
+        $scope.formData.typeid = $("#typeid option:selected").val();//待优化取值方式
+        $http({
+            method  : 'POST',
+            url     : 'get.php',
+            data    : $.param($scope.formData),
+            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+            .success(function(data) {
+                console.log(data);
+                if (data.code==101) {
+                    //添加成功
+                    console.log('修改成功');
+                    $scope.meg_success="修改成功! 正在返回列表页...";
+                    $scope.meg_error="";
+                    setTimeout(function(){location.href='#/0'}, 1000);
+                } else {
+                    //添加失败
+                    console.log('修改失败');
+                    var get_errors="";
+                    $scope.meg_success="";
+                    //信息提示框状态
+                    $scope.errorBye=function(){
+                        $('#errorbox').fadeOut();
+                    }
+                    $scope.errorShow=function(){
+                        $('#errorbox').fadeIn();
+                        $scope.meg_error='';
+                    }
+                    if(data.errors){
+                        console.log("有错误信息");
+                        if(data.errors.hasOwnProperty('title')){
+                            get_errors=data.errors.title;
+                        }
+                        if(data.errors.hasOwnProperty('content')){
+                            get_errors=get_errors+(get_errors?"&":"")+data.errors.content;
+                        }
+                        $scope.meg_error=get_errors;
+                    }else{
+                        console.log("无错误信息");
+                        $scope.meg_error="修改失败，无改动！";
+                    }
+                }
+            });
+    };
+})
+
+第八步:查询数据的内容
+
+1、创建查询数据的路由
+
+.state('show', {
+            url: '/show/:Id',
+            views: {
+                '': {
+                    templateUrl: 'tpls/show.html'
+                },
+                'type@show': {
+                    templateUrl: 'tpls/type.html'
+                },
+                'showcon@show': {
+                    templateUrl: 'tpls/showcon.html'
+                }
+            }
+        })
+2.创建show.html页面
+
+<div class="container" an-app="pageList">
+	<div class="page-header">
+		<h2>Angularjs 前端MVC开发实例</h2>
+	</div>
+	<div class="row">
+	    <div class="col-md-3">
+	        <div ui-view="type">
+	        	分类加载中...
+	        </div>
+	    </div>
+	    <div class="col-md-9">
+	        <div ui-view="showcon">
+	        	列表加载中...
+	        </div>
+	    </div>
+	</div>
+</div>
+
+3.创建showcon.html查看列表
+
+<div class="panel panel-primary" ng-controller="ShowContCtrl">
+    <div class="panel-heading">
+        <div class="panel-title">{{lists.title}}</div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+
+			{{lists.content}}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+4、创建查看模块showCont,创建查看控制器ShowContCtrl,别忘了添加到routerApp中去
+
+
+
+var showCont = angular.module("showCont", []);
+showCont.controller('ShowContCtrl', function($scope, $http, $stateParams) {
+    console.log($stateParams.Id);
+    $http({
+        method: 'GET',
+        url: 'get.php?action=get_article&id='+$stateParams.Id
+    }).success(function(data, status, headers, config) {
+        console.log("success...");
+        console.log(data);
+        $scope.lists=data;
+    }).error(function(data, status, headers, config) {
+        console.log("error...");
+    });
+});
+
+
+//删除功能留下让自己大家去完善和学习去.
+
+
+
+
+
+
+
+
+
+

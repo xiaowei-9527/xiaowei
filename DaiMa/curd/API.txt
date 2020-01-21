@@ -1,0 +1,19 @@
+分类请求地址：
+
+get.php?action=get_arctype&where=reid=0
+
+
+文章数量：
+
+get.php?action=get_total
+
+get.php?action=get_total&where=typeid=' + $scope.typeid;
+
+
+
+根据页数显示不同的内容
+
+get.php?action=get_list&offset=' + $scope.limit + 'rows=' + $scope.paginationConf.itemsPerPage + '&orderField=id&orderBy=DESC
+
+
+get.php?action=get_list&offset='+$scope.limit+'&rows='+$scope.paginationConf.itemsPerPage+'&where=typeid='+$scope.typeid+'&orderField=id&orderBy=DESC

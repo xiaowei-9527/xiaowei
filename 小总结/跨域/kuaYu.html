@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>跨域</title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+	</head>
+	<body>
+		<button id="btn2">jsonp跨域</button>
+	</body>
+	
+<!--使用js原生跨域-->
+	<script>
+		var script = document.createElement('script');
+		script.type = 'text/javascript';
+	
+		//传参一个回调函数名给后端，方便后端返回时执行这个在前端定义的回调函数
+		script.src = 'http://localhost/JQxiangmu/kuaYu.php';
+		document.head.appendChild(script);
+	
+		//回调执行函数
+		//后台把数据放到 handleCallback() 函数中，然后前面直接使用
+		function handleCallback(res){
+			console.log(JSON.stringify(res));
+			console.log(JSON.stringify(res.user));
+			$('body').append('<p>js原生跨域--'+res.user+'</p>')
+		}
+	</script>
+	
+<!--使用jsonp跨域-->
+	<script>
+		$('#btn2').click(function(){
+			$.ajax({
+				url:"http://localhost/JQxiangmu/kuaYu2.php",
+				dataType:'jsonp',
+				jsonp:'callback',//指定参数名称
+				jsonpCallback:'hanshu',//指定回调函数
+				success:function(res){
+					$('body').append('<p>'+res.title+'</p>')
+				}
+			});
+		})
+	</script>
+</html>
